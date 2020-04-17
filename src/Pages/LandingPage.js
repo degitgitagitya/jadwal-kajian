@@ -52,6 +52,21 @@ export default class LandingPage extends Component {
             </div>
           </div>
         </Container>
+        <div className="landing-page-tanya-jawab">
+          <Container className="pt-3 mt-5">
+            <div className="row">
+              <div className="col-6"></div>
+              <div className="col-6">
+                <div className="d-flex justify-content-between">
+                  <h3>Tanya Jawab Terbaru</h3>
+                  Lainnya
+                </div>
+                <hr className="bold-hr" />
+                <div className="d-flex flex-column"></div>
+              </div>
+            </div>
+          </Container>
+        </div>
       </div>
     );
   }

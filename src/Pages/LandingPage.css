@@ -1,0 +1,7 @@
+.landing-page-tanya-jawab {
+  background-image: radial-gradient(
+    farthest-corner at 20px 20px,
+    var(--light-green),
+    var(--green)
+  );
+}
