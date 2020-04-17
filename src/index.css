@@ -1,13 +1,157 @@
+:root {
+  --light-green: #bbd9ad;
+  --green: #8cbf75;
+  --dark-green: #5e8c49;
+  --black-green: #184d00;
+  --grey: #f0f2f2;
+  --info: #5bc0de;
+  --info-dark: #0086af;
+  --danger: #d9534f;
+  --danger-dark: #da0700;
+  --warning: #f0ad4e;
+  --warning-dark: #ec8a00;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Raleway", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--black-green);
+  background-color: var(--grey);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1 {
+  font-family: "Roboto Slab", serif;
+  font-size: 40px;
+}
+
+h2 {
+  font-family: "Roboto Slab", serif;
+  font-size: 32px;
+}
+
+h3 {
+  font-family: "Roboto Slab", serif;
+  font-size: 24px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.secondary-text {
+  font-size: 14px;
+}
+
+.custom-button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 0.2rem 1rem;
+  box-shadow: 0 2px 4px 0 #b3b3b3;
+  transition: all 200ms;
+  border: 4px solid transparent;
+}
+
+.custom-button-outline {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 0.2rem 1rem;
+  box-shadow: 0 2px 4px 0 #b3b3b3;
+  transition: all 200ms;
+}
+
+.custom-button-primary {
+  background-color: var(--dark-green);
+}
+
+.custom-button-primary:hover {
+  background-color: var(--black-green);
+  cursor: pointer;
+}
+
+.custom-button-outline-primary {
+  color: var(--dark-green);
+  border: 2px solid var(--dark-green);
+}
+
+.custom-button-outline-primary:hover {
+  background-color: var(--dark-green);
+  color: white;
+  cursor: pointer;
+}
+
+.custom-button-outline-white {
+  color: white;
+  border: 2px solid white;
+}
+
+.custom-button-outline-white:hover {
+  background-color: white;
+  color: var(--dark-green);
+  cursor: pointer;
+}
+
+.custom-button-info {
+  background-color: var(--info);
+}
+
+.custom-button-info:hover {
+  background-color: var(--info-dark);
+  cursor: pointer;
+}
+
+.custom-button-warning {
+  background-color: var(--warning);
+}
+
+.custom-button-warning:hover {
+  background-color: var(--warning-dark);
+  cursor: pointer;
+}
+
+.custom-button-danger {
+  background-color: var(--danger);
+}
+
+.custom-button-danger:hover {
+  background-color: var(--danger-dark);
+  cursor: pointer;
+}
+
+.global-shadow {
+  box-shadow: 0 2px 4px 0 #b3b3b3;
+}
+
+.global-border-radius {
+  border-radius: 20px;
+}
+
+.global-rounded-search {
+  border-radius: 20px;
+  border: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 70%;
+  height: 100%;
+}
+
+.global-rounded-search:focus {
+  outline: none;
+}
+
+.bold-hr {
+  border: 2px solid var(--black-green);
 }

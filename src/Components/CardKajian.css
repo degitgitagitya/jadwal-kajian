@@ -1,0 +1,32 @@
+.card-kajian {
+  height: 250px;
+  width: 200px;
+  box-shadow: 0 2px 4px 0 #b3b3b3;
+  background-color: white;
+}
+
+.card-kajian:hover {
+  height: 250px;
+  width: 200px;
+  box-shadow: 0 3px 8px 0 #b3b3b3;
+  background-color: white;
+  cursor: pointer;
+}
+
+.card-kajian-image {
+  object-fit: cover;
+  height: 50%;
+  width: 100%;
+}
+
+.card-kajian-detail {
+  padding: 1rem;
+}
+
+.card-kajian-judul {
+  font-weight: bold;
+}
+
+.card-kajian-deskripsi {
+  font-size: 14px;
+}
