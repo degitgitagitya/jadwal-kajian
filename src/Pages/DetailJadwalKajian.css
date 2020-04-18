@@ -1,0 +1,26 @@
+.detail-jadwal-kajian-card-primary {
+  height: 400px;
+  width: 100%;
+  background-color: white;
+  padding: 1rem;
+}
+
+.detail-jadwal-kajian-card-primary-image {
+  width: 100%;
+  height: 40%;
+  object-fit: cover;
+}
+
+.detail-jadwal-kajian-card-secondary {
+  width: 100%;
+  height: 200px;
+  background-color: white;
+  padding: 1rem;
+}
+
+.detail-jadwal-kajian-penceramah-image-container {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}

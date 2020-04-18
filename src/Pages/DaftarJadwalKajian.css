@@ -1,0 +1,15 @@
+.daftar-jawal-kajian-sort {
+  background-color: white;
+  border: 1px solid var(--green);
+  width: 300px;
+  height: 40px;
+  padding-left: 1rem;
+}
+
+.daftar-jadwal-kajian-filter {
+  background-color: var(--dark-green);
+  height: 625px;
+  width: 100%;
+  margin-top: 80px;
+  padding: 0.5rem;
+}

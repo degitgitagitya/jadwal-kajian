@@ -32,3 +32,8 @@
 .navigation-search-container {
   display: flex;
 }
+
+.navbar-icon-action-expand:hover {
+  cursor: pointer;
+  color: var(--dark-green);
+}
