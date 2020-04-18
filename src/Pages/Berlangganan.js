@@ -8,6 +8,18 @@ import Footer from "../Components/Footer";
 import "./Berlangganan.css";
 
 export default class Berlangganan extends Component {
+  state = {
+    inputEmail: "",
+  };
+
+  componentDidMount() {
+    const url = new URL(window.location.href);
+    const email = url.searchParams.get("email");
+    this.setState({
+      inputEmail: email,
+    });
+  }
+
   render() {
     return (
       <div>

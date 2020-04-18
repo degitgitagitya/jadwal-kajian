@@ -8,6 +8,7 @@
 
 .daftar-jadwal-kajian-filter {
   background-color: var(--dark-green);
+  font-family: "Roboto", sans-serif;
   height: 625px;
   width: 100%;
   margin-top: 80px;

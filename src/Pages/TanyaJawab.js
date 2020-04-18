@@ -21,7 +21,12 @@ export default class TanyaJawab extends Component {
 
         <Container>
           <div className="d-flex justify-content-between">
-            <button className="custom-button custom-button-primary">
+            <button
+              onClick={() => {
+                this.props.history.push("/ajukan-pertanyaan");
+              }}
+              className="custom-button custom-button-primary"
+            >
               AJUKAN PERTANYAAN
             </button>
             <div className="d-flex justify-content-end">

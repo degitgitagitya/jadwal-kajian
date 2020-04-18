@@ -12,6 +12,8 @@ import KirimJadwal from "./Pages/KirimJadwal";
 import Hubungi from "./Pages/Hubungi";
 import Masuk from "./Pages/Masuk";
 import Daftar from "./Pages/Daftar";
+import AjukanPertanyaan from "./Pages/AjukanPertanyaan";
+import KirimSaran from "./Pages/KirimSaran";
 
 export default function App() {
   return (
@@ -34,6 +36,8 @@ export default function App() {
         <Route path="/hubungi" component={Hubungi}></Route>
         <Route path="/masuk" component={Masuk}></Route>
         <Route path="/daftar" component={Daftar}></Route>
+        <Route path="/ajukan-pertanyaan" component={AjukanPertanyaan}></Route>
+        <Route path="/kirim-saran" component={KirimSaran}></Route>
       </Switch>
     </Router>
   );

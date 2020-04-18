@@ -207,3 +207,8 @@ p {
 .primary-bold {
   font-weight: bold;
 }
+
+.clickable-heading:hover {
+  cursor: pointer;
+  color: var(--dark-green);
+}

@@ -55,7 +55,14 @@ const NavContent = (props) => {
 
 class Navigation extends Component {
   state = {
+    cariJadwal: "",
     expand: true,
+  };
+
+  onChangeCariJadwal = (event) => {
+    this.setState({
+      cariJadwal: event.target.value,
+    });
   };
 
   toggleExpand = () => {
@@ -133,6 +140,8 @@ class Navigation extends Component {
                     type="text"
                     className="global-rounded-search mr-3"
                     placeholder="Cari di sini..."
+                    value={this.state.cariJadwal}
+                    onChange={this.onChangeCariJadwal}
                   />
                   <button className="global-border-radius custom-button custom-button-primary">
                     <i className="fa fa-search mr-2"></i> CARI
