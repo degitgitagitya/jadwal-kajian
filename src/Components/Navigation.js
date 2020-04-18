@@ -26,17 +26,17 @@ const NAVBAR_CONTENT = [
   {
     no: "4",
     nama: "TANYA JAWAB",
-    link: "",
+    link: "/tanya-jawab",
   },
   {
     no: "5",
     nama: "KIRIM JADWAL",
-    link: "",
+    link: "/kirim-jadwal",
   },
   {
     no: "6",
     nama: "HUBUNGI",
-    link: "",
+    link: "/hubungi",
   },
 ];
 
@@ -102,10 +102,20 @@ class Navigation extends Component {
                       ></NavContent>
                     );
                   })}
-                  <button className="custom-button-outline custom-button-outline-white mx-3">
+                  <button
+                    onClick={() => {
+                      this.props.history.push("/masuk");
+                    }}
+                    className="custom-button-outline custom-button-outline-white mx-3"
+                  >
                     MASUK
                   </button>
-                  <button className="custom-button custom-button-primary">
+                  <button
+                    onClick={() => {
+                      this.props.history.push("/daftar");
+                    }}
+                    className="custom-button custom-button-primary"
+                  >
                     DAFTAR
                   </button>
                 </Nav>

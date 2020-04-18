@@ -8,7 +8,7 @@ import "./CardPenceramah.css";
 export default class CardPenceramah extends Component {
   render() {
     return (
-      <div className="card-penceramah">
+      <div className="card-penceramah global-shadow">
         <div className="row align-items-center">
           <div className="col-3 text-center">
             <img

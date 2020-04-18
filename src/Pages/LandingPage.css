@@ -17,14 +17,3 @@
   -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
   clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
 }
-
-.landing-background-hubungi {
-  background-image: radial-gradient(
-    farthest-corner at 20px 20px,
-    var(--light-green),
-    var(--green)
-  );
-
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}

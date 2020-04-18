@@ -7,6 +7,11 @@ import DetailJadwalKajian from "./Pages/DetailJadwalKajian";
 import DaftarPenceramah from "./Pages/DaftarPenceramah";
 import Berlangganan from "./Pages/Berlangganan";
 import DetailPenceramah from "./Pages/DetailPenceramah";
+import TanyaJawab from "./Pages/TanyaJawab";
+import KirimJadwal from "./Pages/KirimJadwal";
+import Hubungi from "./Pages/Hubungi";
+import Masuk from "./Pages/Masuk";
+import Daftar from "./Pages/Daftar";
 
 export default function App() {
   return (
@@ -24,6 +29,11 @@ export default function App() {
         <Route path="/daftar-penceramah" component={DaftarPenceramah}></Route>
         <Route path="/berlangganan" component={Berlangganan}></Route>
         <Route path="/detail-penceramah" component={DetailPenceramah}></Route>
+        <Route path="/tanya-jawab" component={TanyaJawab}></Route>
+        <Route path="/kirim-jadwal" component={KirimJadwal}></Route>
+        <Route path="/hubungi" component={Hubungi}></Route>
+        <Route path="/masuk" component={Masuk}></Route>
+        <Route path="/daftar" component={Daftar}></Route>
       </Switch>
     </Router>
   );
