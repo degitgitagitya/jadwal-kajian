@@ -16,12 +16,12 @@ const NAVBAR_CONTENT = [
   {
     no: "2",
     nama: "PENCERAMAH",
-    link: "",
+    link: "/daftar-penceramah",
   },
   {
     no: "3",
     nama: "BERLANGGANAN",
-    link: "",
+    link: "/berlangganan",
   },
   {
     no: "4",

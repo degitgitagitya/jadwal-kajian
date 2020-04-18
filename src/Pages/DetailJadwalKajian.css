@@ -24,3 +24,17 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.daftar-penceramah-search {
+  border: 1px solid var(--green);
+  border-radius: 4px 0px 0px 4px;
+  font-size: 14px;
+}
+
+.daftar-penceramah-search-button {
+  background-color: var(--dark-green);
+  border: none;
+  border-radius: 0px 4px 4px 0px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

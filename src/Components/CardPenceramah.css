@@ -1,0 +1,14 @@
+.card-penceramah {
+  width: 100%;
+  height: 250px;
+  background-color: var(--light-green);
+  margin-bottom: 1rem;
+  padding: 1.25rem 2rem;
+}
+
+.card-penceramah-image {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 50%;
+}

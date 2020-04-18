@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Navigation from "../Components/Navigation";
 import BreadCumb from "../Components/BreadCumb";
@@ -9,7 +10,6 @@ import Kajian from "../Assets/kajian.jpg";
 import Penceramah from "../Assets/penceramah1.jpg";
 
 import "./DetailJadwalKajian.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class DetailJadwalKajian extends Component {
   render() {
@@ -25,7 +25,7 @@ export default class DetailJadwalKajian extends Component {
                 <img
                   src={Kajian}
                   className="detail-jadwal-kajian-card-primary-image"
-                  alt=""
+                  alt="kajian"
                 />
 
                 <div className="mt-3 primary-bold">Waktu</div>

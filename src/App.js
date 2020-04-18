@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
 import DaftarJadwalKajian from "./Pages/DaftarJadwalKajian";
 import DetailJadwalKajian from "./Pages/DetailJadwalKajian";
+import DaftarPenceramah from "./Pages/DaftarPenceramah";
+import Berlangganan from "./Pages/Berlangganan";
+import DetailPenceramah from "./Pages/DetailPenceramah";
 
 export default function App() {
   return (
@@ -18,6 +21,9 @@ export default function App() {
           path="/detail-jadwal-kajian"
           component={DetailJadwalKajian}
         ></Route>
+        <Route path="/daftar-penceramah" component={DaftarPenceramah}></Route>
+        <Route path="/berlangganan" component={Berlangganan}></Route>
+        <Route path="/detail-penceramah" component={DetailPenceramah}></Route>
       </Switch>
     </Router>
   );

@@ -1,0 +1,13 @@
+.detail-penceramah-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.detail-penceramah-card-deskripsi {
+  width: 100%;
+  height: 200px;
+  background-color: white;
+  padding: 1.25rem;
+}
