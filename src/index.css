@@ -155,3 +155,12 @@ p {
 .bold-hr {
   border: 2px solid var(--black-green);
 }
+
+.global-rounded-search-primary {
+  border-radius: 20px;
+  border: 1px solid var(--dark-green);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 30%;
+  height: 100%;
+}

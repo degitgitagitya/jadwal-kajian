@@ -5,6 +5,10 @@
   height: 3.5rem;
 }
 
+.navigation-logo:hover {
+  box-shadow: 0 3px 8px 0 #757575;
+}
+
 .navigation-background {
   background-image: radial-gradient(
     farthest-corner at 20px 20px,

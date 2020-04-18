@@ -1,0 +1,40 @@
+.card-tanya-jawab {
+  height: 250px;
+  width: 100%;
+  box-shadow: 0 2px 4px 0 #b3b3b3;
+  background-color: white;
+}
+
+.card-tanya-jawab:hover {
+  height: 250px;
+  width: 100%;
+  box-shadow: 0 3px 8px 0 #b3b3b3;
+  background-color: white;
+  cursor: pointer;
+}
+
+.card-tanya-image {
+  object-fit: cover;
+  height: 100%;
+  width: 40%;
+}
+
+.card-tanya-detail {
+  padding: 1.25rem;
+}
+
+.card-tanya-judul {
+  font-weight: bold;
+}
+
+.card-tanya-deskripsi {
+  font-size: 14px;
+}
+
+.card-tanya-time {
+  font-size: 12px;
+}
+
+.card-tanya-action {
+  font-size: 16px;
+}
