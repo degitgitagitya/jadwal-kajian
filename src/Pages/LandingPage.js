@@ -1,19 +1,51 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
+import jsonata from "jsonata";
 
-import CardKajian from "../Components/CardKajian";
 import CardTanyaJawabLanding from "../Components/CardTanyaJawabLanding";
 import Navigation from "../Components/Navigation";
 import Footer from "../Components/Footer";
+import JadwalSaran from "../Components/JadwalSaran";
+import ItemSlide from "../Components/ItemSlide";
+
+import KAJIAN from "../Data/Kajian";
 
 import "./LandingPage.css";
-import JadwalSaran from "../Components/JadwalSaran";
 
 export default class LandingPage extends Component {
-  state = {
-    cariPertanyaan: "",
-    emailBerlangganan: "",
-  };
+  constructor(props) {
+    super(props);
+
+    let today = new Date();
+    today =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+
+    let tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow =
+      tomorrow.getFullYear() +
+      "-" +
+      (tomorrow.getMonth() + 1) +
+      "-" +
+      tomorrow.getDate();
+
+    const expresson = jsonata(`kajian[tanggal="${today}"]`);
+    const result = expresson.evaluate(KAJIAN);
+
+    const x = jsonata(`kajian[tanggal="${tomorrow}"]`);
+    const res = x.evaluate(KAJIAN);
+
+    this.state = {
+      cariPertanyaan: "",
+      emailBerlangganan: "",
+      hariIni: result,
+      besok: res,
+    };
+  }
 
   onChangeCariPertanyaan = (event) => {
     this.setState({
@@ -32,6 +64,7 @@ export default class LandingPage extends Component {
       <div>
         <Navigation></Navigation>
         <br />
+
         <Container>
           <div className="row">
             <div className="col-6">
@@ -50,25 +83,19 @@ export default class LandingPage extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-6 d-flex justify-content-around align-items-center">
-              <h2>
-                <i className="fas fa-chevron-left"></i>
-              </h2>
-              <CardKajian></CardKajian>
-              <CardKajian></CardKajian>
-              <h2>
-                <i className="fas fa-chevron-right"></i>
-              </h2>
+            <div className="col-6 ">
+              <ItemSlide
+                style={{ maxWidth: 600, padding: `0px 60px` }}
+                number={2}
+                data={this.state.hariIni}
+              ></ItemSlide>
             </div>
-            <div className="col-6 d-flex justify-content-around align-items-center">
-              <h2>
-                <i className="fas fa-chevron-left"></i>
-              </h2>
-              <CardKajian></CardKajian>
-              <CardKajian></CardKajian>
-              <h2>
-                <i className="fas fa-chevron-right"></i>
-              </h2>
+            <div className="col-6">
+              <ItemSlide
+                style={{ maxWidth: 600, padding: `0px 60px` }}
+                number={2}
+                data={this.state.besok}
+              ></ItemSlide>
             </div>
           </div>
         </Container>

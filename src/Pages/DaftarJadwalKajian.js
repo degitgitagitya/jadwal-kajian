@@ -1,15 +1,81 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
+import jsonata from "jsonata";
 
 import Navigation from "../Components/Navigation";
 import BreadCumb from "../Components/BreadCumb";
 import CardKajian from "../Components/CardKajian";
 import Footer from "../Components/Footer";
 
+import KAJIAN from "../Data/Kajian";
+
 import "./DaftarJadwalKajian.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class DaftarJadwalKajian extends Component {
+  constructor(props) {
+    super(props);
+
+    const awal = 0;
+    const akhir = 4;
+
+    const x = jsonata(
+      "kajian^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota}}[[" +
+        awal +
+        ".." +
+        akhir +
+        "]]"
+    );
+    const res = x.evaluate(KAJIAN);
+
+    let y = jsonata("kajian");
+    y = y.evaluate(KAJIAN);
+    y = y.length;
+    y = Math.ceil(y / (akhir + 1));
+
+    let paging = [];
+
+    for (let i = 0; i < y; i++) {
+      paging.push({
+        no: i + 1,
+      });
+    }
+
+    this.state = {
+      jumlahPerPage: akhir + 1,
+      listJadwalKajian: res,
+      totalPage: paging,
+      batasAwal: awal,
+      batasAkhir: akhir,
+      halaman: 1,
+    };
+  }
+
+  handleFetchPaging = (page) => {
+    let temp = page;
+    page = this.state.jumlahPerPage * page;
+    let a = page - this.state.jumlahPerPage;
+    let b = page;
+
+    const x = jsonata(
+      "kajian^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota}}[[" +
+        a +
+        ".." +
+        b +
+        "]]"
+    );
+    const res = x.evaluate(KAJIAN);
+
+    this.setState({
+      batasAwal: a,
+      batasAkhir: b,
+      halaman: temp,
+      listJadwalKajian: res,
+    });
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div>
         <Navigation></Navigation>
@@ -101,73 +167,88 @@ export default class DaftarJadwalKajian extends Component {
                   <option disabled value="0">
                     Urutkan Berdasarkan
                   </option>
-                  <option value="1">A - Z</option>
-                  <option value="2">Z - A</option>
-                  <option value="3">Terbaru</option>
-                  <option value="4">Terlama</option>
+                  <option value="1">Terbaru</option>
+                  <option value="2">Terlama</option>
                 </select>
               </div>
-              <h3>12 Maret 2020</h3>
-              <hr className="semi-bold-hr" />
-              <div className="d-flex flex-wrap">
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-              </div>
-              <h3>11 Maret 2020</h3>
-              <hr className="semi-bold-hr" />
-              <div className="d-flex flex-wrap">
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-                <div className="mb-4 mr-4">
-                  <CardKajian></CardKajian>
-                </div>
-              </div>
+
+              {Object.keys(this.state.listJadwalKajian).map((key, index) => {
+                const x = new Date(key);
+                let y = `${x.getDate()} ${x.toLocaleString("default", {
+                  month: "long",
+                })} ${x.getFullYear()}`;
+                return (
+                  <div key={index}>
+                    <h3>{y}</h3>
+                    <hr className="semi-bold-hr" />
+                    <div className="d-flex flex-wrap">
+                      {Array.isArray(this.state.listJadwalKajian[key]) ? (
+                        this.state.listJadwalKajian[key].map((data) => {
+                          return (
+                            <div key={data.id} className="mb-4 mr-4">
+                              <CardKajian data={data}></CardKajian>
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <div className="mb-4 mr-4">
+                          <CardKajian
+                            data={this.state.listJadwalKajian[key]}
+                          ></CardKajian>
+                        </div>
+                      )}
+                      {}
+                    </div>
+                  </div>
+                );
+              })}
 
               <div className="daftar-jadwal-kajian-paging mb-5">
                 <div className="row justify-content-center">
                   <div className="col-4 text-center d-flex justify-content-around align-items-center">
-                    <i className="fas fa-chevron-left"></i>
-                    <div>1</div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
-                    <div>5</div>
-                    <div>6</div>
-                    <div>7</div>
-                    <div>8</div>
-                    <i className="fas fa-chevron-right"></i>
+                    <FontAwesomeIcon
+                      icon="chevron-left"
+                      onClick={() => {
+                        if (this.state.halaman !== 1) {
+                          this.handleFetchPaging(this.state.halaman - 1);
+                        }
+                      }}
+                      className={
+                        this.state.halaman !== 1 ? "paging-number" : ""
+                      }
+                    ></FontAwesomeIcon>
+                    {this.state.totalPage.map((data) => {
+                      return (
+                        <div
+                          onClick={() => {
+                            this.handleFetchPaging(data.no);
+                          }}
+                          key={data.no}
+                          className={
+                            data.no === this.state.halaman
+                              ? "paging-number paging-number-selected"
+                              : "paging-number"
+                          }
+                        >
+                          {data.no}
+                        </div>
+                      );
+                    })}
+                    <FontAwesomeIcon
+                      icon="chevron-right"
+                      onClick={() => {
+                        if (
+                          this.state.halaman !== this.state.totalPage.length
+                        ) {
+                          this.handleFetchPaging(this.state.halaman + 1);
+                        }
+                      }}
+                      className={
+                        this.state.halaman !== this.state.totalPage.length
+                          ? "paging-number"
+                          : ""
+                      }
+                    ></FontAwesomeIcon>
                   </div>
                 </div>
               </div>

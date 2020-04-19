@@ -212,3 +212,13 @@ p {
   cursor: pointer;
   color: var(--dark-green);
 }
+
+.paging-number:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.paging-number-selected {
+  text-decoration: underline;
+  font-weight: bold;
+}

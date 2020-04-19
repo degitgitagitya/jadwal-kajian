@@ -3,6 +3,7 @@
   width: 200px;
   box-shadow: 0 2px 4px 0 #b3b3b3;
   background-color: white;
+  margin-bottom: 1rem;
 }
 
 .card-kajian:hover {
@@ -20,7 +21,7 @@
 }
 
 .card-kajian-detail {
-  padding: 1rem;
+  padding: 0.5rem 0.75rem;
 }
 
 .card-kajian-judul {
@@ -29,4 +30,8 @@
 
 .card-kajian-deskripsi {
   font-size: 14px;
+}
+
+.card-kajian-lokasi {
+  font-size: 12px;
 }

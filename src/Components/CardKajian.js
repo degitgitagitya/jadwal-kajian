@@ -1,20 +1,43 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Kajian from "../Assets/kajian.jpg";
 import "./CardKajian.css";
+import { withRouter } from "react-router-dom";
 
-export default class CardKajian extends Component {
+class CardKajian extends Component {
+  handleClickCardKajian = () => {};
+
   render() {
+    const { judul, deskripsi, kota, gambar } = this.props.data;
     return (
-      <div className="card-kajian">
-        <img src={Kajian} alt="kajian" className="card-kajian-image" />
+      <div
+        onClick={() => {
+          this.props.history.push(
+            `/detail-jadwal-kajian?id=${this.props.data.id}`
+          );
+          if (this.props.fetchContent !== undefined) {
+            this.props.fetchContent();
+          }
+        }}
+        className="card-kajian"
+      >
+        <img src={gambar} alt="kajian" className="card-kajian-image" />
         <div className="card-kajian-detail">
-          <div className="card-kajian-judul">SIRAH NABAWIYAH</div>
+          <div className="card-kajian-lokasi">
+            <FontAwesomeIcon
+              icon="map-marker-alt"
+              className="mr-1"
+            ></FontAwesomeIcon>{" "}
+            {kota}
+          </div>
+          <div className="card-kajian-judul">{judul}</div>
           <div className="card-kajian-deskripsi">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+            {deskripsi.substring(0, 50)} ....
           </div>
         </div>
       </div>
     );
   }
 }
+
+export default withRouter(CardKajian);
