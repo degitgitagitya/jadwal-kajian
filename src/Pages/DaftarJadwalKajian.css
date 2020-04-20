@@ -14,3 +14,8 @@
   margin-top: 80px;
   padding: 0.5rem;
 }
+
+.filter-custom-width {
+  width: 25%;
+  height: 2rem;
+}

@@ -8,7 +8,7 @@ class CardKajian extends Component {
   handleClickCardKajian = () => {};
 
   render() {
-    const { judul, deskripsi, kota, gambar } = this.props.data;
+    const { judul, deskripsi, kota, gambar, penceramah } = this.props.data;
     return (
       <div
         onClick={() => {
@@ -23,6 +23,10 @@ class CardKajian extends Component {
       >
         <img src={gambar} alt="kajian" className="card-kajian-image" />
         <div className="card-kajian-detail">
+          <div className="card-kajian-lokasi">
+            <FontAwesomeIcon icon="user" className="mr-1"></FontAwesomeIcon>{" "}
+            {penceramah}
+          </div>
           <div className="card-kajian-lokasi">
             <FontAwesomeIcon
               icon="map-marker-alt"

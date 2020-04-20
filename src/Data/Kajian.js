@@ -1,5 +1,8 @@
 import kajian1 from "../Assets/kajian.jpg";
 import penceramah1 from "../Assets/penceramah1.jpg";
+import penceramah2 from "../Assets/penceramah2.jpg";
+import penceramah3 from "../Assets/penceramah3.jpg";
+import penceramah4 from "../Assets/penceramah4.jpeg";
 
 const x = [
   {
@@ -119,7 +122,7 @@ const x = [
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-23",
     waktu: "14:00",
-    penceramah: "Khalid Basalamah",
+    penceramah: "Subhan Bawazier",
     gambar: kajian1,
   },
   {
@@ -131,7 +134,7 @@ const x = [
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-20",
     waktu: "14:00",
-    penceramah: "Khalid Basalamah",
+    penceramah: "Firanda Andirja",
     gambar: kajian1,
   },
   {
@@ -143,7 +146,7 @@ const x = [
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-20",
     waktu: "19:00",
-    penceramah: "Khalid Basalamah",
+    penceramah: "Syafiq Riza Basalamah",
     gambar: kajian1,
   },
   {
@@ -155,7 +158,7 @@ const x = [
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-19",
     waktu: "14:00",
-    penceramah: "Khalid Basalamah",
+    penceramah: "Firanda Andirja",
     gambar: kajian1,
   },
   {
@@ -167,7 +170,7 @@ const x = [
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-19",
     waktu: "19:00",
-    penceramah: "Khalid Basalamah",
+    penceramah: "Subhan Bawazier",
     gambar: kajian1,
   },
   {
@@ -179,7 +182,7 @@ const x = [
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-21",
     waktu: "19:00",
-    penceramah: "Khalid Basalamah",
+    penceramah: "Syafiq Riza Basalamah",
     gambar: kajian1,
   },
 ];
@@ -192,11 +195,72 @@ const y = [
       "Dr. Khalid Zeed Abdullah Basalamah, Lc., M.A. atau lebih dikenal Khalid Basalamah (lahir di Makassar, 1 Mei 1975; umur 44 tahun) adalah seorang pendakwah (ustadz) Indonesia yang berasal dari Makassar, Sulawesi Selatan.",
     gambar: penceramah1,
   },
+  {
+    id: 2,
+    nama: "Syafiq Riza Basalamah",
+    deskripsi:
+      "Ustadz DR. Syafiq Riza Basalamah, MA adalah seorang penceramah Islam lulusan  Universitas Islam Madinah, dengan predikat “Summa Cumlaude” Disertasinya berjudul Juhuudu Al Muassasaat wal Hai’aat Al Islaamiyyah Fi Indonesia Fi At Tashoddi Li At Tanshiir (Usaha Organisasi dan Lembaga Islam di Indonesia Dalam Membendung Kristenisasi). Beliau adalah salah satu ustadz ahlus sunnah Waljama’ah dengan pemahaman Salafi yang ada di Indonesia.",
+    gambar: penceramah2,
+  },
+  {
+    id: 3,
+    nama: "Subhan Bawazier",
+    deskripsi:
+      "Subhan Bawazier mempunyai nama lengkap, yakni Ustadz Muhammad Subhan bin Umar Bawazier. Dari nama tersebut kita bisa mengetahui Ustadz Subhan mempunyai nama marga Bawazier. Sementara itu, di negeri kita orang yang bermarga Bawazier dianggap sebagai orang yang masih memiliki keturunan Paman Nabi Muhammad shallallahu alaihi wasallam yang Muslim, yaitu Al Abbas bin Abdul Muththalib.",
+    gambar: penceramah3,
+  },
+  {
+    id: 4,
+    nama: "Firanda Andirja",
+    deskripsi:
+      "Dr. Firanda Andirja Abidin, Lc., M.A. (lahir di Surabaya, 28 Oktober 1979; umur 40 tahun) atau lebih dikenal dengan nama Firanda Andirja atau bernama kunyah Abu Abdil Muhsin adalah seorang da'i dan mubaligh Ahlussunnah wal Jama'ah yang aktif mengisi berbagai kajian islam di Indonesia.",
+    gambar: penceramah4,
+  },
+];
+
+const k = [
+  {
+    id: 1,
+    nama: "Bandung",
+  },
+  {
+    id: 2,
+    nama: "Jakata",
+  },
+  {
+    id: 3,
+    nama: "Tasikmalaya",
+  },
+  {
+    id: 4,
+    nama: "Surabaya",
+  },
+  {
+    id: 5,
+    nama: "Bekasi",
+  },
+  {
+    id: 6,
+    nama: "Malang",
+  },
+  {
+    id: 7,
+    nama: "Cimahi",
+  },
+  {
+    id: 8,
+    nama: "Garut",
+  },
+  {
+    id: 9,
+    nama: "Depok",
+  },
 ];
 
 const KAJIAN = Object({
   kajian: x,
   penceramah: y,
+  kota: k,
 });
 
 export default KAJIAN;

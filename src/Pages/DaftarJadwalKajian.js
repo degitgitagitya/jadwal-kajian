@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import jsonata from "jsonata";
+import ReactModal from "react-modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Navigation from "../Components/Navigation";
 import BreadCumb from "../Components/BreadCumb";
@@ -10,17 +12,16 @@ import Footer from "../Components/Footer";
 import KAJIAN from "../Data/Kajian";
 
 import "./DaftarJadwalKajian.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class DaftarJadwalKajian extends Component {
   constructor(props) {
     super(props);
 
     const awal = 0;
-    const akhir = 4;
+    const akhir = 9;
 
     const x = jsonata(
-      "kajian^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota}}[[" +
+      "kajian^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         awal +
         ".." +
         akhir +
@@ -41,24 +42,60 @@ export default class DaftarJadwalKajian extends Component {
       });
     }
 
+    let a = jsonata(`penceramah^(<nama)`);
+    a = a.evaluate(KAJIAN);
+
+    let arrayA = [];
+
+    a.forEach((data) => {
+      let temp = {
+        id: data.id,
+        nama: data.nama,
+        status: -1,
+      };
+
+      arrayA.push(temp);
+    });
+
     this.state = {
-      jumlahPerPage: akhir + 1,
       listJadwalKajian: res,
+      jumlahPerPage: akhir + 1,
       totalPage: paging,
       batasAwal: awal,
       batasAkhir: akhir,
       halaman: 1,
+      sort: ">",
+      penceramahSelected: [],
+      listPenceramah: arrayA,
+      penceramahSelectedString: "",
+      showModal: false,
+      listPenceramahFilter: [],
     };
   }
+
+  handleOpenModal = () => {
+    this.setState({
+      showModal: true,
+      listPenceramahFilter: this.state.listPenceramah,
+    });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ showModal: false });
+  };
 
   handleFetchPaging = (page) => {
     let temp = page;
     page = this.state.jumlahPerPage * page;
     let a = page - this.state.jumlahPerPage;
-    let b = page;
+    let b = page - 1;
 
     const x = jsonata(
-      "kajian^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota}}[[" +
+      "kajian[" +
+        this.state.penceramahSelectedString +
+        "]^(" +
+        this.state.sort +
+        "tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         a +
         ".." +
         b +
@@ -74,10 +111,170 @@ export default class DaftarJadwalKajian extends Component {
     });
   };
 
+  onChangeSort = (event) => {
+    let y = this.state.sort;
+    let x = jsonata(
+      "kajian[" +
+        this.state.penceramahSelectedString +
+        "]^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        this.state.batasAwal +
+        ".." +
+        this.state.batasAkhir +
+        "]]"
+    );
+
+    if (event.target.value === "2") {
+      x = jsonata(
+        "kajian[" +
+          this.state.penceramahSelectedString +
+          "]^(<tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+          this.state.batasAwal +
+          ".." +
+          this.state.batasAkhir +
+          "]]"
+      );
+      y = "<";
+    }
+
+    x = x.evaluate(KAJIAN);
+
+    this.setState({
+      listJadwalKajian: x,
+      sort: y,
+    });
+  };
+
+  handleClickFilterPenceramah = (id) => {
+    let x = this.state.listPenceramah;
+    let target;
+
+    x.forEach((data) => {
+      if (data.id === id) {
+        target = data;
+      }
+    });
+
+    target.status = target.status * -1;
+
+    let y = this.state.penceramahSelected;
+
+    if (target.status === 1) {
+      y.push(target.nama);
+    } else {
+      let z = [];
+
+      y.forEach((data) => {
+        if (data !== target.nama) {
+          z.push(data);
+        }
+      });
+
+      y = z;
+    }
+
+    let stringY = this.arrayToString(y);
+
+    let query = jsonata(
+      "kajian[" +
+        stringY +
+        "]^(" +
+        this.state.sort +
+        "tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        this.state.batasAwal +
+        ".." +
+        this.state.batasAkhir +
+        "]]"
+    );
+    query = query.evaluate(KAJIAN);
+
+    this.setState({
+      listPenceramah: x,
+      penceramahSelected: y,
+      penceramahSelectedString: stringY,
+      listJadwalKajian: query,
+    });
+  };
+
+  arrayToString = (arr) => {
+    let string = "";
+
+    arr.forEach((data, index) => {
+      if (index !== 0) {
+        string = string + " or [penceramah='" + data + "']";
+      } else {
+        string = string + "[penceramah='" + data + "']";
+      }
+    });
+
+    return string;
+  };
+
+  handleSearchPenceramah = (event) => {
+    let x = this.state.listPenceramah;
+    let newX = [];
+
+    x.forEach((data) => {
+      if (data.nama.toLowerCase().includes(event.target.value) === true) {
+        newX.push(data);
+      }
+    });
+
+    this.setState({
+      listPenceramahFilter: newX,
+    });
+  };
+
   render() {
-    console.log(this.state);
     return (
       <div>
+        <ReactModal
+          isOpen={this.state.showModal}
+          className="kelas-modal"
+          overlayClassName="kelas-modal-overlay"
+        >
+          <div className="text-center">
+            <h3>Pilih Penceramah</h3>
+            <input
+              type="text"
+              className="global-rounded-search-primary py-2"
+              placeholder="Cari nama penceramah di sini.."
+              onChange={this.handleSearchPenceramah}
+            />
+            <hr className="semi-bold-hr mx-5" />
+          </div>
+          <div className="d-flex justify-content-start flex-wrap">
+            {this.state.listPenceramahFilter.map((data) => {
+              return (
+                <div
+                  onClick={() => {
+                    this.handleClickFilterPenceramah(data.id);
+                  }}
+                  key={data.id}
+                  className="filter-custom-width d-flex list-filter"
+                >
+                  <div
+                    className={
+                      data.status === 1
+                        ? "filter-check-box-primary filter-check-box-primary-selected mr-2"
+                        : "filter-check-box-primary mr-2"
+                    }
+                  ></div>
+                  <div>{data.nama}</div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="d-flex justify-content-end">
+            <button
+              className="custom-button-primary custom-button"
+              onClick={this.handleCloseModal}
+            >
+              Tutup
+            </button>
+          </div>
+        </ReactModal>
+
         <Navigation></Navigation>
         <BreadCumb content={"Home / Jadwal Kajian"}></BreadCumb>
         <Container>
@@ -86,23 +283,30 @@ export default class DaftarJadwalKajian extends Component {
               <div className="daftar-jadwal-kajian-filter text-white">
                 <div>Pilih Penceramah</div>
                 <div className="d-flex flex-column">
-                  <div className="d-flex align-items-center">
-                    <div className="filter-check-box mr-2"></div>
-                    <div>Ustaz A</div>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <div className="filter-check-box mr-2"></div>
-                    <div>Ustaz A</div>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <div className="filter-check-box mr-2"></div>
-                    <div>Ustaz A</div>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <div className="filter-check-box mr-2"></div>
-                    <div>Ustaz A</div>
-                  </div>
-                  <button className="form-control mt-2 custom-button-outline custom-button-outline-white">
+                  {this.state.listPenceramah.slice(0, 4).map((data) => {
+                    return (
+                      <div
+                        onClick={() => {
+                          this.handleClickFilterPenceramah(data.id);
+                        }}
+                        key={data.id}
+                        className="d-flex align-items-center list-filter"
+                      >
+                        <div
+                          className={
+                            data.status === 1
+                              ? "filter-check-box filter-check-box-selected mr-2"
+                              : "filter-check-box mr-2"
+                          }
+                        ></div>
+                        <div>{data.nama}</div>
+                      </div>
+                    );
+                  })}
+                  <button
+                    onClick={this.handleOpenModal}
+                    className="form-control mt-2 custom-button-outline custom-button-outline-white"
+                  >
                     SELENGKAPNYA
                   </button>
                 </div>
@@ -163,6 +367,7 @@ export default class DaftarJadwalKajian extends Component {
                   className="form-control-sm daftar-jawal-kajian-sort"
                   id="urutkan"
                   defaultValue="0"
+                  onChange={this.onChangeSort}
                 >
                   <option disabled value="0">
                     Urutkan Berdasarkan

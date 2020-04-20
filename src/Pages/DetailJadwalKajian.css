@@ -18,6 +18,11 @@
   padding: 1rem;
 }
 
+.detail-jadwal-kajian-card-secondary:hover {
+  box-shadow: 0 3px 8px 0 #b3b3b3;
+  cursor: pointer;
+}
+
 .detail-jadwal-kajian-penceramah-image-container {
   height: 100px;
   width: 100px;

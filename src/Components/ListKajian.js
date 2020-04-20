@@ -15,7 +15,7 @@ export default class ListKajian extends Component {
           <ItemSlide
             fetchContent={this.props.fetchContent}
             style={{ maxWidth: 1110, padding: `0px 30px` }}
-            number={5}
+            number={this.props.jumlahKajian}
             data={this.props.data}
           ></ItemSlide>
         </div>

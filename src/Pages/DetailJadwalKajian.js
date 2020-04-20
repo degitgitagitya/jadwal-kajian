@@ -7,14 +7,13 @@ import Navigation from "../Components/Navigation";
 import BreadCumb from "../Components/BreadCumb";
 import ListKajian from "../Components/ListKajian";
 
-import Penceramah from "../Assets/penceramah1.jpg";
-
 import KAJIAN from "../Data/Kajian";
 
 import "./DetailJadwalKajian.css";
 import Footer from "../Components/Footer";
+import { withRouter } from "react-router-dom";
 
-export default class DetailJadwalKajian extends Component {
+class DetailJadwalKajian extends Component {
   constructor(props) {
     super(props);
 
@@ -55,6 +54,10 @@ export default class DetailJadwalKajian extends Component {
       penceramah: res,
       listKajian: res2,
     });
+  };
+
+  onClickPenceramah = (id) => {
+    this.props.history.push(`/detail-penceramah?id=${id}`);
   };
 
   render() {
@@ -117,11 +120,16 @@ export default class DetailJadwalKajian extends Component {
               <h2>{judul}</h2>
               <p>{deskripsi}</p>
 
-              <div className="detail-jadwal-kajian-card-secondary global-shadow">
+              <div
+                onClick={() => {
+                  this.onClickPenceramah(this.state.penceramah.id);
+                }}
+                className="detail-jadwal-kajian-card-secondary global-shadow"
+              >
                 <div className="row align-items-center">
                   <div className="col-4 text-center">
                     <img
-                      src={Penceramah}
+                      src={this.state.penceramah.gambar}
                       className="detail-jadwal-kajian-penceramah-image-container"
                       alt=""
                     />
@@ -131,7 +139,9 @@ export default class DetailJadwalKajian extends Component {
                   </div>
                   <div className="col-8">
                     <FontAwesomeIcon icon="quote-left"></FontAwesomeIcon>
-                    <div>{this.state.penceramah.deskripsi}</div>
+                    <div>
+                      {this.state.penceramah.deskripsi.substring(0, 150)} ...
+                    </div>
                     <div className="d-flex justify-content-end">
                       <FontAwesomeIcon icon="quote-right"></FontAwesomeIcon>
                     </div>
@@ -146,6 +156,7 @@ export default class DetailJadwalKajian extends Component {
           fetchContent={this.fetchContent}
           title="Kajian Lainnya"
           data={this.state.listKajian}
+          jumlahKajian={5}
         ></ListKajian>
 
         <Footer></Footer>
@@ -153,3 +164,5 @@ export default class DetailJadwalKajian extends Component {
     );
   }
 }
+
+export default withRouter(DetailJadwalKajian);

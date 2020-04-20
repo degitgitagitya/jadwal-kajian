@@ -1,36 +1,37 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Penceramah from "../Assets/penceramah1.jpg";
-
 import "./CardPenceramah.css";
+import { withRouter } from "react-router-dom";
 
-export default class CardPenceramah extends Component {
+class CardPenceramah extends Component {
+  handleSelengkapnya = () => {
+    this.props.history.push(`/detail-penceramah?id=${this.props.data.id}`);
+  };
+
   render() {
+    const { nama, deskripsi, gambar } = this.props.data;
     return (
       <div className="card-penceramah global-shadow">
         <div className="row align-items-center">
           <div className="col-3 text-center">
             <img
-              src={Penceramah}
+              src={gambar}
               alt="penceramah"
               className="card-penceramah-image"
             />
           </div>
           <div className="col-9">
-            <h3>Nama Penceramah</h3>
-            <p>Lorem ipsum</p>
+            <h3>{nama}</h3>
+            <p>Penceramah</p>
 
-            <p>
-              Elit aute exercitation irure minim ex qui. Velit incididunt ipsum
-              magna cillum mollit adipisicing cupidatat esse dolore id. Pariatur
-              aliquip laborum enim amet dolore proident irure voluptate et
-              voluptate aute magna consectetur. Enim officia deserunt et ea
-              reprehenderit do velit laborum aliquip consectetur.
-            </p>
+            <p>{deskripsi.substring(0, 250)} ....</p>
 
             <div className="d-flex justify-content-end">
-              <button className="custom-button custom-button-primary">
+              <button
+                onClick={this.handleSelengkapnya}
+                className="custom-button custom-button-primary"
+              >
                 SELENGKAPNYA
                 <FontAwesomeIcon
                   icon="arrow-right"
@@ -44,3 +45,5 @@ export default class CardPenceramah extends Component {
     );
   }
 }
+
+export default withRouter(CardPenceramah);
