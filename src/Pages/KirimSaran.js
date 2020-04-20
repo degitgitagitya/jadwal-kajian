@@ -13,6 +13,9 @@ class KirimSaran extends Component {
   state = {
     inputJudul: "",
     inputSaran: "",
+    showModal: false,
+    warning: false,
+    warningMsg: "",
   };
 
   onChangeJudul = (event) => {

@@ -14,31 +14,39 @@ import Masuk from "./Pages/Masuk";
 import Daftar from "./Pages/Daftar";
 import AjukanPertanyaan from "./Pages/AjukanPertanyaan";
 import KirimSaran from "./Pages/KirimSaran";
+import Authentication from "./Contexts/Authentication";
+import NotFound from "./Pages/NotFound";
+import Profile from "./Pages/Profile";
+import { ProtectedRoute } from "./Components/ProtectedRoute";
 
 export default function App() {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/" component={LandingPage}></Route>
-        <Route
-          path="/daftar-jadwal-kajian"
-          component={DaftarJadwalKajian}
-        ></Route>
-        <Route
-          path="/detail-jadwal-kajian"
-          component={DetailJadwalKajian}
-        ></Route>
-        <Route path="/daftar-penceramah" component={DaftarPenceramah}></Route>
-        <Route path="/berlangganan" component={Berlangganan}></Route>
-        <Route path="/detail-penceramah" component={DetailPenceramah}></Route>
-        <Route path="/tanya-jawab" component={TanyaJawab}></Route>
-        <Route path="/kirim-jadwal" component={KirimJadwal}></Route>
-        <Route path="/hubungi" component={Hubungi}></Route>
-        <Route path="/masuk" component={Masuk}></Route>
-        <Route path="/daftar" component={Daftar}></Route>
-        <Route path="/ajukan-pertanyaan" component={AjukanPertanyaan}></Route>
-        <Route path="/kirim-saran" component={KirimSaran}></Route>
-      </Switch>
+      <Authentication>
+        <Switch>
+          <Route exact path="/" component={LandingPage}></Route>
+          <Route
+            path="/daftar-jadwal-kajian"
+            component={DaftarJadwalKajian}
+          ></Route>
+          <Route
+            path="/detail-jadwal-kajian"
+            component={DetailJadwalKajian}
+          ></Route>
+          <Route path="/daftar-penceramah" component={DaftarPenceramah}></Route>
+          <Route path="/berlangganan" component={Berlangganan}></Route>
+          <Route path="/detail-penceramah" component={DetailPenceramah}></Route>
+          <Route path="/tanya-jawab" component={TanyaJawab}></Route>
+          <Route path="/kirim-jadwal" component={KirimJadwal}></Route>
+          <Route path="/hubungi" component={Hubungi}></Route>
+          <Route path="/masuk" component={Masuk}></Route>
+          <Route path="/daftar" component={Daftar}></Route>
+          <Route path="/ajukan-pertanyaan" component={AjukanPertanyaan}></Route>
+          <Route path="/kirim-saran" component={KirimSaran}></Route>
+          <ProtectedRoute path="/profile" component={Profile}></ProtectedRoute>
+          <Route path="*" component={() => <NotFound />} />
+        </Switch>
+      </Authentication>
     </Router>
   );
 }
