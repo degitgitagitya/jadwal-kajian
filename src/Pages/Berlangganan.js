@@ -2,15 +2,17 @@ import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import jsonata from "jsonata";
 import ReactModal from "react-modal";
+import { withRouter } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Navigation from "../Components/Navigation";
 import BreadCumb from "../Components/BreadCumb";
 import Footer from "../Components/Footer";
+import WajibDiisi from "../Components/WajibDiisi";
 
 import KAJIAN from "../Data/Kajian";
 
 import "./Berlangganan.css";
-import { withRouter } from "react-router-dom";
 
 class Berlangganan extends Component {
   constructor(props) {
@@ -49,15 +51,25 @@ class Berlangganan extends Component {
       contentLokasiFilter: x,
       contentPenceramah: y,
       contentPenceramahFilter: y,
+      warning: false,
+      warningMsg: "",
     };
   }
+
+  changeInputEmail = (event) => {
+    this.setState({
+      inputEmail: event.target.value,
+    });
+  };
 
   componentDidMount() {
     const url = new URL(window.location.href);
     const email = url.searchParams.get("email");
-    this.setState({
-      inputEmail: email,
-    });
+    if (email !== null) {
+      this.setState({
+        inputEmail: email,
+      });
+    }
   }
 
   toggleModalLokasi = () => {
@@ -138,6 +150,40 @@ class Berlangganan extends Component {
     this.props.history.push(url);
   };
 
+  validateInput = () => {
+    let penceramah = 0;
+    let lokasi = 0;
+
+    this.state.contentLokasiFilter.forEach((data) => {
+      if (data.status === 1) {
+        lokasi = 1;
+      }
+    });
+
+    this.state.contentPenceramahFilter.forEach((data) => {
+      if (data.status === 1) {
+        penceramah = 1;
+      }
+    });
+
+    if (this.state.inputEmail === "") {
+      return "Harap isi email";
+    } else if (penceramah === 0) {
+      return "Harap pilih penceramah";
+    } else if (lokasi === 0) {
+      return "Harap pilih lokasi";
+    } else {
+      return "Sukses";
+    }
+  };
+
+  toggleWarning = (msg) => {
+    this.setState({
+      warning: true,
+      warningMsg: msg,
+    });
+  };
+
   render() {
     return (
       <div>
@@ -147,7 +193,7 @@ class Berlangganan extends Component {
           overlayClassName="kelas-modal-overlay"
         >
           <div className="text-center">
-            <h3>Pilih Penceramah</h3>
+            <h3>Pilih Penceramah </h3>
             <input
               type="text"
               className="global-rounded-search-primary py-2"
@@ -244,6 +290,9 @@ class Berlangganan extends Component {
         >
           <div className="text-center">
             <h3>Sukses Berlangganan</h3>
+            <h1>
+              <FontAwesomeIcon icon="check-circle"></FontAwesomeIcon>
+            </h1>
             <p>
               Anda telah berhasil berlangganan, setiap informasi yang relevan
               akan dikirim ke email anda
@@ -258,6 +307,24 @@ class Berlangganan extends Component {
               >
                 Kembali Ke Beranda
               </button>
+
+              <button
+                className="custom-button-info custom-button ml-2"
+                onClick={() => {
+                  this.redirectTo("/daftar-jadwal-kajian");
+                }}
+              >
+                Lihat Jadwal Kajian
+              </button>
+
+              <button
+                className="custom-button-warning custom-button ml-2"
+                onClick={() => {
+                  this.redirectTo("/tanya-jawab");
+                }}
+              >
+                Lihat Tanya Jawab
+              </button>
             </div>
           </div>
         </ReactModal>
@@ -269,31 +336,48 @@ class Berlangganan extends Component {
           <div className="card-berlangganan">
             <div className="row justify-content-center">
               <div className="col-4">
-                <div className="primary-bold">Email</div>
+                <div className="primary-bold">
+                  Email <span className="text-danger">*</span>
+                </div>
                 <input
                   type="text"
                   className="form-control mb-3"
                   placeholder="Masukan email"
+                  value={this.state.inputEmail}
+                  onChange={this.changeInputEmail}
                 />
-                <div className="primary-bold">Preferensi Penceramah</div>
+                <div className="primary-bold">
+                  Preferensi Penceramah <span className="text-danger">*</span>
+                </div>
                 <button
                   onClick={this.toggleModalPenceramah}
                   className="custom-button-outline custom-button-outline-primary mb-3"
                 >
                   PILIH PENCERAMAH
                 </button>
-                <div className="primary-bold">Preferensi Lokasi</div>
+                <div className="primary-bold">
+                  Preferensi Lokasi <span className="text-danger">*</span>
+                </div>
                 <button
                   onClick={this.toggleModalLokasi}
-                  className="custom-button-outline custom-button-outline-primary mb-3"
+                  className="custom-button-outline custom-button-outline-primary"
                 >
                   PILIH LOKASI
                 </button>
                 <br />
                 <br />
+                <div className="text-danger mb-2">
+                  {this.state.warning ? this.state.warningMsg : ""}
+                </div>
                 <div className="d-flex justify-content-center">
                   <button
-                    onClick={this.toggleModalBerlangganan}
+                    onClick={() => {
+                      if (this.validateInput() === "Sukses") {
+                        this.toggleModalBerlangganan();
+                      } else {
+                        this.toggleWarning(this.validateInput());
+                      }
+                    }}
                     className="custom-button custom-button-primary"
                   >
                     MULAI BERLANGGANAN
@@ -301,6 +385,7 @@ class Berlangganan extends Component {
                 </div>
               </div>
             </div>
+            <WajibDiisi></WajibDiisi>
           </div>
         </Container>
 
