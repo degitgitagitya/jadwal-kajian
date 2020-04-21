@@ -35,7 +35,12 @@ export default class DaftarJadwalKajian extends Component {
       str = `[penceramah="${penceramah}"]`;
     }
 
+    let search = false;
+    let content = "";
+
     if (cari !== null) {
+      search = true;
+      content = cari;
       str =
         "[(`penceramah` ~> /" +
         cari +
@@ -125,6 +130,8 @@ export default class DaftarJadwalKajian extends Component {
       kotaselectedString: "",
       listKotaFilter: arrayKota,
       showModalKota: false,
+      searchNotification: search,
+      searchContent: content,
     };
   }
 
@@ -151,7 +158,12 @@ export default class DaftarJadwalKajian extends Component {
       str = `[penceramah="${penceramah}"]`;
     }
 
+    let search = false;
+    let content = "";
+
     if (cari !== null) {
+      search = true;
+      content = cari;
       str =
         "[(`penceramah` ~> /" +
         cari +
@@ -240,6 +252,7 @@ export default class DaftarJadwalKajian extends Component {
       pilihanWaktu: "",
       listKota: arrayKota,
       kotaselected: [],
+      searchNotification: search,
       kotaselectedString: "",
       listKotaFilter: arrayKota,
       showModalKota: false,
@@ -322,6 +335,7 @@ export default class DaftarJadwalKajian extends Component {
       filterWaktuStr: "",
       pilihanWaktu: "",
       listKota: arrayKota,
+      searchNotification: false,
       kotaselected: [],
       kotaselectedString: "",
       listKotaFilter: arrayKota,
@@ -361,6 +375,7 @@ export default class DaftarJadwalKajian extends Component {
     this.setState({
       pilihanWaktu: event.target.value,
       filterHariIni: false,
+      searchNotification: false,
       filterBesok: false,
       filterWaktuStr: unmodified,
       listJadwalKajian: query,
@@ -402,6 +417,7 @@ export default class DaftarJadwalKajian extends Component {
     this.setState({
       batasAwal: a,
       batasAkhir: b,
+      searchNotification: false,
       halaman: temp,
       listJadwalKajian: res,
     });
@@ -412,6 +428,8 @@ export default class DaftarJadwalKajian extends Component {
     let x = jsonata(
       "kajian[" +
         this.state.penceramahSelectedString +
+        this.state.kotaselectedString +
+        this.state.pilihanWaktu +
         "]^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         this.state.batasAwal +
         ".." +
@@ -423,6 +441,8 @@ export default class DaftarJadwalKajian extends Component {
       x = jsonata(
         "kajian[" +
           this.state.penceramahSelectedString +
+          this.state.kotaselectedString +
+          this.state.pilihanWaktu +
           "]^(<tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
           this.state.batasAwal +
           ".." +
@@ -436,6 +456,7 @@ export default class DaftarJadwalKajian extends Component {
 
     this.setState({
       listJadwalKajian: x,
+      searchNotification: false,
       sort: y,
     });
   };
@@ -509,6 +530,7 @@ export default class DaftarJadwalKajian extends Component {
       filterBesok: false,
       filterHariIni: false,
       filterWaktuStr: "",
+      searchNotification: false,
       listPenceramah: x,
       penceramahSelected: y,
       penceramahSelectedString: stringY,
@@ -717,6 +739,7 @@ export default class DaftarJadwalKajian extends Component {
       filterWaktuStr: "",
       pilihanWaktu: "",
       listKota: x,
+      searchNotification: false,
       kotaselected: y,
       kotaselectedString: unmodified,
       listJadwalKajian: query,
@@ -978,8 +1001,16 @@ export default class DaftarJadwalKajian extends Component {
             <div className="width-70">
               <div className="d-flex justify-content-between">
                 <div>
-                  <h3>Hasil Pencarian</h3>
-                  <p>Pencarian dengan kata kunci</p>
+                  {this.state.searchNotification ? (
+                    <div>
+                      <h3>Hasil Pencarian</h3>
+                      <p>
+                        Pencarian dengan kata kunci "{this.state.searchContent}"
+                      </p>{" "}
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <select
                   name="urutkan"
@@ -1027,55 +1058,62 @@ export default class DaftarJadwalKajian extends Component {
                 );
               })}
 
-              <div className="daftar-jadwal-kajian-paging mb-5">
-                <div className="row justify-content-center">
-                  <div className="col-4 text-center d-flex justify-content-around align-items-center">
-                    <FontAwesomeIcon
-                      icon="chevron-left"
-                      onClick={() => {
-                        if (this.state.halaman !== 1) {
-                          this.handleFetchPaging(this.state.halaman - 1);
-                        }
-                      }}
-                      className={
-                        this.state.halaman !== 1 ? "paging-number" : ""
-                      }
-                    ></FontAwesomeIcon>
-                    {this.state.totalPage.map((data) => {
-                      return (
-                        <div
-                          onClick={() => {
-                            this.handleFetchPaging(data.no);
-                          }}
-                          key={data.no}
-                          className={
-                            data.no === this.state.halaman
-                              ? "paging-number paging-number-selected"
-                              : "paging-number"
+              {Object.keys(this.state.listJadwalKajian).length === 0 &&
+              (this.state.listJadwalKajian.constructor === Object) === true ? (
+                <h3 className="text-center mt-3">
+                  Mohon maaf, jadwal tidak ditemukan
+                </h3>
+              ) : (
+                <div className="daftar-jadwal-kajian-paging mb-5">
+                  <div className="row justify-content-center">
+                    <div className="col-4 text-center d-flex justify-content-around align-items-center">
+                      <FontAwesomeIcon
+                        icon="chevron-left"
+                        onClick={() => {
+                          if (this.state.halaman !== 1) {
+                            this.handleFetchPaging(this.state.halaman - 1);
                           }
-                        >
-                          {data.no}
-                        </div>
-                      );
-                    })}
-                    <FontAwesomeIcon
-                      icon="chevron-right"
-                      onClick={() => {
-                        if (
-                          this.state.halaman !== this.state.totalPage.length
-                        ) {
-                          this.handleFetchPaging(this.state.halaman + 1);
+                        }}
+                        className={
+                          this.state.halaman !== 1 ? "paging-number" : ""
                         }
-                      }}
-                      className={
-                        this.state.halaman !== this.state.totalPage.length
-                          ? "paging-number"
-                          : ""
-                      }
-                    ></FontAwesomeIcon>
+                      ></FontAwesomeIcon>
+                      {this.state.totalPage.map((data) => {
+                        return (
+                          <div
+                            onClick={() => {
+                              this.handleFetchPaging(data.no);
+                            }}
+                            key={data.no}
+                            className={
+                              data.no === this.state.halaman
+                                ? "paging-number paging-number-selected"
+                                : "paging-number"
+                            }
+                          >
+                            {data.no}
+                          </div>
+                        );
+                      })}
+                      <FontAwesomeIcon
+                        icon="chevron-right"
+                        onClick={() => {
+                          if (
+                            this.state.halaman !== this.state.totalPage.length
+                          ) {
+                            this.handleFetchPaging(this.state.halaman + 1);
+                          }
+                        }}
+                        className={
+                          this.state.halaman !== this.state.totalPage.length
+                            ? "paging-number"
+                            : ""
+                        }
+                      ></FontAwesomeIcon>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </Container>

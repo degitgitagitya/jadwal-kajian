@@ -226,51 +226,58 @@ export default class TanyaJawab extends Component {
             )}
           </div>
 
-          <div className="daftar-jadwal-kajian-paging mb-5">
-            <div className="row justify-content-center">
-              <div className="col-4 text-center d-flex justify-content-around align-items-center">
-                <FontAwesomeIcon
-                  icon="chevron-left"
-                  onClick={() => {
-                    if (this.state.halaman !== 1) {
-                      this.handleFetchPaging(this.state.halaman - 1);
-                    }
-                  }}
-                  className={this.state.halaman !== 1 ? "paging-number" : ""}
-                ></FontAwesomeIcon>
-                {this.state.totalPage.map((data) => {
-                  return (
-                    <div
-                      onClick={() => {
-                        this.handleFetchPaging(data.no);
-                      }}
-                      key={data.no}
-                      className={
-                        data.no === this.state.halaman
-                          ? "paging-number paging-number-selected"
-                          : "paging-number"
+          {this.state.listTanyaJawab.length === 0 ? (
+            <h3 className="text-center my-5">
+              Mohon maaf, tanya jawab tidak ditemukan <br />
+              Silahkan untuk mencari pertanyaan lain atau ajukan pertanyaan baru
+            </h3>
+          ) : (
+            <div className="daftar-jadwal-kajian-paging mb-5">
+              <div className="row justify-content-center">
+                <div className="col-4 text-center d-flex justify-content-around align-items-center">
+                  <FontAwesomeIcon
+                    icon="chevron-left"
+                    onClick={() => {
+                      if (this.state.halaman !== 1) {
+                        this.handleFetchPaging(this.state.halaman - 1);
                       }
-                    >
-                      {data.no}
-                    </div>
-                  );
-                })}
-                <FontAwesomeIcon
-                  icon="chevron-right"
-                  onClick={() => {
-                    if (this.state.halaman !== this.state.totalPage.length) {
-                      this.handleFetchPaging(this.state.halaman + 1);
+                    }}
+                    className={this.state.halaman !== 1 ? "paging-number" : ""}
+                  ></FontAwesomeIcon>
+                  {this.state.totalPage.map((data) => {
+                    return (
+                      <div
+                        onClick={() => {
+                          this.handleFetchPaging(data.no);
+                        }}
+                        key={data.no}
+                        className={
+                          data.no === this.state.halaman
+                            ? "paging-number paging-number-selected"
+                            : "paging-number"
+                        }
+                      >
+                        {data.no}
+                      </div>
+                    );
+                  })}
+                  <FontAwesomeIcon
+                    icon="chevron-right"
+                    onClick={() => {
+                      if (this.state.halaman !== this.state.totalPage.length) {
+                        this.handleFetchPaging(this.state.halaman + 1);
+                      }
+                    }}
+                    className={
+                      this.state.halaman !== this.state.totalPage.length
+                        ? "paging-number"
+                        : ""
                     }
-                  }}
-                  className={
-                    this.state.halaman !== this.state.totalPage.length
-                      ? "paging-number"
-                      : ""
-                  }
-                ></FontAwesomeIcon>
+                  ></FontAwesomeIcon>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </Container>
 
         <Footer></Footer>
