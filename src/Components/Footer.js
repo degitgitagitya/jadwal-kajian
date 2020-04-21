@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 
 import "./Footer.css";
+import { withRouter } from "react-router-dom";
 
-export default class Footer extends Component {
+class Footer extends Component {
+  redirectTo = (url) => {
+    this.props.history.push(url);
+  };
+
   render() {
     return (
       <div className="footer-background text-white">
@@ -11,12 +16,60 @@ export default class Footer extends Component {
           <div className="row justify-content-center">
             <div className="col-md-8 text-center">
               <h2>Jadwal Kajian</h2>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore
-                tempore, soluta dolorum odit voluptas quasi delectus ad
-                perferendis nesciunt sed provident et exercitationem ipsa dolor.
-                Facilis aspernatur culpa ullam hic.
-              </p>
+              <div className="row">
+                <div
+                  onClick={() => {
+                    this.redirectTo("/daftar-jadwal-kajian");
+                  }}
+                  className="col-6 footer-content"
+                >
+                  Jawdal Kajian
+                </div>
+                <div
+                  onClick={() => {
+                    this.redirectTo("/daftar-penceramah");
+                  }}
+                  className="col-6 footer-content"
+                >
+                  Penceramah
+                </div>
+              </div>
+              <div className="row">
+                <div
+                  onClick={() => {
+                    this.redirectTo("/berlangganan");
+                  }}
+                  className="col-6 footer-content"
+                >
+                  Berlangganan
+                </div>
+                <div
+                  onClick={() => {
+                    this.redirectTo("/tanya-jawab");
+                  }}
+                  className="col-6 footer-content"
+                >
+                  Tanya Jawab
+                </div>
+              </div>
+              <div className="row">
+                <div
+                  onClick={() => {
+                    this.redirectTo("/kirim-jadwal");
+                  }}
+                  className="col-6 footer-content"
+                >
+                  Kirim Jadwal
+                </div>
+                <div
+                  onClick={() => {
+                    this.redirectTo("/hubungi");
+                  }}
+                  className="col-6 footer-content"
+                >
+                  Hubungi
+                </div>
+              </div>
             </div>
           </div>
         </Container>
@@ -24,3 +77,5 @@ export default class Footer extends Component {
     );
   }
 }
+
+export default withRouter(Footer);

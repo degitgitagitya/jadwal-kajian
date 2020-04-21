@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import jsonata from "jsonata";
+import { withRouter } from "react-router-dom";
 
 import CardTanyaJawabLanding from "../Components/CardTanyaJawabLanding";
 import Navigation from "../Components/Navigation";
@@ -12,7 +13,7 @@ import KAJIAN from "../Data/Kajian";
 
 import "./LandingPage.css";
 
-export default class LandingPage extends Component {
+class LandingPage extends Component {
   constructor(props) {
     super(props);
 
@@ -39,12 +40,20 @@ export default class LandingPage extends Component {
     const x = jsonata(`kajian[tanggal="${tomorrow}"]`);
     const res = x.evaluate(KAJIAN);
 
+    let tanyaJawab = jsonata(`tanya^(>waktu)`);
+    tanyaJawab = tanyaJawab.evaluate(KAJIAN);
+
     this.state = {
       cariPertanyaan: "",
       emailBerlangganan: "",
       hariIni: result,
       besok: res,
+      tanyaJawab: tanyaJawab,
     };
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
   onChangeCariPertanyaan = (event) => {
@@ -59,6 +68,24 @@ export default class LandingPage extends Component {
     });
   };
 
+  handleKeyPressSub = (event) => {
+    if (event.key === "Enter") {
+      this.props.history.push(
+        `/berlangganan?email=${this.state.emailBerlangganan}`
+      );
+    }
+  };
+
+  onClickCariPertanyaan = () => {
+    this.props.history.push(`/tanya-jawab?cari=${this.state.cariPertanyaan}`);
+  };
+
+  handleKeyPressTanya = (event) => {
+    if (event.key === "Enter") {
+      this.props.history.push(`/tanya-jawab?cari=${this.state.cariPertanyaan}`);
+    }
+  };
+
   render() {
     return (
       <div>
@@ -70,14 +97,50 @@ export default class LandingPage extends Component {
             <div className="col-6">
               <div className="d-flex justify-content-between">
                 <h3>Kajian Hari Ini</h3>
-                Lainnya
+                <span
+                  onClick={() => {
+                    let date = new Date();
+                    date =
+                      date.getFullYear() +
+                      "-" +
+                      (date.getMonth() + 1) +
+                      "-" +
+                      date.getDate();
+
+                    this.props.history.push(
+                      `/daftar-jadwal-kajian?waktu=${date}`
+                    );
+                  }}
+                  className="span-clickable"
+                >
+                  Lainnya
+                </span>
               </div>
               <hr className="bold-hr" />
             </div>
             <div className="col-6">
               <div className="d-flex justify-content-between">
                 <h3>Kajian Besok</h3>
-                Lainnya
+                <span
+                  onClick={() => {
+                    let today = new Date();
+                    let tomorrow = new Date(today);
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    tomorrow =
+                      tomorrow.getFullYear() +
+                      "-" +
+                      (tomorrow.getMonth() + 1) +
+                      "-" +
+                      tomorrow.getDate();
+
+                    this.props.history.push(
+                      `/daftar-jadwal-kajian?waktu=${tomorrow}`
+                    );
+                  }}
+                  className="span-clickable"
+                >
+                  Lainnya
+                </span>
               </div>
               <hr className="bold-hr" />
             </div>
@@ -120,8 +183,12 @@ export default class LandingPage extends Component {
                   className="global-rounded-search p-2 mr-2"
                   value={this.state.cariPertanyaan}
                   onChange={this.onChangeCariPertanyaan}
+                  onKeyPress={this.handleKeyPressTanya}
                 />
-                <button className="global-border-radius custom-button custom-button-primary">
+                <button
+                  onClick={this.onClickCariPertanyaan}
+                  className="global-border-radius custom-button custom-button-primary"
+                >
                   <i className="fa fa-search mr-2"></i> CARI
                 </button>
               </div>
@@ -149,13 +216,33 @@ export default class LandingPage extends Component {
             <div className="col-6">
               <div className="d-flex justify-content-between">
                 <h3>Tanya Jawab Terbaru</h3>
-                Lainnya
+                <span
+                  className="span-clickable"
+                  onClick={() => {
+                    this.props.history.push("/tanya-jawab");
+                  }}
+                >
+                  Lainnya
+                </span>
               </div>
               <hr className="bold-hr" />
               <div className="d-flex flex-column align-items-end">
-                <CardTanyaJawabLanding></CardTanyaJawabLanding>
-                <CardTanyaJawabLanding></CardTanyaJawabLanding>
-                Lainnya
+                {this.state.tanyaJawab.slice(0, 2).map((data) => {
+                  return (
+                    <CardTanyaJawabLanding
+                      key={data.id}
+                      data={data}
+                    ></CardTanyaJawabLanding>
+                  );
+                })}
+                <span
+                  className="span-clickable"
+                  onClick={() => {
+                    this.props.history.push("/tanya-jawab");
+                  }}
+                >
+                  Lainnya
+                </span>
               </div>
             </div>
           </div>
@@ -174,6 +261,7 @@ export default class LandingPage extends Component {
               className="global-rounded-search-primary pt-2 pb-2 mr-2"
               value={this.state.emailBerlangganan}
               onChange={this.onChangeEmailBerlangganan}
+              onKeyPress={this.handleKeyPressSub}
             />
             <button
               onClick={() => {
@@ -195,3 +283,5 @@ export default class LandingPage extends Component {
     );
   }
 }
+
+export default withRouter(LandingPage);

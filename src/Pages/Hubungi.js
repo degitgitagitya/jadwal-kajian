@@ -21,6 +21,10 @@ class Hubungi extends Component {
     warningMsg: "",
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   onChangeInputJudul = (event) => {
     this.setState({
       inputJudul: event.target.value,
@@ -109,7 +113,20 @@ class Hubungi extends Component {
           </div>
         </ReactModal>
         <Navigation></Navigation>
-        <BreadCumb content="Home / Hubungi Kami"></BreadCumb>
+        <BreadCumb
+          content={[
+            {
+              id: 1,
+              url: "/",
+              nama: "Beranda / ",
+            },
+            {
+              id: 2,
+              url: "/hubungi",
+              nama: "Hubungi",
+            },
+          ]}
+        ></BreadCumb>
 
         <Container className="mb-5">
           <h2 className="text-center mb-4">Hubungi Kami </h2>

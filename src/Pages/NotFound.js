@@ -4,6 +4,10 @@ import "./NotFound.css";
 import { withRouter } from "react-router-dom";
 
 class NotFound extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <div id="notfound">

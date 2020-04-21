@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import { AuthContext } from "../Contexts/Authentication";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Logo from "../Assets/logo.png";
@@ -54,6 +55,8 @@ const NavContent = (props) => {
 };
 
 class Navigation extends Component {
+  static contextType = AuthContext;
+
   state = {
     cariJadwal: "",
     expand: true,
@@ -79,6 +82,22 @@ class Navigation extends Component {
       });
     }
   }
+
+  searchNavigation = () => {
+    this.props.history.push(
+      `/daftar-jadwal-kajian?cari=${this.state.cariJadwal}`
+    );
+
+    if (this.props.reFetch !== undefined) {
+      this.props.reFetch();
+    }
+  };
+
+  handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      this.searchNavigation();
+    }
+  };
 
   render() {
     return (
@@ -109,22 +128,45 @@ class Navigation extends Component {
                       ></NavContent>
                     );
                   })}
-                  <button
-                    onClick={() => {
-                      this.props.history.push("/masuk");
-                    }}
-                    className="custom-button-outline custom-button-outline-white mx-3"
-                  >
-                    MASUK
-                  </button>
-                  <button
-                    onClick={() => {
-                      this.props.history.push("/daftar");
-                    }}
-                    className="custom-button custom-button-primary"
-                  >
-                    DAFTAR
-                  </button>
+                  {this.context.isAuth ? (
+                    <div>
+                      <button
+                        onClick={() => {
+                          this.props.history.push("/profile");
+                        }}
+                        className="custom-button custom-button-info mx-3"
+                      >
+                        PROFIL
+                      </button>
+                      <button
+                        onClick={() => {
+                          this.context.changeAuthToFalse();
+                        }}
+                        className="custom-button custom-button-danger"
+                      >
+                        KELUAR
+                      </button>
+                    </div>
+                  ) : (
+                    <div>
+                      <button
+                        onClick={() => {
+                          this.props.history.push("/masuk");
+                        }}
+                        className="custom-button-outline custom-button-outline-white mx-3"
+                      >
+                        MASUK
+                      </button>
+                      <button
+                        onClick={() => {
+                          this.props.history.push("/daftar");
+                        }}
+                        className="custom-button custom-button-primary"
+                      >
+                        DAFTAR
+                      </button>
+                    </div>
+                  )}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
@@ -142,8 +184,12 @@ class Navigation extends Component {
                     placeholder="Cari di sini..."
                     value={this.state.cariJadwal}
                     onChange={this.onChangeCariJadwal}
+                    onKeyPress={this.handleKeyPress}
                   />
-                  <button className="global-border-radius custom-button custom-button-primary">
+                  <button
+                    onClick={this.searchNavigation}
+                    className="global-border-radius custom-button custom-button-primary"
+                  >
                     <i className="fa fa-search mr-2"></i> CARI
                   </button>
                 </div>

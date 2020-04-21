@@ -1,3 +1,8 @@
 .footer-background {
   background-color: var(--dark-green);
 }
+
+.footer-content:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

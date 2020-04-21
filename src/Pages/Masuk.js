@@ -32,12 +32,16 @@ export default class Masuk extends Component {
     });
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   auth = () => {
     if (
       this.state.inputPassword === this.context.data.password &&
       this.state.inputEmail === this.context.data.email
     ) {
-      this.redirectTo("/profil");
+      this.redirectTo("/profile");
     } else {
       this.toggleWarning("Email / Password Salah");
     }
@@ -74,7 +78,20 @@ export default class Masuk extends Component {
     return (
       <div>
         <Navigation></Navigation>
-        <BreadCumb content="Home / Masuk"></BreadCumb>
+        <BreadCumb
+          content={[
+            {
+              id: 1,
+              url: "/",
+              nama: "Beranda / ",
+            },
+            {
+              id: 2,
+              url: "/masuk",
+              nama: "Masuk",
+            },
+          ]}
+        ></BreadCumb>
         <Container className="mb-5">
           <h2 className="text-center mb-4">Masuk</h2>
           <div className="card-berlangganan">

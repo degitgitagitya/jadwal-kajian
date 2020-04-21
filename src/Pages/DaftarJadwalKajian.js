@@ -20,6 +20,236 @@ export default class DaftarJadwalKajian extends Component {
     const awal = 0;
     const akhir = 9;
 
+    const URLParams = new URLSearchParams(props.history.location.search);
+    const waktu = URLParams.get("waktu");
+    const penceramah = URLParams.get("penceramah");
+    const cari = URLParams.get("cari");
+
+    let str = "";
+
+    if (waktu !== null) {
+      str = `[tanggal="${waktu}"]`;
+    }
+
+    if (penceramah !== null) {
+      str = `[penceramah="${penceramah}"]`;
+    }
+
+    if (cari !== null) {
+      str =
+        "[(`penceramah` ~> /" +
+        cari +
+        "/i) or (`kota` ~> /" +
+        cari +
+        "/i) or (`tempat` ~> /" +
+        cari +
+        "/i) or (`judul` ~> /" +
+        cari +
+        "/i)]";
+    }
+
+    const x = jsonata(
+      "kajian" +
+        str +
+        "^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        awal +
+        ".." +
+        akhir +
+        "]]"
+    );
+
+    const res = x.evaluate(KAJIAN);
+
+    let y = jsonata("kajian");
+    y = y.evaluate(KAJIAN);
+    y = y.length;
+    y = Math.ceil(y / (akhir + 1));
+
+    let paging = [];
+
+    for (let i = 0; i < y; i++) {
+      paging.push({
+        no: i + 1,
+      });
+    }
+
+    let a = jsonata(`penceramah^(<nama)`);
+    a = a.evaluate(KAJIAN);
+
+    let arrayA = [];
+
+    a.forEach((data) => {
+      let temp = {
+        id: data.id,
+        nama: data.nama,
+        status: -1,
+      };
+
+      arrayA.push(temp);
+    });
+
+    let kota = jsonata(`kota^(<nama)`);
+    kota = kota.evaluate(KAJIAN);
+
+    let arrayKota = [];
+
+    kota.forEach((data) => {
+      let temp = {
+        id: data.id,
+        nama: data.nama,
+        status: -1,
+      };
+
+      arrayKota.push(temp);
+    });
+
+    this.state = {
+      listJadwalKajian: res,
+      jumlahPerPage: akhir + 1,
+      totalPage: paging,
+      batasAwal: awal,
+      batasAkhir: akhir,
+      halaman: 1,
+      sort: ">",
+      penceramahSelected: [],
+      listPenceramah: arrayA,
+      penceramahSelectedString: "",
+      showModal: false,
+      listPenceramahFilter: [],
+      filterHariIni: false,
+      filterBesok: false,
+      filterWaktuStr: "",
+      pilihanWaktu: "",
+      listKota: arrayKota,
+      kotaselected: [],
+      kotaselectedString: "",
+      listKotaFilter: arrayKota,
+      showModalKota: false,
+    };
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
+  reFetch = () => {
+    const awal = 0;
+    const akhir = 9;
+
+    const URLParams = new URLSearchParams(this.props.history.location.search);
+    const waktu = URLParams.get("waktu");
+    const penceramah = URLParams.get("penceramah");
+    const cari = URLParams.get("cari");
+
+    let str = "";
+
+    if (waktu !== null) {
+      str = `[tanggal="${waktu}"]`;
+    }
+
+    if (penceramah !== null) {
+      str = `[penceramah="${penceramah}"]`;
+    }
+
+    if (cari !== null) {
+      str =
+        "[(`penceramah` ~> /" +
+        cari +
+        "/i) or (`kota` ~> /" +
+        cari +
+        "/i) or (`tempat` ~> /" +
+        cari +
+        "/i) or (`judul` ~> /" +
+        cari +
+        "/i)]";
+    }
+
+    const x = jsonata(
+      "kajian" +
+        str +
+        "^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        awal +
+        ".." +
+        akhir +
+        "]]"
+    );
+
+    const res = x.evaluate(KAJIAN);
+
+    let y = jsonata("kajian");
+    y = y.evaluate(KAJIAN);
+    y = y.length;
+    y = Math.ceil(y / (akhir + 1));
+
+    let paging = [];
+
+    for (let i = 0; i < y; i++) {
+      paging.push({
+        no: i + 1,
+      });
+    }
+
+    let a = jsonata(`penceramah^(<nama)`);
+    a = a.evaluate(KAJIAN);
+
+    let arrayA = [];
+
+    a.forEach((data) => {
+      let temp = {
+        id: data.id,
+        nama: data.nama,
+        status: -1,
+      };
+
+      arrayA.push(temp);
+    });
+
+    let kota = jsonata(`kota^(<nama)`);
+    kota = kota.evaluate(KAJIAN);
+
+    let arrayKota = [];
+
+    kota.forEach((data) => {
+      let temp = {
+        id: data.id,
+        nama: data.nama,
+        status: -1,
+      };
+
+      arrayKota.push(temp);
+    });
+
+    window.scrollTo(0, 283);
+
+    this.setState({
+      listJadwalKajian: res,
+      jumlahPerPage: akhir + 1,
+      totalPage: paging,
+      batasAwal: awal,
+      batasAkhir: akhir,
+      halaman: 1,
+      sort: ">",
+      penceramahSelected: [],
+      listPenceramah: arrayA,
+      penceramahSelectedString: "",
+      showModal: false,
+      listPenceramahFilter: [],
+      filterHariIni: false,
+      filterBesok: false,
+      filterWaktuStr: "",
+      pilihanWaktu: "",
+      listKota: arrayKota,
+      kotaselected: [],
+      kotaselectedString: "",
+      listKotaFilter: arrayKota,
+      showModalKota: false,
+    });
+  };
+
+  clearFilter = () => {
+    const awal = 0;
+    const akhir = 9;
+
     const x = jsonata(
       "kajian^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         awal +
@@ -57,7 +287,24 @@ export default class DaftarJadwalKajian extends Component {
       arrayA.push(temp);
     });
 
-    this.state = {
+    let kota = jsonata(`kota^(<nama)`);
+    kota = kota.evaluate(KAJIAN);
+
+    let arrayKota = [];
+
+    kota.forEach((data) => {
+      let temp = {
+        id: data.id,
+        nama: data.nama,
+        status: -1,
+      };
+
+      arrayKota.push(temp);
+    });
+
+    window.scrollTo(0, 283);
+
+    this.setState({
       listJadwalKajian: res,
       jumlahPerPage: akhir + 1,
       totalPage: paging,
@@ -70,8 +317,55 @@ export default class DaftarJadwalKajian extends Component {
       penceramahSelectedString: "",
       showModal: false,
       listPenceramahFilter: [],
-    };
-  }
+      filterHariIni: false,
+      filterBesok: false,
+      filterWaktuStr: "",
+      pilihanWaktu: "",
+      listKota: arrayKota,
+      kotaselected: [],
+      kotaselectedString: "",
+      listKotaFilter: arrayKota,
+      showModalKota: false,
+    });
+  };
+
+  onChangePilihanWaktu = (event) => {
+    window.scrollTo(0, 283);
+
+    let date = new Date(event.target.value);
+    date =
+      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+
+    let str = "(tanggal='" + date + "')";
+    let unmodified = str;
+
+    if (this.state.penceramahSelectedString !== "") {
+      str = " and " + str;
+    }
+
+    let query = jsonata(
+      "kajian[" +
+        this.state.penceramahSelectedString +
+        str +
+        "]^(" +
+        this.state.sort +
+        "tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        this.state.batasAwal +
+        ".." +
+        this.state.batasAkhir +
+        "]]"
+    );
+
+    query = query.evaluate(KAJIAN);
+
+    this.setState({
+      pilihanWaktu: event.target.value,
+      filterHariIni: false,
+      filterBesok: false,
+      filterWaktuStr: unmodified,
+      listJadwalKajian: query,
+    });
+  };
 
   handleOpenModal = () => {
     this.setState({
@@ -85,6 +379,8 @@ export default class DaftarJadwalKajian extends Component {
   };
 
   handleFetchPaging = (page) => {
+    window.scrollTo(0, 283);
+
     let temp = page;
     page = this.state.jumlahPerPage * page;
     let a = page - this.state.jumlahPerPage;
@@ -145,6 +441,8 @@ export default class DaftarJadwalKajian extends Component {
   };
 
   handleClickFilterPenceramah = (id) => {
+    window.scrollTo(0, 283);
+
     let x = this.state.listPenceramah;
     let target;
 
@@ -185,9 +483,32 @@ export default class DaftarJadwalKajian extends Component {
         this.state.batasAkhir +
         "]]"
     );
+
     query = query.evaluate(KAJIAN);
 
+    let kota = jsonata(`kota^(<nama)`);
+    kota = kota.evaluate(KAJIAN);
+
+    let arrayKota = [];
+
+    kota.forEach((data) => {
+      let temp = {
+        id: data.id,
+        nama: data.nama,
+        status: -1,
+      };
+
+      arrayKota.push(temp);
+    });
+
     this.setState({
+      listKota: arrayKota,
+      kotaselected: [],
+      kotaselectedString: "",
+      listKotaFilter: arrayKota,
+      filterBesok: false,
+      filterHariIni: false,
+      filterWaktuStr: "",
       listPenceramah: x,
       penceramahSelected: y,
       penceramahSelectedString: stringY,
@@ -206,6 +527,10 @@ export default class DaftarJadwalKajian extends Component {
       }
     });
 
+    if (string !== "") {
+      string = "(" + string + ")";
+    }
+
     return string;
   };
 
@@ -222,6 +547,198 @@ export default class DaftarJadwalKajian extends Component {
     this.setState({
       listPenceramahFilter: newX,
     });
+  };
+
+  applyWaktu = (arg) => {
+    window.scrollTo(0, 283);
+
+    let string = "";
+    let today = new Date();
+    today =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+
+    let tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow =
+      tomorrow.getFullYear() +
+      "-" +
+      (tomorrow.getMonth() + 1) +
+      "-" +
+      tomorrow.getDate();
+
+    if (arg === 0) {
+      if (
+        this.state.filterHariIni === false &&
+        this.state.filterBesok === true
+      ) {
+        string = `(tanggal='${today}' or tanggal='${tomorrow}')`;
+      } else if (this.state.filterHariIni === false) {
+        string = `(tanggal='${today}')`;
+      } else if (this.state.filterBesok === true) {
+        string = `(tanggal='${tomorrow}')`;
+      }
+    } else {
+      if (
+        this.state.filterBesok === false &&
+        this.state.filterHariIni === true
+      ) {
+        string = `(tanggal='${today}' or tanggal='${tomorrow}')`;
+      } else if (this.state.filterBesok === false) {
+        string = `(tanggal='${tomorrow}')`;
+      } else if (this.state.filterHariIni === true) {
+        string = `(tanggal='${today}')`;
+      }
+    }
+
+    let unmodified = string;
+
+    if (this.state.penceramahSelectedString !== "" && string !== "") {
+      string = " and " + string;
+    }
+
+    let query = jsonata(
+      "kajian[" +
+        this.state.penceramahSelectedString +
+        string +
+        "]^(" +
+        this.state.sort +
+        "tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        this.state.batasAwal +
+        ".." +
+        this.state.batasAkhir +
+        "]]"
+    );
+
+    query = query.evaluate(KAJIAN);
+
+    if (arg === 0) {
+      this.setState({
+        filterHariIni: !this.state.filterHariIni,
+        filterWaktuStr: unmodified,
+        listJadwalKajian: query,
+      });
+    } else {
+      this.setState({
+        filterBesok: !this.state.filterBesok,
+        filterWaktuStr: unmodified,
+        listJadwalKajian: query,
+      });
+    }
+  };
+
+  handleSearchKota = (event) => {
+    let x = this.state.listKota;
+    let newX = [];
+
+    x.forEach((data) => {
+      if (data.nama.toLowerCase().includes(event.target.value) === true) {
+        newX.push(data);
+      }
+    });
+
+    this.setState({
+      listKotaFilter: newX,
+    });
+  };
+
+  handleOpenModalKota = () => {
+    this.setState({
+      showModalKota: true,
+      listKotaFilter: this.state.listKota,
+    });
+  };
+
+  handleCloseModalKota = () => {
+    this.setState({
+      showModalKota: false,
+    });
+  };
+
+  handleClickFilterKota = (id) => {
+    window.scrollTo(0, 283);
+
+    let x = this.state.listKota;
+    let target;
+
+    x.forEach((data) => {
+      if (data.id === id) {
+        target = data;
+      }
+    });
+
+    target.status = target.status * -1;
+
+    let y = this.state.kotaselected;
+
+    if (target.status === 1) {
+      y.push(target.nama);
+    } else {
+      let z = [];
+
+      y.forEach((data) => {
+        if (data !== target.nama) {
+          z.push(data);
+        }
+      });
+
+      y = z;
+    }
+
+    let stringY = this.arrayToStringKota(y);
+
+    let unmodified = stringY;
+
+    if (this.state.penceramahSelectedString !== "" && stringY !== "") {
+      stringY = " and " + stringY;
+    }
+
+    let query = jsonata(
+      "kajian[" +
+        this.state.penceramahSelectedString +
+        stringY +
+        "]^(" +
+        this.state.sort +
+        "tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        this.state.batasAwal +
+        ".." +
+        this.state.batasAkhir +
+        "]]"
+    );
+
+    query = query.evaluate(KAJIAN);
+
+    this.setState({
+      filterBesok: false,
+      filterHariIni: false,
+      filterWaktuStr: "",
+      pilihanWaktu: "",
+      listKota: x,
+      kotaselected: y,
+      kotaselectedString: unmodified,
+      listJadwalKajian: query,
+    });
+  };
+
+  arrayToStringKota = (arr) => {
+    let string = "";
+
+    arr.forEach((data, index) => {
+      if (index !== 0) {
+        string = string + " or [kota='" + data + "']";
+      } else {
+        string = string + "[kota='" + data + "']";
+      }
+    });
+
+    if (string !== "") {
+      string = "(" + string + ")";
+    }
+
+    return string;
   };
 
   render() {
@@ -275,12 +792,84 @@ export default class DaftarJadwalKajian extends Component {
           </div>
         </ReactModal>
 
-        <Navigation></Navigation>
-        <BreadCumb content={"Home / Jadwal Kajian"}></BreadCumb>
+        <ReactModal
+          isOpen={this.state.showModalKota}
+          className="kelas-modal"
+          overlayClassName="kelas-modal-overlay"
+        >
+          <div className="text-center">
+            <h3>Pilih Lokasi</h3>
+            <input
+              type="text"
+              className="global-rounded-search-primary py-2"
+              placeholder="Cari kota di sini.."
+              onChange={this.handleSearchKota}
+            />
+            <hr className="semi-bold-hr mx-5" />
+          </div>
+          <div className="d-flex justify-content-start flex-wrap">
+            {this.state.listKotaFilter.map((data) => {
+              return (
+                <div
+                  onClick={() => {
+                    this.handleClickFilterKota(data.id);
+                  }}
+                  key={data.id}
+                  className="filter-custom-width d-flex list-filter"
+                >
+                  <div
+                    className={
+                      data.status === 1
+                        ? "filter-check-box-primary filter-check-box-primary-selected mr-2"
+                        : "filter-check-box-primary mr-2"
+                    }
+                  ></div>
+                  <div>{data.nama}</div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="d-flex justify-content-end">
+            <button
+              className="custom-button-primary custom-button"
+              onClick={this.handleCloseModalKota}
+            >
+              Tutup
+            </button>
+          </div>
+        </ReactModal>
+
+        <Navigation reFetch={this.reFetch}></Navigation>
+        <BreadCumb
+          content={[
+            {
+              id: 1,
+              url: "/",
+              nama: "Beranda / ",
+            },
+            {
+              id: 2,
+              url: "/daftar-jadwal-kajian",
+              nama: "Jadwal Kajian",
+            },
+          ]}
+        ></BreadCumb>
         <Container>
           <div className="row">
             <div className="width-30">
               <div className="daftar-jadwal-kajian-filter text-white">
+                <button
+                  onClick={this.clearFilter}
+                  className="filter-button-primary"
+                >
+                  BERSIHKAN FILTER
+                  <FontAwesomeIcon
+                    icon="undo"
+                    className="ml-2"
+                  ></FontAwesomeIcon>
+                </button>
+                <hr className="line-filter" />
                 <div>Pilih Penceramah</div>
                 <div className="d-flex flex-column">
                   {this.state.listPenceramah.slice(0, 4).map((data) => {
@@ -305,52 +894,82 @@ export default class DaftarJadwalKajian extends Component {
                   })}
                   <button
                     onClick={this.handleOpenModal}
-                    className="form-control mt-2 custom-button-outline custom-button-outline-white"
+                    className="form-control mt-2 filter-button-secondary"
                   >
-                    SELENGKAPNYA
+                    PENCERAMAH LAINNYA
                   </button>
                 </div>
                 <hr className="line-filter" />
 
                 <div>Pilih Waktu</div>
                 <div className="d-flex flex-column">
-                  <div className="d-flex align-items-center">
-                    <div className="filter-check-box mr-2"></div>
+                  <div
+                    onClick={() => {
+                      this.applyWaktu(0);
+                    }}
+                    className="d-flex align-items-center list-filter"
+                  >
+                    <div
+                      className={
+                        this.state.filterHariIni
+                          ? "filter-check-box filter-check-box-selected mr-2"
+                          : "filter-check-box  mr-2"
+                      }
+                    ></div>
                     <div>Hari ini</div>
                   </div>
-                  <div className="d-flex align-items-center">
-                    <div className="filter-check-box mr-2"></div>
+                  <div
+                    onClick={() => {
+                      this.applyWaktu(1);
+                    }}
+                    className="d-flex align-items-center list-filter"
+                  >
+                    <div
+                      className={
+                        this.state.filterBesok
+                          ? "filter-check-box filter-check-box-selected mr-2"
+                          : "filter-check-box  mr-2"
+                      }
+                    ></div>
                     <div>Besok</div>
                   </div>
-                  <div>
-                    atau pilih jangka waktu <br /> Dari:
-                  </div>
-                  <input type="date" className="filter-rounded-search" />
-                  Sampai:
-                  <input type="date" className="filter-rounded-search" />
+                  <div>atau pilih waktu</div>
+                  <input
+                    value={this.state.pilihanWaktu}
+                    onChange={this.onChangePilihanWaktu}
+                    type="date"
+                    className="filter-rounded-search"
+                  />
                 </div>
                 <hr className="line-filter" />
 
                 <div>Pilih Lokasi</div>
                 <div className="d-flex flex-column">
-                  <div className="d-flex align-items-center">
-                    <div className="filter-check-box mr-2"></div>
-                    <div>Bandung</div>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <div className="filter-check-box mr-2"></div>
-                    <div>Jakarta</div>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <div className="filter-check-box mr-2"></div>
-                    <div>Bekasi</div>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <div className="filter-check-box mr-2"></div>
-                    <div>Depok</div>
-                  </div>
-                  <button className="form-control mt-2 custom-button-outline custom-button-outline-white">
-                    SELENGKAPNYA
+                  {this.state.listKota.slice(0, 4).map((data) => {
+                    return (
+                      <div
+                        onClick={() => {
+                          this.handleClickFilterKota(data.id);
+                        }}
+                        key={data.id}
+                        className="d-flex align-items-center list-filter"
+                      >
+                        <div
+                          className={
+                            data.status === 1
+                              ? "filter-check-box filter-check-box-selected mr-2"
+                              : "filter-check-box mr-2"
+                          }
+                        ></div>
+                        <div>{data.nama}</div>
+                      </div>
+                    );
+                  })}
+                  <button
+                    onClick={this.handleOpenModalKota}
+                    className="form-control mt-2 filter-button-secondary"
+                  >
+                    LOKASI LAINNYA
                   </button>
                 </div>
                 <hr className="line-filter" />

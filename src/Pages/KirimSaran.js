@@ -18,6 +18,10 @@ class KirimSaran extends Component {
     warningMsg: "",
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   onChangeJudul = (event) => {
     this.setState({
       inputJudul: event.target.value,
@@ -106,7 +110,27 @@ class KirimSaran extends Component {
           </div>
         </ReactModal>
         <Navigation></Navigation>
-        <BreadCumb content="Home / Hubungi Kami / Kirim Saran"></BreadCumb>
+        <BreadCumb
+          content={[
+            {
+              id: 1,
+              url: "/",
+              nama: "Beranda / ",
+            },
+            {
+              id: 2,
+              url: "/hubungi",
+              nama: "Hubungi / ",
+            },
+            {
+              id: 3,
+              url:
+                this.props.history.location.pathname +
+                this.props.history.location.search,
+              nama: "Kirim Saran",
+            },
+          ]}
+        ></BreadCumb>
 
         <Container className="mb-5">
           <h2 className="text-center mb-4">Kirim Saran</h2>

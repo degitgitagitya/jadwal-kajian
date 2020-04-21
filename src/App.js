@@ -17,6 +17,7 @@ import KirimSaran from "./Pages/KirimSaran";
 import Authentication from "./Contexts/Authentication";
 import NotFound from "./Pages/NotFound";
 import Profile from "./Pages/Profile";
+import DetailTanyaJawab from "./Pages/DetailTanyaJawab";
 import { ProtectedRoute } from "./Components/ProtectedRoute";
 
 export default function App() {
@@ -37,6 +38,10 @@ export default function App() {
           <Route path="/berlangganan" component={Berlangganan}></Route>
           <Route path="/detail-penceramah" component={DetailPenceramah}></Route>
           <Route path="/tanya-jawab" component={TanyaJawab}></Route>
+          <Route
+            path="/detail-tanya-jawab"
+            component={DetailTanyaJawab}
+          ></Route>
           <Route path="/kirim-jadwal" component={KirimJadwal}></Route>
           <Route path="/hubungi" component={Hubungi}></Route>
           <Route path="/masuk" component={Masuk}></Route>

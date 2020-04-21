@@ -3,6 +3,8 @@ import penceramah1 from "../Assets/penceramah1.jpg";
 import penceramah2 from "../Assets/penceramah2.jpg";
 import penceramah3 from "../Assets/penceramah3.jpg";
 import penceramah4 from "../Assets/penceramah4.jpeg";
+import tanya1 from "../Assets/tanya1.jpg";
+import tanya2 from "../Assets/tanya2.jpg";
 
 const x = [
   {
@@ -118,7 +120,7 @@ const x = [
     judul: "Madu 6",
     deskripsi:
       "Madu adalah cairan alamiah yang banyak mengandung zat gula yang dihasilkan oleh lebah (genus Apis) dari nektar bunga dan rasanya manis. Jika lebah madu sudah berada dalam sarang nektar dikeluarkan dari kantung madu yang terdapat pada abdomen dan dikunyah dikerjakan bersama lebah lain, jika nektar sudah halus ditempatkan pada sel, jika sel sudah penuh akan ditutup dan terjadi fermentasi.",
-    kota: "Bandung",
+    kota: "Bekasi",
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-23",
     waktu: "14:00",
@@ -130,7 +132,7 @@ const x = [
     judul: "Sirah Nabawiyah",
     deskripsi:
       "Sirah Nabawiyah pembahasannya bertumpu kepada perjalanan dan kisah hidup Nabi Muhammad S.A.W. secara rinci. Pembahasan juga menekankan sifat pribadi, akhlak serta cara dia menjalani kehidupan sehari yang bisa diteladani. Sedangkan sejarah pembahasannya hanya mengenai peristiwa-peristiwa yang dianggap penting yang terjadi pada masa lampau. Lebih difokuskan kepada perkembangan peradaban ataupun perkembangan suatu zaman.",
-    kota: "Bandung",
+    kota: "Bekasi",
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-20",
     waktu: "14:00",
@@ -142,7 +144,7 @@ const x = [
     judul: "Ramadan",
     deskripsi:
       "Kata Ramadan berasal dari akar kata bahasa Arab ramiḍa atau ar-ramaḍ, yang berarti panas yang menghanguskan atau kekeringan. Puasa Ramadhan dalam hukumnya merupakan fardhu (diwajibkan) untuk Muslim dewasa, kecuali mengalami halangan untuk melakukannya seperti sakit, dalam perjalanan, sudah tua, hamil, menyusui, diabetes atau sedang mengalami menstruasi.",
-    kota: "Bandung",
+    kota: "Tasikmalaya",
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-20",
     waktu: "19:00",
@@ -154,7 +156,7 @@ const x = [
     judul: "Kurma",
     deskripsi:
       "Kurma telah menjadi makanan pokok di Timur Tengah selama ribuan tahun lamanya. Pohon Kurma diyakini berasal dari sekitar Teluk Persia dan telah dibudidayakan sejak zaman kuno dari Mesopotamia ke prasejarah Mesir, kemungkinan pada awal 4000 SM. Bangsa Mesir Kuno menggunakan buahnya untuk dibuat menjadi anggur kurma dan memakannya pada saat panen. ",
-    kota: "Bandung",
+    kota: "Tasikmalaya",
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-19",
     waktu: "14:00",
@@ -166,7 +168,7 @@ const x = [
     judul: "Madu",
     deskripsi:
       "Madu adalah cairan alamiah yang banyak mengandung zat gula yang dihasilkan oleh lebah (genus Apis) dari nektar bunga dan rasanya manis. Jika lebah madu sudah berada dalam sarang nektar dikeluarkan dari kantung madu yang terdapat pada abdomen dan dikunyah dikerjakan bersama lebah lain, jika nektar sudah halus ditempatkan pada sel, jika sel sudah penuh akan ditutup dan terjadi fermentasi.",
-    kota: "Bandung",
+    kota: "Jakarta",
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-19",
     waktu: "19:00",
@@ -178,7 +180,7 @@ const x = [
     judul: "Madu 2",
     deskripsi:
       "Madu adalah cairan alamiah yang banyak mengandung zat gula yang dihasilkan oleh lebah (genus Apis) dari nektar bunga dan rasanya manis. Jika lebah madu sudah berada dalam sarang nektar dikeluarkan dari kantung madu yang terdapat pada abdomen dan dikunyah dikerjakan bersama lebah lain, jika nektar sudah halus ditempatkan pada sel, jika sel sudah penuh akan ditutup dan terjadi fermentasi.",
-    kota: "Bandung",
+    kota: "Jakarta",
     tempat: "Mesjid Trans Studio",
     tanggal: "2020-4-21",
     waktu: "19:00",
@@ -257,10 +259,122 @@ const k = [
   },
 ];
 
+const z = [
+  {
+    id: 1,
+    pertanyaan: "Keutamaan Kota Mekah?",
+    jawaban:
+      "Setiap kaum Muslimin mengetahui, Mekkah merupakan tempat yang sangat mulia. Setiap muslim memiliki impian untuk bisa menjejakkan kaki di kota itu. Baik untuk mengerjakan ibadah haji ataupun umrah saja. Kerinduan bertandang ke sana tetap besar, terlebih bagi orang yang pernah merasakan kenikmatan berada di kota suci tersebut.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya1,
+    waktu: "2020-4-22",
+  },
+  {
+    id: 2,
+    pertanyaan: "Apakah manfaat dari kurma?",
+    jawaban:
+      "Sebetulnya ada ribuan varietas kurma di dunia ini. Namun secara umum, dikelompokkan ke dalam tiga kategori utama, yaitu lunak, semi-lunak, dan kering. Beda kategori ini didasari oleh lamanya waktu panen di pohon. Pertumbuhan kurma umumnya memakan waktu sekitar 7 bulan sejak pertama kali tunasnya muncul hingga sepenuhnya matang. Nah, kurma cokelat keriput yang selama ini Anda marak temui di bulan Ramadan adalah versi keringnya. Disebut kering bukan karena sengaja dikeringkan di bawah matahari layaknya buah kering lain. Kurma tersebut sebetulnya sudah matang dan siap panen, tapi cenderung dibiarkan dulu di pohon untuk dipanen terakhir sehingga jadi mengandung sedikit air. Sementara yang lunak dan semi-lunak umumnya segera dipanen saat waktunya tiba untuk kemudian langsung disortir dan dikemas.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya2,
+    waktu: "2020-4-21",
+  },
+  {
+    id: 3,
+    pertanyaan: "Keutamaan Kota Mekah?",
+    jawaban:
+      "Setiap kaum Muslimin mengetahui, Mekkah merupakan tempat yang sangat mulia. Setiap muslim memiliki impian untuk bisa menjejakkan kaki di kota itu. Baik untuk mengerjakan ibadah haji ataupun umrah saja. Kerinduan bertandang ke sana tetap besar, terlebih bagi orang yang pernah merasakan kenikmatan berada di kota suci tersebut.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya1,
+    waktu: "2020-4-21",
+  },
+  {
+    id: 4,
+    pertanyaan: "Apakah manfaat dari kurma?",
+    jawaban:
+      "Sebetulnya ada ribuan varietas kurma di dunia ini. Namun secara umum, dikelompokkan ke dalam tiga kategori utama, yaitu lunak, semi-lunak, dan kering. Beda kategori ini didasari oleh lamanya waktu panen di pohon. Pertumbuhan kurma umumnya memakan waktu sekitar 7 bulan sejak pertama kali tunasnya muncul hingga sepenuhnya matang. Nah, kurma cokelat keriput yang selama ini Anda marak temui di bulan Ramadan adalah versi keringnya. Disebut kering bukan karena sengaja dikeringkan di bawah matahari layaknya buah kering lain. Kurma tersebut sebetulnya sudah matang dan siap panen, tapi cenderung dibiarkan dulu di pohon untuk dipanen terakhir sehingga jadi mengandung sedikit air. Sementara yang lunak dan semi-lunak umumnya segera dipanen saat waktunya tiba untuk kemudian langsung disortir dan dikemas.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya2,
+    waktu: "2020-4-21",
+  },
+  {
+    id: 5,
+    pertanyaan: "Keutamaan Kota Mekah?",
+    jawaban:
+      "Setiap kaum Muslimin mengetahui, Mekkah merupakan tempat yang sangat mulia. Setiap muslim memiliki impian untuk bisa menjejakkan kaki di kota itu. Baik untuk mengerjakan ibadah haji ataupun umrah saja. Kerinduan bertandang ke sana tetap besar, terlebih bagi orang yang pernah merasakan kenikmatan berada di kota suci tersebut.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya1,
+    waktu: "2020-4-21",
+  },
+  {
+    id: 6,
+    pertanyaan: "Apakah manfaat dari kurma?",
+    jawaban:
+      "Sebetulnya ada ribuan varietas kurma di dunia ini. Namun secara umum, dikelompokkan ke dalam tiga kategori utama, yaitu lunak, semi-lunak, dan kering. Beda kategori ini didasari oleh lamanya waktu panen di pohon. Pertumbuhan kurma umumnya memakan waktu sekitar 7 bulan sejak pertama kali tunasnya muncul hingga sepenuhnya matang. Nah, kurma cokelat keriput yang selama ini Anda marak temui di bulan Ramadan adalah versi keringnya. Disebut kering bukan karena sengaja dikeringkan di bawah matahari layaknya buah kering lain. Kurma tersebut sebetulnya sudah matang dan siap panen, tapi cenderung dibiarkan dulu di pohon untuk dipanen terakhir sehingga jadi mengandung sedikit air. Sementara yang lunak dan semi-lunak umumnya segera dipanen saat waktunya tiba untuk kemudian langsung disortir dan dikemas.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya2,
+    waktu: "2020-4-21",
+  },
+  {
+    id: 7,
+    pertanyaan: "Keutamaan Kota Mekah?",
+    jawaban:
+      "Setiap kaum Muslimin mengetahui, Mekkah merupakan tempat yang sangat mulia. Setiap muslim memiliki impian untuk bisa menjejakkan kaki di kota itu. Baik untuk mengerjakan ibadah haji ataupun umrah saja. Kerinduan bertandang ke sana tetap besar, terlebih bagi orang yang pernah merasakan kenikmatan berada di kota suci tersebut.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya1,
+    waktu: "2020-4-21",
+  },
+  {
+    id: 8,
+    pertanyaan: "Apakah manfaat dari kurma?",
+    jawaban:
+      "Sebetulnya ada ribuan varietas kurma di dunia ini. Namun secara umum, dikelompokkan ke dalam tiga kategori utama, yaitu lunak, semi-lunak, dan kering. Beda kategori ini didasari oleh lamanya waktu panen di pohon. Pertumbuhan kurma umumnya memakan waktu sekitar 7 bulan sejak pertama kali tunasnya muncul hingga sepenuhnya matang. Nah, kurma cokelat keriput yang selama ini Anda marak temui di bulan Ramadan adalah versi keringnya. Disebut kering bukan karena sengaja dikeringkan di bawah matahari layaknya buah kering lain. Kurma tersebut sebetulnya sudah matang dan siap panen, tapi cenderung dibiarkan dulu di pohon untuk dipanen terakhir sehingga jadi mengandung sedikit air. Sementara yang lunak dan semi-lunak umumnya segera dipanen saat waktunya tiba untuk kemudian langsung disortir dan dikemas.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya2,
+    waktu: "2020-4-21",
+  },
+  {
+    id: 9,
+    pertanyaan: "Keutamaan Kota Mekah?",
+    jawaban:
+      "Setiap kaum Muslimin mengetahui, Mekkah merupakan tempat yang sangat mulia. Setiap muslim memiliki impian untuk bisa menjejakkan kaki di kota itu. Baik untuk mengerjakan ibadah haji ataupun umrah saja. Kerinduan bertandang ke sana tetap besar, terlebih bagi orang yang pernah merasakan kenikmatan berada di kota suci tersebut.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya1,
+    waktu: "2020-4-21",
+  },
+  {
+    id: 10,
+    pertanyaan: "Apakah manfaat dari kurma?",
+    jawaban:
+      "Sebetulnya ada ribuan varietas kurma di dunia ini. Namun secara umum, dikelompokkan ke dalam tiga kategori utama, yaitu lunak, semi-lunak, dan kering. Beda kategori ini didasari oleh lamanya waktu panen di pohon. Pertumbuhan kurma umumnya memakan waktu sekitar 7 bulan sejak pertama kali tunasnya muncul hingga sepenuhnya matang. Nah, kurma cokelat keriput yang selama ini Anda marak temui di bulan Ramadan adalah versi keringnya. Disebut kering bukan karena sengaja dikeringkan di bawah matahari layaknya buah kering lain. Kurma tersebut sebetulnya sudah matang dan siap panen, tapi cenderung dibiarkan dulu di pohon untuk dipanen terakhir sehingga jadi mengandung sedikit air. Sementara yang lunak dan semi-lunak umumnya segera dipanen saat waktunya tiba untuk kemudian langsung disortir dan dikemas.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya2,
+    waktu: "2020-4-21",
+  },
+  {
+    id: 11,
+    pertanyaan: "Keutamaan Kota Mekah?",
+    jawaban:
+      "Setiap kaum Muslimin mengetahui, Mekkah merupakan tempat yang sangat mulia. Setiap muslim memiliki impian untuk bisa menjejakkan kaki di kota itu. Baik untuk mengerjakan ibadah haji ataupun umrah saja. Kerinduan bertandang ke sana tetap besar, terlebih bagi orang yang pernah merasakan kenikmatan berada di kota suci tersebut.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya1,
+    waktu: "2020-4-21",
+  },
+  {
+    id: 12,
+    pertanyaan: "Apakah manfaat dari kurma?",
+    jawaban:
+      "Sebetulnya ada ribuan varietas kurma di dunia ini. Namun secara umum, dikelompokkan ke dalam tiga kategori utama, yaitu lunak, semi-lunak, dan kering. Beda kategori ini didasari oleh lamanya waktu panen di pohon. Pertumbuhan kurma umumnya memakan waktu sekitar 7 bulan sejak pertama kali tunasnya muncul hingga sepenuhnya matang. Nah, kurma cokelat keriput yang selama ini Anda marak temui di bulan Ramadan adalah versi keringnya. Disebut kering bukan karena sengaja dikeringkan di bawah matahari layaknya buah kering lain. Kurma tersebut sebetulnya sudah matang dan siap panen, tapi cenderung dibiarkan dulu di pohon untuk dipanen terakhir sehingga jadi mengandung sedikit air. Sementara yang lunak dan semi-lunak umumnya segera dipanen saat waktunya tiba untuk kemudian langsung disortir dan dikemas.",
+    penceramah: "Khalid Basalamah",
+    gambar: tanya2,
+    waktu: "2020-4-21",
+  },
+];
+
 const KAJIAN = Object({
   kajian: x,
   penceramah: y,
   kota: k,
+  tanya: z,
 });
 
 export default KAJIAN;

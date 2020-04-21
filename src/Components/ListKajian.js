@@ -1,14 +1,22 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import ItemSlide from "../Components/ItemSlide";
+import { withRouter } from "react-router-dom";
 
-export default class ListKajian extends Component {
+class ListKajian extends Component {
   render() {
     return (
       <Container>
         <div className="d-flex justify-content-between align-items-center">
           <h3>{this.props.title}</h3>
-          <div>Lainnya</div>
+          <div
+            onClick={() => {
+              this.props.history.push(this.props.lainnya);
+            }}
+            className="span-clickable"
+          >
+            Lainnya
+          </div>
         </div>
         <hr className="semi-bold-hr" />
         <div className="d-flex justify-content-between align-items-center">
@@ -23,3 +31,5 @@ export default class ListKajian extends Component {
     );
   }
 }
+
+export default withRouter(ListKajian);

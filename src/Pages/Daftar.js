@@ -29,6 +29,10 @@ class Daftar extends Component {
     });
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   onChangeEmail = (event) => {
     this.setState({
       inputEmail: event.target.value,
@@ -115,7 +119,20 @@ class Daftar extends Component {
           </div>
         </ReactModal>
         <Navigation></Navigation>
-        <BreadCumb content="Home / Daftar"></BreadCumb>
+        <BreadCumb
+          content={[
+            {
+              id: 1,
+              url: "/",
+              nama: "Beranda / ",
+            },
+            {
+              id: 2,
+              url: "/daftar",
+              nama: "Daftar",
+            },
+          ]}
+        ></BreadCumb>
         <Container className="mb-5">
           <h2 className="text-center mb-4">Daftar</h2>
           <div className="card-berlangganan">

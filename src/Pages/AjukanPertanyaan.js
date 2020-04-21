@@ -57,6 +57,10 @@ class AjukanPertanyaan extends Component {
     }
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <div>
@@ -106,7 +110,25 @@ class AjukanPertanyaan extends Component {
           </div>
         </ReactModal>
         <Navigation></Navigation>
-        <BreadCumb content="Home / Tanya Jawab / Ajukan Pertanyaan"></BreadCumb>
+        <BreadCumb
+          content={[
+            {
+              id: 1,
+              url: "/",
+              nama: "Beranda / ",
+            },
+            {
+              id: 2,
+              url: "/tanya-jawab",
+              nama: "Tanya Jawab / ",
+            },
+            {
+              id: 3,
+              url: "/ajukan-pertanyaan",
+              nama: "Ajukan Pertanyaan",
+            },
+          ]}
+        ></BreadCumb>
         <Container className="mb-5">
           <h2 className="text-center mb-4">Ajukan Pertanyaan</h2>
           <div className="card-berlangganan">

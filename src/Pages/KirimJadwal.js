@@ -26,6 +26,10 @@ class KirimJadwal extends Component {
     warningMsg: "",
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   onChangeNamaPengirim = (event) => {
     this.setState({
       inputNamaPengirim: event.target.value,
@@ -154,7 +158,27 @@ class KirimJadwal extends Component {
         </ReactModal>
 
         <Navigation></Navigation>
-        <BreadCumb content="Home / Hubungi Kami / Kirim Jadwal"></BreadCumb>
+        <BreadCumb
+          content={[
+            {
+              id: 1,
+              url: "/",
+              nama: "Beranda / ",
+            },
+            {
+              id: 2,
+              url: "/hubungi",
+              nama: "Hubungi / ",
+            },
+            {
+              id: 3,
+              url:
+                this.props.history.location.pathname +
+                this.props.history.location.search,
+              nama: "Kirim Jadwal",
+            },
+          ]}
+        ></BreadCumb>
 
         <Container className="mb-5">
           <h2 className="text-center mb-4">Kirim Jadwal</h2>

@@ -17,7 +17,7 @@ export default class DaftarPenceramah extends Component {
     super(props);
 
     const awal = 0;
-    const akhir = 2;
+    const akhir = 9;
 
     let x = jsonata("penceramah^(<nama)[[" + awal + ".." + akhir + "]]");
     x = x.evaluate(KAJIAN);
@@ -36,8 +36,6 @@ export default class DaftarPenceramah extends Component {
       });
     }
 
-    console.log(unmodified);
-
     this.state = {
       listPenceramah: x,
       listPenceramahUnmodified: unmodified,
@@ -48,6 +46,10 @@ export default class DaftarPenceramah extends Component {
       halaman: 1,
       sort: "<",
     };
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
   handleFetchPaging = (page) => {
@@ -61,6 +63,8 @@ export default class DaftarPenceramah extends Component {
     );
 
     const res = x.evaluate(KAJIAN);
+
+    window.scrollTo(0, 0);
 
     this.setState({
       batasAwal: a,
@@ -122,7 +126,20 @@ export default class DaftarPenceramah extends Component {
     return (
       <div>
         <Navigation></Navigation>
-        <BreadCumb content="Home / Penceramah"></BreadCumb>
+        <BreadCumb
+          content={[
+            {
+              id: 1,
+              url: "/",
+              nama: "Beranda / ",
+            },
+            {
+              id: 2,
+              url: "/daftar-penceramah",
+              nama: "Daftar Penceramah",
+            },
+          ]}
+        ></BreadCumb>
 
         <Container>
           <div className="d-flex justify-content-end">
@@ -146,12 +163,6 @@ export default class DaftarPenceramah extends Component {
               placeholder="Cari penceramah.."
               onChange={this.cariPenceramah}
             />
-            <button className="daftar-penceramah-search-button">
-              <FontAwesomeIcon
-                className="text-white"
-                icon="search"
-              ></FontAwesomeIcon>
-            </button>
           </div>
         </Container>
 

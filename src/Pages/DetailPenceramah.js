@@ -44,12 +44,36 @@ export default class DetailPenceramah extends Component {
     };
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const { nama, deskripsi, gambar } = this.state.detailPenceramah;
     return (
       <div>
         <Navigation></Navigation>
-        <BreadCumb content="Home / Daftar Penceramah / Detail Penceramah"></BreadCumb>
+        <BreadCumb
+          content={[
+            {
+              id: 1,
+              url: "/",
+              nama: "Beranda / ",
+            },
+            {
+              id: 2,
+              url: "/daftar-penceramah",
+              nama: "Penceramah / ",
+            },
+            {
+              id: 3,
+              url:
+                this.props.history.location.pathname +
+                this.props.history.location.search,
+              nama: "Detail Penceramah",
+            },
+          ]}
+        ></BreadCumb>
         <Container>
           <div className="detail-penceramah-content">
             <div className="d-flex justify-content-center text-center">
@@ -76,6 +100,7 @@ export default class DetailPenceramah extends Component {
           title="Kajian Dari Penceramah"
           data={this.state.listKajian}
           jumlahKajian={this.state.jumlahKajian}
+          lainnya={`/daftar-jadwal-kajian?penceramah=${nama}`}
         ></ListKajian>
         <br />
         <br />

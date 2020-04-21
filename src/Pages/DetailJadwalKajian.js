@@ -36,6 +36,10 @@ class DetailJadwalKajian extends Component {
     };
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   fetchContent = () => {
     const URLParams = new URLSearchParams(this.props.history.location.search);
     const id = URLParams.get("id");
@@ -74,7 +78,27 @@ class DetailJadwalKajian extends Component {
     return (
       <div>
         <Navigation></Navigation>
-        <BreadCumb content="Home / Jadwal Kajian / Detail Kajian"></BreadCumb>
+        <BreadCumb
+          content={[
+            {
+              id: 1,
+              url: "/",
+              nama: "Beranda / ",
+            },
+            {
+              id: 2,
+              url: "/daftar-jadwal-kajian",
+              nama: "Jadwal Kajian / ",
+            },
+            {
+              id: 3,
+              url:
+                this.props.history.location.pathname +
+                this.props.history.location.search,
+              nama: "Detail Kajian",
+            },
+          ]}
+        ></BreadCumb>
         <br />
         <Container>
           <div className="row">
@@ -157,6 +181,7 @@ class DetailJadwalKajian extends Component {
           title="Kajian Lainnya"
           data={this.state.listKajian}
           jumlahKajian={5}
+          lainnya={"/daftar-jadwal-kajian"}
         ></ListKajian>
 
         <Footer></Footer>

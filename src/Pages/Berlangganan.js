@@ -63,6 +63,7 @@ class Berlangganan extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const url = new URL(window.location.href);
     const email = url.searchParams.get("email");
     if (email !== null) {
@@ -330,7 +331,20 @@ class Berlangganan extends Component {
         </ReactModal>
 
         <Navigation></Navigation>
-        <BreadCumb content="Home / Berlangganan"></BreadCumb>
+        <BreadCumb
+          content={[
+            {
+              id: 1,
+              url: "/",
+              nama: "Beranda / ",
+            },
+            {
+              id: 2,
+              url: "/berlangganan",
+              nama: "Berlangganan",
+            },
+          ]}
+        ></BreadCumb>
         <Container className="mb-5">
           <h2 className="text-center mb-4">Form Berlangganan</h2>
           <div className="card-berlangganan">

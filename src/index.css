@@ -12,6 +12,10 @@
   --warning-dark: #ec8a00;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Raleway", sans-serif;
@@ -264,4 +268,9 @@ p {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.span-clickable:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

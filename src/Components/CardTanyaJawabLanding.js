@@ -1,26 +1,28 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
-import Tanya from "../Assets/tanya1.jpg";
 import "./CardTanyaJawabLanding.css";
 
-export default class CardTanyaJawabLanding extends Component {
+class CardTanyaJawabLanding extends Component {
   render() {
+    const { pertanyaan, jawaban, gambar, waktu, id } = this.props.data;
     return (
-      <div className="card-tanya-jawab d-flex mb-4">
-        <img src={Tanya} alt="kajian" className="card-tanya-image" />
+      <div
+        onClick={() => {
+          this.props.history.push(`/detail-tanya-jawab?id=${id}`);
+        }}
+        className="card-tanya-jawab d-flex mb-4"
+      >
+        <img src={gambar} alt="kajian" className="card-tanya-image" />
         <div className="card-tanya-detail">
-          <div className="card-tanya-judul">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </div>
+          <div className="card-tanya-judul">{pertanyaan}</div>
           <div className="card-tanya-deskripsi">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-            similique fugit id, veritatis cumque, voluptates obcaecati dolor
-            molestias possimus qui facere fugiat quaerat, dolores
+            {jawaban.substring(0, 200)}
           </div>
           <div className="d-flex justify-content-between mt-4">
             <div className="card-tanya-time">
               {" "}
-              <i className="fa fa-clock mr-1"></i> 1 jam yang lalu
+              <i className="fa fa-clock mr-1"></i> {waktu}
             </div>
             <div className="card-tanya-action">
               SELENGKAPNYA <i className="fa fa-arrow-right ml-1"></i>
@@ -31,3 +33,5 @@ export default class CardTanyaJawabLanding extends Component {
     );
   }
 }
+
+export default withRouter(CardTanyaJawabLanding);

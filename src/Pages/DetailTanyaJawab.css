@@ -1,0 +1,23 @@
+.detail-tanya-jawab-container {
+  background-color: var(--light-green);
+  width: 100%;
+  padding: 1.25rem;
+}
+
+.detail-tanya-jawab-penceramah-image {
+  object-fit: cover;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.detail-tanya-jawab-penceramah-nama {
+  font-weight: bold;
+}
+
+.detail-tanya-jawab-image-header {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
