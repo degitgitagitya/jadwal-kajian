@@ -188,220 +188,268 @@ class Berlangganan extends Component {
   render() {
     return (
       <div>
-        <ReactModal
-          isOpen={this.state.showModalPenceramah}
-          className="kelas-modal"
-          overlayClassName="kelas-modal-overlay"
-        >
-          <div className="text-center">
-            <h3>Pilih Penceramah </h3>
-            <input
-              type="text"
-              className="global-rounded-search-primary py-2"
-              placeholder="Cari nama penceramah di sini.."
-              onChange={this.handleSearchPenceramah}
-            />
-            <hr className="semi-bold-hr mx-5" />
-          </div>
-          <div className="d-flex justify-content-start flex-wrap">
-            {this.state.contentPenceramahFilter.map((data) => {
-              return (
-                <div
-                  onClick={() => {
-                    this.handleClickFilterPenceramah(data.id);
-                  }}
-                  key={data.id}
-                  className="filter-custom-width d-flex list-filter"
-                >
-                  <div
-                    className={
-                      data.status === 1
-                        ? "filter-check-box-primary filter-check-box-primary-selected mr-2"
-                        : "filter-check-box-primary mr-2"
-                    }
-                  ></div>
-                  <div>{data.nama}</div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="d-flex justify-content-end">
-            <button
-              className="custom-button-primary custom-button"
-              onClick={this.toggleModalPenceramah}
+        <div className="d-none d-lg-block">
+          <div>
+            <ReactModal
+              isOpen={this.state.showModalPenceramah}
+              className="kelas-modal"
+              overlayClassName="kelas-modal-overlay"
             >
-              Tutup
-            </button>
-          </div>
-        </ReactModal>
-
-        <ReactModal
-          isOpen={this.state.showModalLokasi}
-          className="kelas-modal"
-          overlayClassName="kelas-modal-overlay"
-        >
-          <div className="text-center">
-            <h3>Pilih Lokasi</h3>
-            <input
-              type="text"
-              className="global-rounded-search-primary py-2"
-              placeholder="Cari lokasi di sini.."
-              onChange={this.handleSearchLokasi}
-            />
-            <hr className="semi-bold-hr mx-5" />
-          </div>
-          <div className="d-flex justify-content-start flex-wrap">
-            {this.state.contentLokasiFilter.map((data) => {
-              return (
-                <div
-                  onClick={() => {
-                    this.handleClickFilterLokasi(data.id);
-                  }}
-                  key={data.id}
-                  className="filter-custom-width d-flex list-filter"
-                >
-                  <div
-                    className={
-                      data.status === 1
-                        ? "filter-check-box-primary filter-check-box-primary-selected mr-2"
-                        : "filter-check-box-primary mr-2"
-                    }
-                  ></div>
-                  <div>{data.nama}</div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="d-flex justify-content-end">
-            <button
-              className="custom-button-primary custom-button"
-              onClick={this.toggleModalLokasi}
-            >
-              Tutup
-            </button>
-          </div>
-        </ReactModal>
-
-        <ReactModal
-          isOpen={this.state.showModalBerlangganan}
-          className="kelas-modal"
-          overlayClassName="kelas-modal-overlay"
-        >
-          <div className="text-center">
-            <h3>Sukses Berlangganan</h3>
-            <h1>
-              <FontAwesomeIcon icon="check-circle"></FontAwesomeIcon>
-            </h1>
-            <p>
-              Anda telah berhasil berlangganan, setiap informasi yang relevan
-              akan dikirim ke email anda
-            </p>
-
-            <div className="d-flex justify-content-center">
-              <button
-                className="custom-button-primary custom-button"
-                onClick={() => {
-                  this.redirectTo("/");
-                }}
-              >
-                Kembali Ke Beranda
-              </button>
-
-              <button
-                className="custom-button-info custom-button ml-2"
-                onClick={() => {
-                  this.redirectTo("/daftar-jadwal-kajian");
-                }}
-              >
-                Lihat Jadwal Kajian
-              </button>
-
-              <button
-                className="custom-button-warning custom-button ml-2"
-                onClick={() => {
-                  this.redirectTo("/tanya-jawab");
-                }}
-              >
-                Lihat Tanya Jawab
-              </button>
-            </div>
-          </div>
-        </ReactModal>
-
-        <Navigation></Navigation>
-        <BreadCumb
-          content={[
-            {
-              id: 1,
-              url: "/",
-              nama: "Beranda / ",
-            },
-            {
-              id: 2,
-              url: "/berlangganan",
-              nama: "Berlangganan",
-            },
-          ]}
-        ></BreadCumb>
-        <Container className="mb-5">
-          <h2 className="text-center mb-4">Form Berlangganan</h2>
-          <div className="card-berlangganan">
-            <div className="row justify-content-center">
-              <div className="col-4">
-                <div className="primary-bold">
-                  Email <span className="text-danger">*</span>
-                </div>
+              <div className="text-center">
+                <h3>Pilih Penceramah </h3>
                 <input
                   type="text"
-                  className="form-control mb-3"
-                  placeholder="Masukan email"
-                  value={this.state.inputEmail}
-                  onChange={this.changeInputEmail}
+                  className="global-rounded-search-primary py-2"
+                  placeholder="Cari nama penceramah di sini.."
+                  onChange={this.handleSearchPenceramah}
                 />
-                <div className="primary-bold">
-                  Preferensi Penceramah <span className="text-danger">*</span>
-                </div>
+                <hr className="semi-bold-hr mx-5" />
+              </div>
+              <div className="d-flex justify-content-start flex-wrap">
+                {this.state.contentPenceramahFilter.map((data) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        this.handleClickFilterPenceramah(data.id);
+                      }}
+                      key={data.id}
+                      className="filter-custom-width d-flex list-filter"
+                    >
+                      <div
+                        className={
+                          data.status === 1
+                            ? "filter-check-box-primary filter-check-box-primary-selected mr-2"
+                            : "filter-check-box-primary mr-2"
+                        }
+                      ></div>
+                      <div>{data.nama}</div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="d-flex justify-content-end">
                 <button
+                  className="custom-button-primary custom-button"
                   onClick={this.toggleModalPenceramah}
-                  className="custom-button-outline custom-button-outline-primary mb-3"
                 >
-                  PILIH PENCERAMAH
+                  Tutup
                 </button>
-                <div className="primary-bold">
-                  Preferensi Lokasi <span className="text-danger">*</span>
-                </div>
+              </div>
+            </ReactModal>
+
+            <ReactModal
+              isOpen={this.state.showModalLokasi}
+              className="kelas-modal"
+              overlayClassName="kelas-modal-overlay"
+            >
+              <div className="text-center">
+                <h3>Pilih Lokasi</h3>
+                <input
+                  type="text"
+                  className="global-rounded-search-primary py-2"
+                  placeholder="Cari lokasi di sini.."
+                  onChange={this.handleSearchLokasi}
+                />
+                <hr className="semi-bold-hr mx-5" />
+              </div>
+              <div className="d-flex justify-content-start flex-wrap">
+                {this.state.contentLokasiFilter.map((data) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        this.handleClickFilterLokasi(data.id);
+                      }}
+                      key={data.id}
+                      className="filter-custom-width d-flex list-filter"
+                    >
+                      <div
+                        className={
+                          data.status === 1
+                            ? "filter-check-box-primary filter-check-box-primary-selected mr-2"
+                            : "filter-check-box-primary mr-2"
+                        }
+                      ></div>
+                      <div>{data.nama}</div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="d-flex justify-content-end">
                 <button
+                  className="custom-button-primary custom-button"
                   onClick={this.toggleModalLokasi}
-                  className="custom-button-outline custom-button-outline-primary"
                 >
-                  PILIH LOKASI
+                  Tutup
                 </button>
-                <br />
-                <br />
-                <div className="text-danger mb-2">
-                  {this.state.warning ? this.state.warningMsg : ""}
-                </div>
+              </div>
+            </ReactModal>
+
+            <ReactModal
+              isOpen={this.state.showModalBerlangganan}
+              className="kelas-modal"
+              overlayClassName="kelas-modal-overlay"
+            >
+              <div className="text-center">
+                <h3>Sukses Berlangganan</h3>
+                <h1>
+                  <FontAwesomeIcon icon="check-circle"></FontAwesomeIcon>
+                </h1>
+                <p>
+                  Anda telah berhasil berlangganan, setiap informasi yang
+                  relevan akan dikirim ke email anda
+                </p>
+
                 <div className="d-flex justify-content-center">
                   <button
+                    className="custom-button-primary custom-button"
                     onClick={() => {
-                      if (this.validateInput() === "Sukses") {
-                        this.toggleModalBerlangganan();
-                      } else {
-                        this.toggleWarning(this.validateInput());
-                      }
+                      this.redirectTo("/");
                     }}
-                    className="custom-button custom-button-primary"
                   >
-                    MULAI BERLANGGANAN
+                    Kembali Ke Beranda
+                  </button>
+
+                  <button
+                    className="custom-button-info custom-button ml-2"
+                    onClick={() => {
+                      this.redirectTo("/daftar-jadwal-kajian");
+                    }}
+                  >
+                    Lihat Jadwal Kajian
+                  </button>
+
+                  <button
+                    className="custom-button-warning custom-button ml-2"
+                    onClick={() => {
+                      this.redirectTo("/tanya-jawab");
+                    }}
+                  >
+                    Lihat Tanya Jawab
                   </button>
                 </div>
               </div>
-            </div>
-            <WajibDiisi></WajibDiisi>
+            </ReactModal>
+
+            <Navigation></Navigation>
+            <BreadCumb
+              content={[
+                {
+                  id: 1,
+                  url: "/",
+                  nama: "Beranda / ",
+                },
+                {
+                  id: 2,
+                  url: "/berlangganan",
+                  nama: "Berlangganan",
+                },
+              ]}
+            ></BreadCumb>
+            <Container className="mb-5">
+              <h2 className="text-center mb-4">Form Berlangganan</h2>
+              <div className="card-berlangganan">
+                <div className="row justify-content-center">
+                  <div className="col-4">
+                    <div className="primary-bold">
+                      Email <span className="text-danger">*</span>
+                    </div>
+                    <input
+                      type="text"
+                      className="form-control mb-3"
+                      placeholder="Masukan email"
+                      value={this.state.inputEmail}
+                      onChange={this.changeInputEmail}
+                    />
+                    <div className="primary-bold">
+                      Preferensi Penceramah{" "}
+                      <span className="text-danger">*</span>
+                    </div>
+                    <button
+                      onClick={this.toggleModalPenceramah}
+                      className="custom-button-outline custom-button-outline-primary mb-3"
+                    >
+                      PILIH PENCERAMAH
+                    </button>
+                    <div className="primary-bold">
+                      Preferensi Lokasi <span className="text-danger">*</span>
+                    </div>
+                    <button
+                      onClick={this.toggleModalLokasi}
+                      className="custom-button-outline custom-button-outline-primary"
+                    >
+                      PILIH LOKASI
+                    </button>
+                    <br />
+                    <br />
+                    <div className="text-danger mb-2">
+                      {this.state.warning ? this.state.warningMsg : ""}
+                    </div>
+                    <div className="d-flex justify-content-center">
+                      <button
+                        onClick={() => {
+                          if (this.validateInput() === "Sukses") {
+                            this.toggleModalBerlangganan();
+                          } else {
+                            this.toggleWarning(this.validateInput());
+                          }
+                        }}
+                        className="custom-button custom-button-primary"
+                      >
+                        MULAI BERLANGGANAN
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <WajibDiisi></WajibDiisi>
+              </div>
+            </Container>
           </div>
-        </Container>
+        </div>
+        <div className="d-block d-lg-none">
+          <Navigation title="BERLANGGANAN"></Navigation>
+          <BreadCumb
+            content={[
+              {
+                id: 1,
+                url: "/",
+                nama: "Beranda / ",
+              },
+              {
+                id: 2,
+                url: "/berlangganan",
+                nama: "Berlangganan",
+              },
+            ]}
+          ></BreadCumb>
+
+          <Container>
+            <div className="text-semi-bold">Email</div>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Masukan Email di sini..."
+            />
+
+            <div className="text-semi-bold mt-2">Preferensi Penceramah</div>
+            <button className="custom-button-outline w-100 custom-button-outline-primary py-2">
+              Pilih Penceramah
+            </button>
+
+            <div className="text-semi-bold mt-2">Preferensi Lokasi</div>
+            <button className="custom-button-outline w-100 custom-button-outline-primary py-2">
+              Pilih Lokasi
+            </button>
+
+            <button className="custom-button custom-button-primary w-100 py-1 mt-4">
+              BERLANGGANAN
+            </button>
+          </Container>
+
+          <br />
+          <br />
+        </div>
 
         <Footer></Footer>
       </div>

@@ -274,3 +274,54 @@ p {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.mobile-title-page {
+  font-weight: bold;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-semi-bold {
+  font-weight: 600;
+}
+
+.kelas-modal-mobile {
+  z-index: 1000;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  bottom: 0%;
+  background-color: white;
+  box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
+    0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
+    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+}
+
+.kelas-modal-overlay-mobile {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.kelas-modal-mobile-pop-up {
+  z-index: 1000;
+  position: absolute;
+  top: 20%;
+  left: 4%;
+  right: 4%;
+  bottom: 20%;
+  background-color: white;
+  box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
+    0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
+    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+  padding: 1.25rem;
+}

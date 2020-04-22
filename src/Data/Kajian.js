@@ -187,6 +187,18 @@ const x = [
     penceramah: "Syafiq Riza Basalamah",
     gambar: kajian1,
   },
+  {
+    id: 16,
+    judul: "Madu 2",
+    deskripsi:
+      "Madu adalah cairan alamiah yang banyak mengandung zat gula yang dihasilkan oleh lebah (genus Apis) dari nektar bunga dan rasanya manis. Jika lebah madu sudah berada dalam sarang nektar dikeluarkan dari kantung madu yang terdapat pada abdomen dan dikunyah dikerjakan bersama lebah lain, jika nektar sudah halus ditempatkan pada sel, jika sel sudah penuh akan ditutup dan terjadi fermentasi.",
+    kota: "Jakarta",
+    tempat: "Mesjid Trans Studio",
+    tanggal: "2020-4-23",
+    waktu: "19:00",
+    penceramah: "Syafiq Riza Basalamah",
+    gambar: kajian1,
+  },
 ];
 
 const y = [

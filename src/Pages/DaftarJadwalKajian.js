@@ -255,6 +255,7 @@ export default class DaftarJadwalKajian extends Component {
       searchNotification: search,
       kotaselectedString: "",
       listKotaFilter: arrayKota,
+      searchContent: content,
       showModalKota: false,
     });
   };

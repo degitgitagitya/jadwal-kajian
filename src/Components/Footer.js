@@ -15,7 +15,8 @@ class Footer extends Component {
         <Container className="py-5">
           <div className="row justify-content-center">
             <div className="col-md-8 text-center">
-              <h2>Jadwal Kajian</h2>
+              <h2 className="d-none d-lg-block">Jadwal Kajian</h2>
+              <h3 className="d-block d-lg-none">Jadwal Kajian</h3>
               <div className="row">
                 <div
                   onClick={() => {
