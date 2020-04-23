@@ -32,3 +32,16 @@
 .card-kajian-lokasi {
   font-size: 12px;
 }
+
+.mobile-card-kajian {
+  width: 40vw;
+  background-color: white;
+  height: 240px;
+  margin-top: 1rem;
+}
+
+.mobile-card-kajian-image {
+  object-fit: cover;
+  height: 45%;
+  width: 100%;
+}

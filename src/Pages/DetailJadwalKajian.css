@@ -43,3 +43,10 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+.mobile-detail-jadwal-kajian-penceramah-image-container {
+  height: 20vw;
+  width: 20vw;
+  border-radius: 50%;
+  object-fit: cover;
+}

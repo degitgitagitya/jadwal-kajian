@@ -118,7 +118,7 @@ class Daftar extends Component {
             </div>
           </div>
         </ReactModal>
-        <Navigation></Navigation>
+        <Navigation title="DAFTAR"></Navigation>
         <BreadCumb
           content={[
             {
@@ -133,11 +133,101 @@ class Daftar extends Component {
             },
           ]}
         ></BreadCumb>
-        <Container className="mb-5">
-          <h2 className="text-center mb-4">Daftar</h2>
-          <div className="card-berlangganan">
+
+        {/* Desktop */}
+
+        <div className="d-none d-lg-block">
+          <Container className="mb-5">
+            <h2 className="text-center mb-4">Daftar</h2>
+            <div className="card-berlangganan">
+              <div className="row justify-content-center">
+                <div className="col-4">
+                  <div className="primary-bold">
+                    Nama <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Nama"
+                    value={this.state.inputNama}
+                    onChange={this.onChangeNama}
+                  />
+                  <div className="primary-bold">
+                    Email <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Email"
+                    value={this.state.inputEmail}
+                    onChange={this.onChangeEmail}
+                  />
+                  <div className="primary-bold">
+                    Kata Sandi <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="password"
+                    className="form-control mb-3"
+                    placeholder="Kata Sandi"
+                    value={this.state.inputPassword}
+                    onChange={this.onChangePassword}
+                  />
+                  <div className="primary-bold">
+                    Konfirmasi Kata Sandi <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="password"
+                    className="form-control mb-3"
+                    placeholder="Konfirmasi Kata Sandi"
+                    value={this.state.inputConfirmPassword}
+                    onChange={this.onChangeConfirmPassword}
+                  />
+                  <div className="text-danger mb-2">
+                    {this.state.warning ? this.state.warningMsg : ""}
+                  </div>
+                  <div className="d-flex justify-content-center">
+                    <button
+                      onClick={() => {
+                        if (this.validateInput() === "Sukses") {
+                          this.auth();
+                          this.toggleModal();
+                        } else {
+                          this.toggleWarning(this.validateInput());
+                        }
+                      }}
+                      className="custom-button custom-button-primary"
+                    >
+                      DAFTAR
+                    </button>
+                  </div>
+
+                  <div className="d-flex justify-content-center mt-2">
+                    <div>Sudah memiliki akun?</div>
+                  </div>
+
+                  <div className="d-flex justify-content-center mt-2">
+                    <button
+                      onClick={() => {
+                        this.props.history.push("/masuk");
+                      }}
+                      className="custom-button-outline custom-button-outline-primary"
+                    >
+                      MASUK
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <WajibDiisi></WajibDiisi>
+            </div>
+          </Container>
+        </div>
+
+        {/* Mobile */}
+
+        <div className="d-block d-lg-none">
+          <Container>
             <div className="row justify-content-center">
-              <div className="col-4">
+              <div className="col-12">
                 <div className="primary-bold">
                   Nama <span className="text-danger">*</span>
                 </div>
@@ -181,6 +271,9 @@ class Daftar extends Component {
                 <div className="text-danger mb-2">
                   {this.state.warning ? this.state.warningMsg : ""}
                 </div>
+
+                <WajibDiisi></WajibDiisi>
+
                 <div className="d-flex justify-content-center">
                   <button
                     onClick={() => {
@@ -191,7 +284,7 @@ class Daftar extends Component {
                         this.toggleWarning(this.validateInput());
                       }
                     }}
-                    className="custom-button custom-button-primary"
+                    className="custom-button custom-button-primary w-100"
                   >
                     DAFTAR
                   </button>
@@ -206,16 +299,17 @@ class Daftar extends Component {
                     onClick={() => {
                       this.props.history.push("/masuk");
                     }}
-                    className="custom-button-outline custom-button-outline-primary"
+                    className="custom-button-outline custom-button-outline-primary w-100"
                   >
                     MASUK
                   </button>
                 </div>
               </div>
             </div>
-            <WajibDiisi></WajibDiisi>
-          </div>
-        </Container>
+            <br />
+            <br />
+          </Container>
+        </div>
 
         <Footer></Footer>
       </div>

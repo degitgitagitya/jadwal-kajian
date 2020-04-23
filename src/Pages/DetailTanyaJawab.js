@@ -42,7 +42,7 @@ export default class DetailTanyaJawab extends Component {
     } = this.state.tanyaJawab;
     return (
       <div>
-        <Navigation></Navigation>
+        <Navigation title="DETAIL TANYA JAWAB"></Navigation>
         <BreadCumb
           content={[
             {
@@ -67,11 +67,11 @@ export default class DetailTanyaJawab extends Component {
         <Container>
           <h2 className="text-center">{pertanyaan}</h2>
           <div className="row justify-content-center mb-3">
-            <div className="col-4 text-center">
+            <div className="col-md-4 text-center">
               <img
                 src={gambar}
                 className="detail-tanya-jawab-image-header"
-                alt=""
+                alt="tanya-jawab"
               />
             </div>
           </div>

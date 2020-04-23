@@ -126,9 +126,9 @@ class KirimJadwal extends Component {
               Kami akan melakukan validasi untuk jadwal tersebut
             </p>
 
-            <div className="d-flex justify-content-center">
+            <div className="d-flex flex-wrap justify-content-center">
               <button
-                className="custom-button-primary custom-button"
+                className="custom-button-primary custom-button modal-max-width mr-md-2 mt-2 mt-md-0"
                 onClick={() => {
                   this.redirectTo("/");
                 }}
@@ -137,7 +137,7 @@ class KirimJadwal extends Component {
               </button>
 
               <button
-                className="custom-button-info custom-button ml-2"
+                className="custom-button-info custom-button modal-max-width mr-md-2 mt-2 mt-md-0"
                 onClick={() => {
                   this.redirectTo("/daftar-jadwal-kajian");
                 }}
@@ -146,7 +146,7 @@ class KirimJadwal extends Component {
               </button>
 
               <button
-                className="custom-button-warning custom-button ml-2"
+                className="custom-button-warning custom-button modal-max-width mr-md-2 mt-2 mt-md-0"
                 onClick={() => {
                   this.redirectTo("/tanya-jawab");
                 }}
@@ -157,7 +157,7 @@ class KirimJadwal extends Component {
           </div>
         </ReactModal>
 
-        <Navigation></Navigation>
+        <Navigation title="KIRIM JADWAL"></Navigation>
         <BreadCumb
           content={[
             {
@@ -180,93 +180,202 @@ class KirimJadwal extends Component {
           ]}
         ></BreadCumb>
 
-        <Container className="mb-5">
-          <h2 className="text-center mb-4">Kirim Jadwal</h2>
-          <div className="card-berlangganan">
-            <div className="row justify-content-center">
-              <div className="col-4">
-                <div className="primary-bold">
-                  Nama Pengirim <span className="text-danger">*</span>
-                </div>
-                <input
-                  type="text"
-                  className="form-control mb-3"
-                  placeholder="Nama Pengirim"
-                  value={this.state.inputNamaPengirim}
-                  onChange={this.onChangeNamaPengirim}
-                />
+        {/* Desktop */}
 
-                <div className="primary-bold">
-                  Nama Penceramah <span className="text-danger">*</span>
-                </div>
-                <input
-                  type="text"
-                  className="form-control mb-3"
-                  placeholder="Nama Penceramah"
-                  value={this.state.inputNamaPenceramah}
-                  onChange={this.onChangeNamaPenceramah}
-                />
+        <div className="d-none d-lg-block">
+          <Container className="mb-5">
+            <h2 className="text-center mb-4">Kirim Jadwal</h2>
+            <div className="card-berlangganan">
+              <div className="row justify-content-center">
+                <div className="col-4">
+                  <div className="primary-bold">
+                    Nama Pengirim <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Nama Pengirim"
+                    value={this.state.inputNamaPengirim}
+                    onChange={this.onChangeNamaPengirim}
+                  />
 
-                <div className="primary-bold">
-                  Lokasi <span className="text-danger">*</span>
+                  <div className="primary-bold">
+                    Nama Penceramah <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Nama Penceramah"
+                    value={this.state.inputNamaPenceramah}
+                    onChange={this.onChangeNamaPenceramah}
+                  />
+
+                  <div className="primary-bold">
+                    Lokasi <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Lokasi"
+                    value={this.state.inputLokasi}
+                    onChange={this.onChangeLokasi}
+                  />
                 </div>
-                <input
-                  type="text"
-                  className="form-control mb-3"
-                  placeholder="Lokasi"
-                  value={this.state.inputLokasi}
-                  onChange={this.onChangeLokasi}
-                />
+                <div className="col-4">
+                  <div className="primary-bold">
+                    Nomor Telepon Pengirim{" "}
+                    <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Nomor Telepon Pengirim"
+                    value={this.state.inputNoTelfonPengirim}
+                    onChange={this.onChangeNoTelfonPengirim}
+                  />
+
+                  <div className="primary-bold">
+                    Nomor Telepon Pihak Penceramah{" "}
+                    <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Nomor Telepon Pihak Penceramah"
+                    value={this.state.inputNoPenceramah}
+                    onChange={this.onChangeNoPenceramah}
+                  />
+
+                  <div className="primary-bold">
+                    Waktu <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="date"
+                    className="form-control mb-3"
+                    placeholder="Waktu"
+                    value={this.state.inputWaktu}
+                    onChange={this.onChangeWaktu}
+                  />
+                </div>
               </div>
-              <div className="col-4">
-                <div className="primary-bold">
-                  Nomor Telepon Pengirim <span className="text-danger">*</span>
+              <div className="row justify-content-center">
+                <div className="col-8">
+                  <div className="primary-bold">Informasi Lainnya </div>
+                  <input
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Informasi Lainnya"
+                    value={this.state.inputInformasiLainnya}
+                    onChange={this.onChangeInformasiLainnya}
+                  />
                 </div>
-                <input
-                  type="text"
-                  className="form-control mb-3"
-                  placeholder="Nomor Telepon Pengirim"
-                  value={this.state.inputNoTelfonPengirim}
-                  onChange={this.onChangeNoTelfonPengirim}
-                />
-
-                <div className="primary-bold">
-                  Nomor Telepon Pihak Penceramah{" "}
-                  <span className="text-danger">*</span>
-                </div>
-                <input
-                  type="text"
-                  className="form-control mb-3"
-                  placeholder="Nomor Telepon Pihak Penceramah"
-                  value={this.state.inputNoPenceramah}
-                  onChange={this.onChangeNoPenceramah}
-                />
-
-                <div className="primary-bold">
-                  Waktu <span className="text-danger">*</span>
-                </div>
-                <input
-                  type="date"
-                  className="form-control mb-3"
-                  placeholder="Waktu"
-                  value={this.state.inputWaktu}
-                  onChange={this.onChangeWaktu}
-                />
               </div>
+
+              <div className="row justify-content-center">
+                <div className="col-8">
+                  <div className="text-danger mb-2">
+                    {this.state.warning ? this.state.warningMsg : ""}
+                  </div>
+                </div>
+              </div>
+
+              <br />
+              <div
+                onClick={() => {
+                  if (this.validateInput() === "Sukses") {
+                    this.toggleModal();
+                  } else {
+                    this.toggleWarning(this.validateInput());
+                  }
+                }}
+                className="d-flex justify-content-center"
+              >
+                <button className="custom-button custom-button-primary">
+                  KIRIM JADWAL
+                </button>
+              </div>
+              <WajibDiisi></WajibDiisi>
             </div>
-            <div className="row justify-content-center">
-              <div className="col-8">
-                <div className="primary-bold">Informasi Lainnya </div>
-                <input
-                  type="text"
-                  className="form-control mb-3"
-                  placeholder="Informasi Lainnya"
-                  value={this.state.inputInformasiLainnya}
-                  onChange={this.onChangeInformasiLainnya}
-                />
-              </div>
-            </div>
+          </Container>
+        </div>
 
+        {/* Mobile */}
+
+        <div className="d-block d-lg-none">
+          <Container>
+            <div className="primary-bold">
+              Nama Pengirim <span className="text-danger">*</span>
+            </div>
+            <input
+              type="text"
+              className="form-control mb-3"
+              placeholder="Nama Pengirim"
+              value={this.state.inputNamaPengirim}
+              onChange={this.onChangeNamaPengirim}
+            />
+
+            <div className="primary-bold">
+              Nama Penceramah <span className="text-danger">*</span>
+            </div>
+            <input
+              type="text"
+              className="form-control mb-3"
+              placeholder="Nama Penceramah"
+              value={this.state.inputNamaPenceramah}
+              onChange={this.onChangeNamaPenceramah}
+            />
+
+            <div className="primary-bold">
+              Lokasi <span className="text-danger">*</span>
+            </div>
+            <input
+              type="text"
+              className="form-control mb-3"
+              placeholder="Lokasi"
+              value={this.state.inputLokasi}
+              onChange={this.onChangeLokasi}
+            />
+            <div className="primary-bold">
+              Nomor Telepon Pengirim <span className="text-danger">*</span>
+            </div>
+            <input
+              type="text"
+              className="form-control mb-3"
+              placeholder="Nomor Telepon Pengirim"
+              value={this.state.inputNoTelfonPengirim}
+              onChange={this.onChangeNoTelfonPengirim}
+            />
+
+            <div className="primary-bold">
+              Nomor Telepon Pihak Penceramah{" "}
+              <span className="text-danger">*</span>
+            </div>
+            <input
+              type="text"
+              className="form-control mb-3"
+              placeholder="Nomor Telepon Pihak Penceramah"
+              value={this.state.inputNoPenceramah}
+              onChange={this.onChangeNoPenceramah}
+            />
+
+            <div className="primary-bold">
+              Waktu <span className="text-danger">*</span>
+            </div>
+            <input
+              type="date"
+              className="form-control mb-3"
+              placeholder="Waktu"
+              value={this.state.inputWaktu}
+              onChange={this.onChangeWaktu}
+            />
+            <div className="primary-bold">Informasi Lainnya </div>
+            <input
+              type="text"
+              className="form-control mb-3"
+              placeholder="Informasi Lainnya"
+              value={this.state.inputInformasiLainnya}
+              onChange={this.onChangeInformasiLainnya}
+            />
             <div className="row justify-content-center">
               <div className="col-8">
                 <div className="text-danger mb-2">
@@ -274,8 +383,7 @@ class KirimJadwal extends Component {
                 </div>
               </div>
             </div>
-
-            <br />
+            <WajibDiisi></WajibDiisi>
             <div
               onClick={() => {
                 if (this.validateInput() === "Sukses") {
@@ -286,13 +394,16 @@ class KirimJadwal extends Component {
               }}
               className="d-flex justify-content-center"
             >
-              <button className="custom-button custom-button-primary">
+              <button className="custom-button custom-button-primary w-100">
                 KIRIM JADWAL
               </button>
             </div>
-            <WajibDiisi></WajibDiisi>
-          </div>
-        </Container>
+
+            <br />
+            <br />
+            <br />
+          </Container>
+        </div>
 
         <Footer></Footer>
       </div>

@@ -199,6 +199,42 @@ const x = [
     penceramah: "Syafiq Riza Basalamah",
     gambar: kajian1,
   },
+  {
+    id: 17,
+    judul: "Sirah Nabawiyah",
+    deskripsi:
+      "Sirah Nabawiyah pembahasannya bertumpu kepada perjalanan dan kisah hidup Nabi Muhammad S.A.W. secara rinci. Pembahasan juga menekankan sifat pribadi, akhlak serta cara dia menjalani kehidupan sehari yang bisa diteladani. Sedangkan sejarah pembahasannya hanya mengenai peristiwa-peristiwa yang dianggap penting yang terjadi pada masa lampau. Lebih difokuskan kepada perkembangan peradaban ataupun perkembangan suatu zaman.",
+    kota: "Bekasi",
+    tempat: "Mesjid Trans Studio",
+    tanggal: "2020-4-23",
+    waktu: "14:00",
+    penceramah: "Subhan Bawazier",
+    gambar: kajian1,
+  },
+  {
+    id: 18,
+    judul: "Ramadan",
+    deskripsi:
+      "Kata Ramadan berasal dari akar kata bahasa Arab ramiḍa atau ar-ramaḍ, yang berarti panas yang menghanguskan atau kekeringan. Puasa Ramadhan dalam hukumnya merupakan fardhu (diwajibkan) untuk Muslim dewasa, kecuali mengalami halangan untuk melakukannya seperti sakit, dalam perjalanan, sudah tua, hamil, menyusui, diabetes atau sedang mengalami menstruasi.",
+    kota: "Surabaya",
+    tempat: "Mesjid Trans Studio",
+    tanggal: "2020-4-24",
+    waktu: "19:00",
+    penceramah: "Syafiq Riza Basalamah",
+    gambar: kajian1,
+  },
+  {
+    id: 19,
+    judul: "Kurma",
+    deskripsi:
+      "Kurma telah menjadi makanan pokok di Timur Tengah selama ribuan tahun lamanya. Pohon Kurma diyakini berasal dari sekitar Teluk Persia dan telah dibudidayakan sejak zaman kuno dari Mesopotamia ke prasejarah Mesir, kemungkinan pada awal 4000 SM. Bangsa Mesir Kuno menggunakan buahnya untuk dibuat menjadi anggur kurma dan memakannya pada saat panen. ",
+    kota: "Tasikmalaya",
+    tempat: "Mesjid Trans Studio",
+    tanggal: "2020-4-24",
+    waktu: "14:00",
+    penceramah: "Firanda Andirja",
+    gambar: kajian1,
+  },
 ];
 
 const y = [
@@ -255,19 +291,7 @@ const k = [
   },
   {
     id: 6,
-    nama: "Malang",
-  },
-  {
-    id: 7,
     nama: "Cimahi",
-  },
-  {
-    id: 8,
-    nama: "Garut",
-  },
-  {
-    id: 9,
-    nama: "Depok",
   },
 ];
 

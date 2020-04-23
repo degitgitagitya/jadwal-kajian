@@ -247,27 +247,66 @@ p {
   background-color: var(--dark-green);
 }
 
-.kelas-modal {
-  position: absolute;
-  top: 30%;
-  left: 25%;
-  right: 25%;
-  background-color: white;
-  box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
-    0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
-    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
-    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
-  padding: 1.25rem;
+@media only screen and (max-width: 768px) {
+  .kelas-modal {
+    z-index: 1000;
+    position: absolute;
+    top: 20%;
+    left: 4%;
+    right: 4%;
+    bottom: 20%;
+    background-color: white;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
+      0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+      0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
+      0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+    padding: 1.25rem;
+  }
+
+  .kelas-modal-overlay {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .filter-custom-width {
+    width: 100%;
+    height: 2rem;
+  }
 }
 
-.kelas-modal-overlay {
-  z-index: 2;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+@media only screen and (min-width: 768px) {
+  .kelas-modal {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    right: 25%;
+    background-color: white;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
+      0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+      0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
+      0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+    padding: 1.25rem;
+  }
+
+  .kelas-modal-overlay {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .filter-custom-width {
+    width: 25%;
+    height: 2rem;
+  }
 }
 
 .span-clickable:hover {
@@ -324,4 +363,51 @@ p {
     0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
     0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
   padding: 1.25rem;
+}
+
+.filter-button-primary {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  padding: 0.2rem 1rem;
+  transition: all 200ms;
+  border: 4px solid transparent;
+  color: var(--dark-green);
+  background-color: white;
+  width: 100%;
+  box-shadow: 0 0 10px;
+}
+
+.filter-button-primary:hover {
+  background-color: var(--grey);
+}
+
+.filter-button-secondary {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 0.2rem 1rem;
+  transition: all 200ms;
+  color: white;
+  border: 2px solid white;
+}
+
+.filter-button-secondary:hover {
+  background-color: white;
+  color: var(--dark-green);
+}
+
+@media only screen and (max-width: 768px) {
+  .modal-max-width {
+    width: 100% !important;
+  }
+}
+
+.custom-button-outline-primary-mobile {
+  border: 2px solid var(--dark-green);
+  color: var(--dark-green);
 }

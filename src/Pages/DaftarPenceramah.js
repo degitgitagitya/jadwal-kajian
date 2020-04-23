@@ -125,7 +125,7 @@ export default class DaftarPenceramah extends Component {
   render() {
     return (
       <div>
-        <Navigation></Navigation>
+        <Navigation title="DAFTAR PENCERAMAH"></Navigation>
         <BreadCumb
           content={[
             {
@@ -142,27 +142,69 @@ export default class DaftarPenceramah extends Component {
         ></BreadCumb>
 
         <Container>
-          <div className="d-flex justify-content-end">
-            <select
-              name="urutkan"
-              className="form-control-sm daftar-jawal-kajian-sort mr-3"
-              id="urutkan"
-              defaultValue="0"
-              onChange={this.onChangeSort}
-            >
-              <option disabled value="0">
-                Urutkan Berdasarkan
-              </option>
-              <option value="1">A - Z</option>
-              <option value="2">Z - A</option>
-            </select>
+          {/* Desktop */}
 
-            <input
-              type="text"
-              className="daftar-penceramah-search px-3"
-              placeholder="Cari penceramah.."
-              onChange={this.cariPenceramah}
-            />
+          <div className="d-none d-lg-block">
+            <div className="d-flex justify-content-end">
+              <select
+                name="urutkan"
+                className="form-control-sm daftar-jawal-kajian-sort mr-3"
+                id="urutkan"
+                defaultValue="0"
+                onChange={this.onChangeSort}
+              >
+                <option disabled value="0">
+                  Urutkan Berdasarkan
+                </option>
+                <option value="1">A - Z</option>
+                <option value="2">Z - A</option>
+              </select>
+
+              <input
+                type="text"
+                className="daftar-penceramah-search px-3"
+                placeholder="Cari penceramah.."
+                onChange={this.cariPenceramah}
+              />
+            </div>
+          </div>
+
+          {/* Mobile */}
+
+          <div className="d-block d-lg-none">
+            <div className="input-group mb-2">
+              <div className="input-group-prepend">
+                <div
+                  className="input-group-text"
+                  style={{ backgroundColor: "white", borderRight: "none" }}
+                >
+                  <FontAwesomeIcon icon="search"></FontAwesomeIcon>
+                </div>
+              </div>
+              <input
+                type="text"
+                style={{ borderLeft: "none" }}
+                className="form-control"
+                placeholder="Cari penceramah di sini..."
+                onChange={this.cariPenceramah}
+              />
+            </div>
+
+            <div className="d-flex justify-content-end">
+              <select
+                name="urutkan"
+                className="form-control-sm custom-button-outline custom-button-outline-primary-mobile"
+                id="urutkan"
+                defaultValue="0"
+                onChange={this.onChangeSort}
+              >
+                <option disabled value="0">
+                  Urutkan Berdasarkan
+                </option>
+                <option value="1">A - Z</option>
+                <option value="2">Z - A</option>
+              </select>
+            </div>
           </div>
         </Container>
 

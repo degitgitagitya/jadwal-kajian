@@ -52,7 +52,7 @@ export default class DetailPenceramah extends Component {
     const { nama, deskripsi, gambar } = this.state.detailPenceramah;
     return (
       <div>
-        <Navigation></Navigation>
+        <Navigation title="DETAIL PENCERAMAH"></Navigation>
         <BreadCumb
           content={[
             {

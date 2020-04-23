@@ -262,7 +262,9 @@ class AjukanPertanyaan extends Component {
             ]}
           ></BreadCumb>
           <Container>
-            <div className="text-semi-bold">Judul</div>
+            <div className="text-semi-bold">
+              Judul <span className="text-danger">*</span>
+            </div>
             <input
               type="text"
               placeholder="Masukan judul pertanyaan.."
@@ -271,7 +273,9 @@ class AjukanPertanyaan extends Component {
               onChange={this.onChangeJudul}
             />
 
-            <div className="text-semi-bold mt-2">Pertanyaan</div>
+            <div className="text-semi-bold mt-2">
+              Pertanyaan <span className="text-danger">*</span>
+            </div>
             <textarea
               type="text"
               placeholder="Masukan isi pertanyaan.."
@@ -284,6 +288,8 @@ class AjukanPertanyaan extends Component {
             <div className="text-danger mb-1 mt-2">
               {this.state.warning ? this.state.warningMsg : ""}
             </div>
+
+            <WajibDiisi></WajibDiisi>
 
             <button
               onClick={() => {

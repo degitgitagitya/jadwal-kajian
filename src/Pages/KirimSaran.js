@@ -79,9 +79,9 @@ class KirimSaran extends Component {
               Kami akan berusaha untuk meningkatkan kualitas kami
             </p>
 
-            <div className="d-flex justify-content-center">
+            <div className="d-flex flex-wrap justify-content-center">
               <button
-                className="custom-button-primary custom-button"
+                className="custom-button-primary custom-button modal-max-width mr-md-2 mt-2 mt-md-0"
                 onClick={() => {
                   this.redirectTo("/");
                 }}
@@ -90,7 +90,7 @@ class KirimSaran extends Component {
               </button>
 
               <button
-                className="custom-button-info custom-button ml-2"
+                className="custom-button-info custom-button modal-max-width mr-md-2 mt-2 mt-md-0"
                 onClick={() => {
                   this.redirectTo("/daftar-jadwal-kajian");
                 }}
@@ -99,7 +99,7 @@ class KirimSaran extends Component {
               </button>
 
               <button
-                className="custom-button-warning custom-button ml-2"
+                className="custom-button-warning custom-button modal-max-width mr-md-2 mt-2 mt-md-0"
                 onClick={() => {
                   this.redirectTo("/tanya-jawab");
                 }}
@@ -109,7 +109,7 @@ class KirimSaran extends Component {
             </div>
           </div>
         </ReactModal>
-        <Navigation></Navigation>
+        <Navigation title="KIRIM SARAN"></Navigation>
         <BreadCumb
           content={[
             {
@@ -132,11 +132,68 @@ class KirimSaran extends Component {
           ]}
         ></BreadCumb>
 
-        <Container className="mb-5">
-          <h2 className="text-center mb-4">Kirim Saran</h2>
-          <div className="card-berlangganan">
+        {/* Desktop */}
+
+        <div className="d-none d-lg-block">
+          <Container className="mb-5">
+            <h2 className="text-center mb-4">Kirim Saran</h2>
+            <div className="card-berlangganan">
+              <div className="row justify-content-center">
+                <div className="col-4">
+                  <div className="primary-bold">
+                    Judul <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Ketik judul pesan di sini.."
+                    value={this.state.inputJudul}
+                    onChange={this.onChangeJudul}
+                  />
+                  <div className="primary-bold">
+                    Saran <span className="text-danger">*</span>
+                  </div>
+                  <textarea
+                    placeholder="Ketik saran di sini.."
+                    name="saran"
+                    id="saran"
+                    className="form-control"
+                    rows="8"
+                    value={this.state.inputSaran}
+                    onChange={this.onChangeSaran}
+                  />
+                  <br />
+                  <div className="text-danger mb-2">
+                    {this.state.warning ? this.state.warningMsg : ""}
+                  </div>
+                  <br />
+                  <div
+                    onClick={() => {
+                      if (this.validateInput() === "Sukses") {
+                        this.toggleModal();
+                      } else {
+                        this.toggleWarning(this.validateInput());
+                      }
+                    }}
+                    className="d-flex justify-content-center"
+                  >
+                    <button className="custom-button custom-button-primary">
+                      KIRIM SARAN
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <WajibDiisi></WajibDiisi>
+            </div>
+          </Container>
+        </div>
+
+        {/* Mobile */}
+
+        <div className="d-block d-lg-none">
+          <Container>
             <div className="row justify-content-center">
-              <div className="col-4">
+              <div className="col-12">
                 <div className="primary-bold">
                   Judul <span className="text-danger">*</span>
                 </div>
@@ -159,11 +216,11 @@ class KirimSaran extends Component {
                   value={this.state.inputSaran}
                   onChange={this.onChangeSaran}
                 />
-                <br />
                 <div className="text-danger mb-2">
                   {this.state.warning ? this.state.warningMsg : ""}
                 </div>
                 <br />
+                <WajibDiisi></WajibDiisi>
                 <div
                   onClick={() => {
                     if (this.validateInput() === "Sukses") {
@@ -174,15 +231,17 @@ class KirimSaran extends Component {
                   }}
                   className="d-flex justify-content-center"
                 >
-                  <button className="custom-button custom-button-primary">
+                  <button className="custom-button custom-button-primary w-100">
                     KIRIM SARAN
                   </button>
                 </div>
               </div>
             </div>
-            <WajibDiisi></WajibDiisi>
-          </div>
-        </Container>
+
+            <br />
+            <br />
+          </Container>
+        </div>
 
         <Footer></Footer>
       </div>

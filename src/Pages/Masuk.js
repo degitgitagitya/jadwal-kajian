@@ -77,7 +77,7 @@ export default class Masuk extends Component {
   render() {
     return (
       <div>
-        <Navigation></Navigation>
+        <Navigation title="MASUK"></Navigation>
         <BreadCumb
           content={[
             {
@@ -92,11 +92,81 @@ export default class Masuk extends Component {
             },
           ]}
         ></BreadCumb>
-        <Container className="mb-5">
-          <h2 className="text-center mb-4">Masuk</h2>
-          <div className="card-berlangganan">
+
+        {/* Desktop */}
+
+        <div className="d-none d-lg-block">
+          <Container className="mb-5">
+            <h2 className="text-center mb-4">Masuk</h2>
+            <div className="card-berlangganan">
+              <div className="row justify-content-center">
+                <div className="col-4">
+                  <div className="primary-bold">
+                    Email <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Email"
+                    value={this.state.inputEmail}
+                    onChange={this.onChangeEmail}
+                  />
+                  <div className="primary-bold">
+                    Kata Sandi <span className="text-danger">*</span>
+                  </div>
+                  <input
+                    type="password"
+                    className="form-control mb-3"
+                    placeholder="Kata Sandi"
+                    value={this.state.inputPassword}
+                    onChange={this.onChangePassword}
+                  />
+                  <div className="text-danger mb-2">
+                    {this.state.warning ? this.state.warningMsg : ""}
+                  </div>
+                  <div className="d-flex justify-content-center">
+                    <button
+                      onClick={() => {
+                        if (this.validateInput() === "Sukses") {
+                          this.auth();
+                          this.toggleModal();
+                        } else {
+                          this.toggleWarning(this.validateInput());
+                        }
+                      }}
+                      className="custom-button custom-button-primary"
+                    >
+                      MASUK
+                    </button>
+                  </div>
+
+                  <div className="d-flex justify-content-center mt-2">
+                    <div>Belum memiliki akun?</div>
+                  </div>
+
+                  <div className="d-flex justify-content-center mt-2">
+                    <button
+                      onClick={() => {
+                        this.props.history.push("/daftar");
+                      }}
+                      className="custom-button-outline custom-button-outline-primary"
+                    >
+                      DAFTAR
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <WajibDiisi></WajibDiisi>
+            </div>
+          </Container>
+        </div>
+
+        {/* Mobile */}
+
+        <div className="d-block d-lg-none">
+          <Container>
             <div className="row justify-content-center">
-              <div className="col-4">
+              <div className="col-12">
                 <div className="primary-bold">
                   Email <span className="text-danger">*</span>
                 </div>
@@ -120,6 +190,9 @@ export default class Masuk extends Component {
                 <div className="text-danger mb-2">
                   {this.state.warning ? this.state.warningMsg : ""}
                 </div>
+
+                <WajibDiisi></WajibDiisi>
+
                 <div className="d-flex justify-content-center">
                   <button
                     onClick={() => {
@@ -130,7 +203,7 @@ export default class Masuk extends Component {
                         this.toggleWarning(this.validateInput());
                       }
                     }}
-                    className="custom-button custom-button-primary"
+                    className="custom-button custom-button-primary w-100"
                   >
                     MASUK
                   </button>
@@ -145,16 +218,17 @@ export default class Masuk extends Component {
                     onClick={() => {
                       this.props.history.push("/daftar");
                     }}
-                    className="custom-button-outline custom-button-outline-primary"
+                    className="custom-button-outline custom-button-outline-primary w-100"
                   >
                     DAFTAR
                   </button>
                 </div>
+                <br />
+                <br />
               </div>
             </div>
-            <WajibDiisi></WajibDiisi>
-          </div>
-        </Container>
+          </Container>
+        </div>
 
         <Footer></Footer>
       </div>
