@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import jsonata from "jsonata";
 import ReactModal from "react-modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Spring } from "react-spring/renderprops";
 
 import Navigation from "../Components/Navigation";
 import BreadCumb from "../Components/BreadCumb";
@@ -1176,145 +1177,156 @@ export default class DaftarJadwalKajian extends Component {
               className="kelas-modal-mobile"
               overlayClassName="kelas-modal-overlay-mobile"
             >
-              <div className="daftar-jadwal-kajian-filter text-white">
-                <div className="row">
-                  <div className="title-filter ">
-                    <FontAwesomeIcon
-                      onClick={this.toggleMobileModalFilter}
-                      icon="times"
-                      className="ml-4"
-                    ></FontAwesomeIcon>
-                    <span className="title-margin-left">FILTER</span>
-                  </div>
-                </div>
-                <hr />
-                <button
-                  onClick={this.clearFilter}
-                  className="filter-button-primary"
-                >
-                  BERSIHKAN FILTER
-                  <FontAwesomeIcon
-                    icon="undo"
-                    className="ml-2"
-                  ></FontAwesomeIcon>
-                </button>
-                <hr className="line-filter" />
-                <div>Pilih Penceramah</div>
-                <div className="d-flex flex-column">
-                  {this.state.listPenceramah.slice(0, 4).map((data) => {
-                    return (
-                      <div
-                        onClick={() => {
-                          this.handleClickFilterPenceramah(data.id);
-                        }}
-                        key={data.id}
-                        className="d-flex align-items-center list-filter"
-                      >
-                        <div
-                          className={
-                            data.status === 1
-                              ? "filter-check-box filter-check-box-selected mr-2"
-                              : "filter-check-box mr-2"
-                          }
-                        ></div>
-                        <div>{data.nama}</div>
+              <Spring
+                from={{ opacity: 0, marginLeft: -500 }}
+                to={{ opacity: 1, marginLeft: 0 }}
+              >
+                {(props) => (
+                  <div style={props}>
+                    {" "}
+                    <div className="daftar-jadwal-kajian-filter text-white">
+                      <div className="row">
+                        <div className="title-filter ">
+                          <FontAwesomeIcon
+                            onClick={this.toggleMobileModalFilter}
+                            icon="times"
+                            className="ml-4"
+                          ></FontAwesomeIcon>
+                          <span className="title-margin-left">FILTER</span>
+                        </div>
                       </div>
-                    );
-                  })}
-                  <button
-                    onClick={() => {
-                      this.toggleMobileModalFilter();
-                      this.handleOpenModal();
-                    }}
-                    className="form-control mt-2 filter-button-secondary"
-                  >
-                    PENCERAMAH LAINNYA
-                  </button>
-                </div>
-                <hr className="line-filter" />
-
-                <div>Pilih Waktu</div>
-                <div className="d-flex flex-column">
-                  <div
-                    onClick={() => {
-                      this.applyWaktu(0);
-                    }}
-                    className="d-flex align-items-center list-filter"
-                  >
-                    <div
-                      className={
-                        this.state.filterHariIni
-                          ? "filter-check-box filter-check-box-selected mr-2"
-                          : "filter-check-box  mr-2"
-                      }
-                    ></div>
-                    <div>Hari ini</div>
-                  </div>
-                  <div
-                    onClick={() => {
-                      this.applyWaktu(1);
-                    }}
-                    className="d-flex align-items-center list-filter"
-                  >
-                    <div
-                      className={
-                        this.state.filterBesok
-                          ? "filter-check-box filter-check-box-selected mr-2"
-                          : "filter-check-box  mr-2"
-                      }
-                    ></div>
-                    <div>Besok</div>
-                  </div>
-                  <div>atau pilih waktu</div>
-                  <input
-                    value={this.state.pilihanWaktu}
-                    onChange={this.onChangePilihanWaktu}
-                    type="date"
-                    className="filter-rounded-search"
-                  />
-                </div>
-                <hr className="line-filter" />
-
-                <div>Pilih Lokasi</div>
-                <div className="d-flex flex-column">
-                  {this.state.listKota.slice(0, 4).map((data) => {
-                    return (
-                      <div
-                        onClick={() => {
-                          this.handleClickFilterKota(data.id);
-                        }}
-                        key={data.id}
-                        className="d-flex align-items-center list-filter"
+                      <hr />
+                      <button
+                        onClick={this.clearFilter}
+                        className="filter-button-primary"
                       >
-                        <div
-                          className={
-                            data.status === 1
-                              ? "filter-check-box filter-check-box-selected mr-2"
-                              : "filter-check-box mr-2"
-                          }
-                        ></div>
-                        <div>{data.nama}</div>
+                        BERSIHKAN FILTER
+                        <FontAwesomeIcon
+                          icon="undo"
+                          className="ml-2"
+                        ></FontAwesomeIcon>
+                      </button>
+                      <hr className="line-filter" />
+                      <div>Pilih Penceramah</div>
+                      <div className="d-flex flex-column">
+                        {this.state.listPenceramah.slice(0, 4).map((data) => {
+                          return (
+                            <div
+                              onClick={() => {
+                                this.handleClickFilterPenceramah(data.id);
+                              }}
+                              key={data.id}
+                              className="d-flex align-items-center list-filter"
+                            >
+                              <div
+                                className={
+                                  data.status === 1
+                                    ? "filter-check-box filter-check-box-selected mr-2"
+                                    : "filter-check-box mr-2"
+                                }
+                              ></div>
+                              <div>{data.nama}</div>
+                            </div>
+                          );
+                        })}
+                        <button
+                          onClick={() => {
+                            this.toggleMobileModalFilter();
+                            this.handleOpenModal();
+                          }}
+                          className="form-control mt-2 filter-button-secondary"
+                        >
+                          PENCERAMAH LAINNYA
+                        </button>
                       </div>
-                    );
-                  })}
-                  <button
-                    onClick={() => {
-                      this.toggleMobileModalFilter();
-                      this.handleOpenModalKota();
-                    }}
-                    className="form-control mt-2 filter-button-secondary"
-                  >
-                    LOKASI LAINNYA
-                  </button>
-                </div>
-                <hr className="line-filter" />
-                <button
-                  onClick={this.toggleMobileModalFilter}
-                  className="btn btn-warning text-white w-100"
-                >
-                  TUTUP
-                </button>
-              </div>
+                      <hr className="line-filter" />
+
+                      <div>Pilih Waktu</div>
+                      <div className="d-flex flex-column">
+                        <div
+                          onClick={() => {
+                            this.applyWaktu(0);
+                          }}
+                          className="d-flex align-items-center list-filter"
+                        >
+                          <div
+                            className={
+                              this.state.filterHariIni
+                                ? "filter-check-box filter-check-box-selected mr-2"
+                                : "filter-check-box  mr-2"
+                            }
+                          ></div>
+                          <div>Hari ini</div>
+                        </div>
+                        <div
+                          onClick={() => {
+                            this.applyWaktu(1);
+                          }}
+                          className="d-flex align-items-center list-filter"
+                        >
+                          <div
+                            className={
+                              this.state.filterBesok
+                                ? "filter-check-box filter-check-box-selected mr-2"
+                                : "filter-check-box  mr-2"
+                            }
+                          ></div>
+                          <div>Besok</div>
+                        </div>
+                        <div>atau pilih waktu</div>
+                        <input
+                          value={this.state.pilihanWaktu}
+                          onChange={this.onChangePilihanWaktu}
+                          type="date"
+                          className="filter-rounded-search"
+                        />
+                      </div>
+                      <hr className="line-filter" />
+
+                      <div>Pilih Lokasi</div>
+                      <div className="d-flex flex-column">
+                        {this.state.listKota.slice(0, 4).map((data) => {
+                          return (
+                            <div
+                              onClick={() => {
+                                this.handleClickFilterKota(data.id);
+                              }}
+                              key={data.id}
+                              className="d-flex align-items-center list-filter"
+                            >
+                              <div
+                                className={
+                                  data.status === 1
+                                    ? "filter-check-box filter-check-box-selected mr-2"
+                                    : "filter-check-box mr-2"
+                                }
+                              ></div>
+                              <div>{data.nama}</div>
+                            </div>
+                          );
+                        })}
+                        <button
+                          onClick={() => {
+                            this.toggleMobileModalFilter();
+                            this.handleOpenModalKota();
+                          }}
+                          className="form-control mt-2 filter-button-secondary"
+                        >
+                          LOKASI LAINNYA
+                        </button>
+                      </div>
+                      <hr className="line-filter" />
+                      <button
+                        onClick={this.toggleMobileModalFilter}
+                        className="btn btn-warning text-white w-100"
+                      >
+                        TUTUP
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </Spring>
+              >
             </ReactModal>
 
             <div className="d-flex justify-content-between">

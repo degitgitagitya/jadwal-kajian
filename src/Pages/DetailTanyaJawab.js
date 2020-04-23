@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import jsonata from "jsonata";
+import { withRouter } from "react-router-dom";
 
 import Navigation from "../Components/Navigation";
 import BreadCumb from "../Components/BreadCumb";
@@ -8,8 +9,7 @@ import Footer from "../Components/Footer";
 import KAJIAN from "../Data/Kajian";
 
 import "./DetailTanyaJawab.css";
-
-export default class DetailTanyaJawab extends Component {
+class DetailTanyaJawab extends Component {
   constructor(props) {
     super(props);
 
@@ -34,6 +34,7 @@ export default class DetailTanyaJawab extends Component {
 
   render() {
     const {
+      id,
       pertanyaan,
       jawaban,
       penceramah,
@@ -77,7 +78,12 @@ export default class DetailTanyaJawab extends Component {
           </div>
           <div className="detail-tanya-jawab-container">
             <p>{jawaban}</p>
-            <div className="d-flex justify-content-end">
+            <div
+              onClick={() => {
+                this.props.history.push(`/detail-penceramah?id=${id}`);
+              }}
+              className="d-flex justify-content-end span-clickable"
+            >
               <div className="d-flex">
                 <img
                   src={this.state.penceramah.gambar}
@@ -104,3 +110,5 @@ export default class DetailTanyaJawab extends Component {
     );
   }
 }
+
+export default withRouter(DetailTanyaJawab);

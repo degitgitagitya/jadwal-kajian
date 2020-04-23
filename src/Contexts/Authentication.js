@@ -8,6 +8,13 @@ export default class Authentication extends Component {
   state = {
     isAuth: false,
     data: [],
+    modalWarning: true,
+  };
+
+  changeModalWarningToFalse = () => {
+    this.setState({
+      modalWarning: false,
+    });
   };
 
   changeAuthToFalse = () => {
@@ -31,6 +38,7 @@ export default class Authentication extends Component {
           ...this.state,
           changeAuthToFalse: this.changeAuthToFalse,
           changeAuthToTrue: this.changeAuthToTrue,
+          changeModalWarningToFalse: this.changeModalWarningToFalse,
         }}
       >
         {this.props.children}

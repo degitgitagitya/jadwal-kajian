@@ -95,13 +95,14 @@ export default class DetailPenceramah extends Component {
           </div>
         </Container>
         <br />
-        {/* <ListKajian title="Kajian Dari Penceramah"></ListKajian> */}
-        <ListKajian
-          title="Kajian Dari Penceramah"
-          data={this.state.listKajian}
-          jumlahKajian={this.state.jumlahKajian}
-          lainnya={`/daftar-jadwal-kajian?penceramah=${nama}`}
-        ></ListKajian>
+        <Container>
+          <ListKajian
+            title="Kajian Dari Penceramah"
+            data={this.state.listKajian}
+            jumlahKajian={this.state.jumlahKajian}
+            lainnya={`/daftar-jadwal-kajian?penceramah=${nama}`}
+          ></ListKajian>
+        </Container>
         <br />
         <br />
         <Footer></Footer>

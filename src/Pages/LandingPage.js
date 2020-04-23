@@ -3,7 +3,8 @@ import { Container, Carousel } from "react-bootstrap";
 import jsonata from "jsonata";
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import Carousel from "nuka-carousel";
+import ReactModal from "react-modal";
+import { AuthContext } from "../Contexts/Authentication";
 
 import CardTanyaJawabLanding from "../Components/CardTanyaJawabLanding";
 import Navigation from "../Components/Navigation";
@@ -17,6 +18,8 @@ import KAJIAN from "../Data/Kajian";
 import "./LandingPage.css";
 
 class LandingPage extends Component {
+  static contextType = AuthContext;
+
   constructor(props) {
     super(props);
 
@@ -55,6 +58,8 @@ class LandingPage extends Component {
     };
   }
 
+  toggleModalWarning = () => {};
+
   componentDidMount() {
     window.scrollTo(0, 0);
   }
@@ -92,6 +97,59 @@ class LandingPage extends Component {
   render() {
     return (
       <div>
+        <ReactModal
+          isOpen={this.context.modalWarning}
+          className="kelas-modal"
+          overlayClassName="kelas-modal-overlay"
+        >
+          <div className="d-flex justify-content-center">
+            <h1>
+              <FontAwesomeIcon
+                style={{
+                  color: "#FF7900",
+                }}
+                icon="exclamation"
+              ></FontAwesomeIcon>
+            </h1>
+          </div>
+          <h2 className="text-center">Harap di Baca</h2>
+          <button
+            onClick={() => {
+              this.context.changeModalWarningToFalse();
+            }}
+            className="custom-button w-100 custom-button-primary"
+          >
+            Baik, saya mengerti
+          </button>
+          <p className="text-center">
+            Situs web ini merupakan situs web <strong>demo</strong> dan bukan
+            merupakan produk akhir
+          </p>
+          <p className="text-center">
+            Situs web ini hanya menggambarkan tampilan{" "}
+            <strong>(USER INTERFACE)</strong> dari produk akhir, sehingga
+            beberapa fungsi dari situs web ini tidak bisa digunakan seperti{" "}
+            <strong>
+              (masuk, daftar, beberapa fungsi pada filter dan yang lainnya)
+            </strong>
+          </p>
+          <p className="text-center">
+            <strong>
+              Semua data yang ada pada situs web ini merupakan data yang tidak
+              benar, hanya untuk kebutuhan konten, sehingga tidak boleh
+              dijadikan referensi
+            </strong>
+          </p>
+          <button
+            onClick={() => {
+              this.context.changeModalWarningToFalse();
+            }}
+            className="custom-button w-100 custom-button-primary"
+          >
+            Baik, saya mengerti
+          </button>
+        </ReactModal>
+
         {/* Desktop */}
 
         <div className="d-none d-lg-block">
@@ -298,7 +356,7 @@ class LandingPage extends Component {
                 <Carousel.Item key={data.id}>
                   <div>
                     <div
-                      style={{ backgroundImage: `url(${kajian})` }}
+                      style={{ backgroundImage: `url(${data.gambar})` }}
                       className="mobile-slider-landing-page"
                     >
                       <div className="mobile-slider-landing-page-content">

@@ -1,4 +1,6 @@
 import kajian1 from "../Assets/kajian.jpg";
+import kajian2 from "../Assets/kajian2.jpg";
+import kajian3 from "../Assets/kajian3.jpeg";
 import penceramah1 from "../Assets/penceramah1.jpg";
 import penceramah2 from "../Assets/penceramah2.jpg";
 import penceramah3 from "../Assets/penceramah3.jpg";
@@ -29,7 +31,7 @@ const x = [
     tanggal: "2020-4-20",
     waktu: "19:00",
     penceramah: "Khalid Basalamah",
-    gambar: kajian1,
+    gambar: kajian2,
   },
   {
     id: 3,
@@ -41,7 +43,7 @@ const x = [
     tanggal: "2020-4-19",
     waktu: "14:00",
     penceramah: "Khalid Basalamah",
-    gambar: kajian1,
+    gambar: kajian2,
   },
   {
     id: 4,
@@ -53,11 +55,11 @@ const x = [
     tanggal: "2020-4-19",
     waktu: "19:00",
     penceramah: "Khalid Basalamah",
-    gambar: kajian1,
+    gambar: kajian3,
   },
   {
     id: 5,
-    judul: "Madu 2",
+    judul: "Madu 3",
     deskripsi:
       "Madu adalah cairan alamiah yang banyak mengandung zat gula yang dihasilkan oleh lebah (genus Apis) dari nektar bunga dan rasanya manis. Jika lebah madu sudah berada dalam sarang nektar dikeluarkan dari kantung madu yang terdapat pada abdomen dan dikunyah dikerjakan bersama lebah lain, jika nektar sudah halus ditempatkan pada sel, jika sel sudah penuh akan ditutup dan terjadi fermentasi.",
     kota: "Bandung",
@@ -65,7 +67,7 @@ const x = [
     tanggal: "2020-4-21",
     waktu: "19:00",
     penceramah: "Khalid Basalamah",
-    gambar: kajian1,
+    gambar: kajian3,
   },
   {
     id: 6,
@@ -101,7 +103,7 @@ const x = [
     tanggal: "2020-4-22",
     waktu: "19:00",
     penceramah: "Khalid Basalamah",
-    gambar: kajian1,
+    gambar: kajian2,
   },
   {
     id: 9,
@@ -113,7 +115,7 @@ const x = [
     tanggal: "2020-4-22",
     waktu: "19:00",
     penceramah: "Khalid Basalamah",
-    gambar: kajian1,
+    gambar: kajian3,
   },
   {
     id: 10,
@@ -137,7 +139,7 @@ const x = [
     tanggal: "2020-4-20",
     waktu: "14:00",
     penceramah: "Firanda Andirja",
-    gambar: kajian1,
+    gambar: kajian2,
   },
   {
     id: 12,
@@ -149,7 +151,7 @@ const x = [
     tanggal: "2020-4-20",
     waktu: "19:00",
     penceramah: "Syafiq Riza Basalamah",
-    gambar: kajian1,
+    gambar: kajian3,
   },
   {
     id: 13,
@@ -161,7 +163,7 @@ const x = [
     tanggal: "2020-4-19",
     waktu: "14:00",
     penceramah: "Firanda Andirja",
-    gambar: kajian1,
+    gambar: kajian3,
   },
   {
     id: 14,
@@ -173,7 +175,7 @@ const x = [
     tanggal: "2020-4-19",
     waktu: "19:00",
     penceramah: "Subhan Bawazier",
-    gambar: kajian1,
+    gambar: kajian2,
   },
   {
     id: 15,
@@ -197,7 +199,7 @@ const x = [
     tanggal: "2020-4-23",
     waktu: "19:00",
     penceramah: "Syafiq Riza Basalamah",
-    gambar: kajian1,
+    gambar: kajian2,
   },
   {
     id: 17,
@@ -209,7 +211,7 @@ const x = [
     tanggal: "2020-4-23",
     waktu: "14:00",
     penceramah: "Subhan Bawazier",
-    gambar: kajian1,
+    gambar: kajian3,
   },
   {
     id: 18,
@@ -221,7 +223,7 @@ const x = [
     tanggal: "2020-4-24",
     waktu: "19:00",
     penceramah: "Syafiq Riza Basalamah",
-    gambar: kajian1,
+    gambar: kajian2,
   },
   {
     id: 19,
@@ -233,7 +235,79 @@ const x = [
     tanggal: "2020-4-24",
     waktu: "14:00",
     penceramah: "Firanda Andirja",
+    gambar: kajian3,
+  },
+  {
+    id: 20,
+    judul: "Sirah Nabawiyah",
+    deskripsi:
+      "Sirah Nabawiyah pembahasannya bertumpu kepada perjalanan dan kisah hidup Nabi Muhammad S.A.W. secara rinci. Pembahasan juga menekankan sifat pribadi, akhlak serta cara dia menjalani kehidupan sehari yang bisa diteladani. Sedangkan sejarah pembahasannya hanya mengenai peristiwa-peristiwa yang dianggap penting yang terjadi pada masa lampau. Lebih difokuskan kepada perkembangan peradaban ataupun perkembangan suatu zaman.",
+    kota: "Bekasi",
+    tempat: "Mesjid Trans Studio",
+    tanggal: "2020-4-25",
+    waktu: "14:00",
+    penceramah: "Subhan Bawazier",
     gambar: kajian1,
+  },
+  {
+    id: 21,
+    judul: "Ramadan",
+    deskripsi:
+      "Kata Ramadan berasal dari akar kata bahasa Arab ramiḍa atau ar-ramaḍ, yang berarti panas yang menghanguskan atau kekeringan. Puasa Ramadhan dalam hukumnya merupakan fardhu (diwajibkan) untuk Muslim dewasa, kecuali mengalami halangan untuk melakukannya seperti sakit, dalam perjalanan, sudah tua, hamil, menyusui, diabetes atau sedang mengalami menstruasi.",
+    kota: "Surabaya",
+    tempat: "Mesjid Trans Studio",
+    tanggal: "2020-4-25",
+    waktu: "19:00",
+    penceramah: "Syafiq Riza Basalamah",
+    gambar: kajian2,
+  },
+  {
+    id: 22,
+    judul: "Kurma",
+    deskripsi:
+      "Kurma telah menjadi makanan pokok di Timur Tengah selama ribuan tahun lamanya. Pohon Kurma diyakini berasal dari sekitar Teluk Persia dan telah dibudidayakan sejak zaman kuno dari Mesopotamia ke prasejarah Mesir, kemungkinan pada awal 4000 SM. Bangsa Mesir Kuno menggunakan buahnya untuk dibuat menjadi anggur kurma dan memakannya pada saat panen. ",
+    kota: "Tasikmalaya",
+    tempat: "Mesjid Trans Studio",
+    tanggal: "2020-4-25",
+    waktu: "14:00",
+    penceramah: "Firanda Andirja",
+    gambar: kajian3,
+  },
+  {
+    id: 23,
+    judul: "Sirah Nabawiyah",
+    deskripsi:
+      "Sirah Nabawiyah pembahasannya bertumpu kepada perjalanan dan kisah hidup Nabi Muhammad S.A.W. secara rinci. Pembahasan juga menekankan sifat pribadi, akhlak serta cara dia menjalani kehidupan sehari yang bisa diteladani. Sedangkan sejarah pembahasannya hanya mengenai peristiwa-peristiwa yang dianggap penting yang terjadi pada masa lampau. Lebih difokuskan kepada perkembangan peradaban ataupun perkembangan suatu zaman.",
+    kota: "Bekasi",
+    tempat: "Mesjid Trans Studio",
+    tanggal: "2020-4-26",
+    waktu: "14:00",
+    penceramah: "Subhan Bawazier",
+    gambar: kajian1,
+  },
+  {
+    id: 24,
+    judul: "Ramadan",
+    deskripsi:
+      "Kata Ramadan berasal dari akar kata bahasa Arab ramiḍa atau ar-ramaḍ, yang berarti panas yang menghanguskan atau kekeringan. Puasa Ramadhan dalam hukumnya merupakan fardhu (diwajibkan) untuk Muslim dewasa, kecuali mengalami halangan untuk melakukannya seperti sakit, dalam perjalanan, sudah tua, hamil, menyusui, diabetes atau sedang mengalami menstruasi.",
+    kota: "Surabaya",
+    tempat: "Mesjid Trans Studio",
+    tanggal: "2020-4-26",
+    waktu: "19:00",
+    penceramah: "Syafiq Riza Basalamah",
+    gambar: kajian2,
+  },
+  {
+    id: 25,
+    judul: "Kurma",
+    deskripsi:
+      "Kurma telah menjadi makanan pokok di Timur Tengah selama ribuan tahun lamanya. Pohon Kurma diyakini berasal dari sekitar Teluk Persia dan telah dibudidayakan sejak zaman kuno dari Mesopotamia ke prasejarah Mesir, kemungkinan pada awal 4000 SM. Bangsa Mesir Kuno menggunakan buahnya untuk dibuat menjadi anggur kurma dan memakannya pada saat panen. ",
+    kota: "Tasikmalaya",
+    tempat: "Mesjid Trans Studio",
+    tanggal: "2020-4-26",
+    waktu: "14:00",
+    penceramah: "Khalid Basalamah",
+    gambar: kajian3,
   },
 ];
 

@@ -5,8 +5,6 @@ import "./CardKajian.css";
 import { withRouter } from "react-router-dom";
 
 class CardKajian extends Component {
-  handleClickCardKajian = () => {};
-
   render() {
     const {
       judul,
@@ -26,6 +24,7 @@ class CardKajian extends Component {
                 `/detail-jadwal-kajian?id=${this.props.data.id}`
               );
               if (this.props.fetchContent !== undefined) {
+                window.scrollTo(0, 0);
                 this.props.fetchContent();
               }
             }}
@@ -59,6 +58,7 @@ class CardKajian extends Component {
                 `/detail-jadwal-kajian?id=${this.props.data.id}`
               );
               if (this.props.fetchContent !== undefined) {
+                window.scrollTo(0, 0);
                 this.props.fetchContent();
               }
             }}
