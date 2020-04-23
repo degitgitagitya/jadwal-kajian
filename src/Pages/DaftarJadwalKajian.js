@@ -12,6 +12,7 @@ import Footer from "../Components/Footer";
 import KAJIAN from "../Data/Kajian";
 
 import "./DaftarJadwalKajian.css";
+import PagingStatis from "../Components/PagingStatis";
 
 export default class DaftarJadwalKajian extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ export default class DaftarJadwalKajian extends Component {
     const x = jsonata(
       "kajian" +
         str +
-        "^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        "^(>tanggal){`tanggal`: $.{'tanggal': tanggal, 'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         awal +
         ".." +
         akhir +
@@ -132,8 +133,15 @@ export default class DaftarJadwalKajian extends Component {
       showModalKota: false,
       searchNotification: search,
       searchContent: content,
+      modalMobileFilter: false,
     };
   }
+
+  toggleMobileModalFilter = () => {
+    this.setState({
+      modalMobileFilter: !this.state.modalMobileFilter,
+    });
+  };
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -179,7 +187,7 @@ export default class DaftarJadwalKajian extends Component {
     const x = jsonata(
       "kajian" +
         str +
-        "^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        "^(>tanggal){`tanggal`: $.{'tanggal': tanggal, 'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         awal +
         ".." +
         akhir +
@@ -265,7 +273,7 @@ export default class DaftarJadwalKajian extends Component {
     const akhir = 9;
 
     const x = jsonata(
-      "kajian^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+      "kajian^(>tanggal){`tanggal`: $.{'tanggal': tanggal, 'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         awal +
         ".." +
         akhir +
@@ -364,7 +372,7 @@ export default class DaftarJadwalKajian extends Component {
         str +
         "]^(" +
         this.state.sort +
-        "tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        "tanggal){`tanggal`: $.{'tanggal': tanggal, 'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         this.state.batasAwal +
         ".." +
         this.state.batasAkhir +
@@ -407,7 +415,7 @@ export default class DaftarJadwalKajian extends Component {
         this.state.penceramahSelectedString +
         "]^(" +
         this.state.sort +
-        "tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        "tanggal){`tanggal`: $.{'tanggal': tanggal, 'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         a +
         ".." +
         b +
@@ -431,7 +439,7 @@ export default class DaftarJadwalKajian extends Component {
         this.state.penceramahSelectedString +
         this.state.kotaselectedString +
         this.state.pilihanWaktu +
-        "]^(>tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        "]^(>tanggal){`tanggal`: $.{'tanggal': tanggal, 'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         this.state.batasAwal +
         ".." +
         this.state.batasAkhir +
@@ -444,7 +452,7 @@ export default class DaftarJadwalKajian extends Component {
           this.state.penceramahSelectedString +
           this.state.kotaselectedString +
           this.state.pilihanWaktu +
-          "]^(<tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+          "]^(<tanggal){`tanggal`: $.{'tanggal': tanggal, 'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
           this.state.batasAwal +
           ".." +
           this.state.batasAkhir +
@@ -499,7 +507,7 @@ export default class DaftarJadwalKajian extends Component {
         stringY +
         "]^(" +
         this.state.sort +
-        "tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        "tanggal){`tanggal`: $.{'tanggal': tanggal, 'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         this.state.batasAwal +
         ".." +
         this.state.batasAkhir +
@@ -562,7 +570,10 @@ export default class DaftarJadwalKajian extends Component {
     let newX = [];
 
     x.forEach((data) => {
-      if (data.nama.toLowerCase().includes(event.target.value) === true) {
+      if (
+        data.nama.toLowerCase().includes(event.target.value.toLowerCase()) ===
+        true
+      ) {
         newX.push(data);
       }
     });
@@ -629,7 +640,7 @@ export default class DaftarJadwalKajian extends Component {
         string +
         "]^(" +
         this.state.sort +
-        "tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        "tanggal){`tanggal`: $.{'tanggal': tanggal, 'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         this.state.batasAwal +
         ".." +
         this.state.batasAkhir +
@@ -658,7 +669,10 @@ export default class DaftarJadwalKajian extends Component {
     let newX = [];
 
     x.forEach((data) => {
-      if (data.nama.toLowerCase().includes(event.target.value) === true) {
+      if (
+        data.nama.toLowerCase().includes(event.target.value.toLowerCase()) ===
+        true
+      ) {
         newX.push(data);
       }
     });
@@ -725,7 +739,7 @@ export default class DaftarJadwalKajian extends Component {
         stringY +
         "]^(" +
         this.state.sort +
-        "tanggal){`tanggal`: $.{'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
+        "tanggal){`tanggal`: $.{'tanggal': tanggal, 'id': id, 'gambar': gambar, 'judul': judul, 'deskripsi': deskripsi, 'kota': kota, 'penceramah' : penceramah}}[[" +
         this.state.batasAwal +
         ".." +
         this.state.batasAkhir +
@@ -777,7 +791,7 @@ export default class DaftarJadwalKajian extends Component {
             <h3>Pilih Penceramah</h3>
             <input
               type="text"
-              className="global-rounded-search-primary py-2"
+              className="global-rounded-search-primary modal-max-width py-2"
               placeholder="Cari nama penceramah di sini.."
               onChange={this.handleSearchPenceramah}
             />
@@ -805,12 +819,28 @@ export default class DaftarJadwalKajian extends Component {
               );
             })}
           </div>
+          <PagingStatis></PagingStatis>
 
           <div className="d-flex justify-content-end">
+            <button
+              className="d-block d-lg-none custom-button-warning custom-button mr-2"
+              onClick={() => {
+                this.handleCloseModal();
+                this.toggleMobileModalFilter();
+              }}
+            >
+              <FontAwesomeIcon
+                icon="arrow-left"
+                className="mr-2"
+              ></FontAwesomeIcon>
+              Kembali
+            </button>
+
             <button
               className="custom-button-primary custom-button"
               onClick={this.handleCloseModal}
             >
+              <FontAwesomeIcon icon="times" className="mr-2"></FontAwesomeIcon>
               Tutup
             </button>
           </div>
@@ -825,7 +855,7 @@ export default class DaftarJadwalKajian extends Component {
             <h3>Pilih Lokasi</h3>
             <input
               type="text"
-              className="global-rounded-search-primary py-2"
+              className="global-rounded-search-primary modal-max-width py-2"
               placeholder="Cari kota di sini.."
               onChange={this.handleSearchKota}
             />
@@ -854,17 +884,33 @@ export default class DaftarJadwalKajian extends Component {
             })}
           </div>
 
+          <PagingStatis></PagingStatis>
+
           <div className="d-flex justify-content-end">
+            <button
+              className="d-block d-lg-none custom-button-warning custom-button mr-2"
+              onClick={() => {
+                this.handleCloseModalKota();
+                this.toggleMobileModalFilter();
+              }}
+            >
+              <FontAwesomeIcon
+                icon="arrow-left"
+                className="mr-2"
+              ></FontAwesomeIcon>
+              Kembali
+            </button>
             <button
               className="custom-button-primary custom-button"
               onClick={this.handleCloseModalKota}
             >
+              <FontAwesomeIcon icon="times" className="mr-2"></FontAwesomeIcon>
               Tutup
             </button>
           </div>
         </ReactModal>
 
-        <Navigation reFetch={this.reFetch}></Navigation>
+        <Navigation title="JADWAL KAJIAN" reFetch={this.reFetch}></Navigation>
         <BreadCumb
           content={[
             {
@@ -880,9 +926,268 @@ export default class DaftarJadwalKajian extends Component {
           ]}
         ></BreadCumb>
         <Container>
-          <div className="row">
-            <div className="width-30">
+          {/* Desktop */}
+          <div className="d-none d-lg-block">
+            <div className="row">
+              <div className="width-30">
+                <div className="daftar-jadwal-kajian-filter text-white">
+                  <button
+                    onClick={this.clearFilter}
+                    className="filter-button-primary"
+                  >
+                    BERSIHKAN FILTER
+                    <FontAwesomeIcon
+                      icon="undo"
+                      className="ml-2"
+                    ></FontAwesomeIcon>
+                  </button>
+                  <hr className="line-filter" />
+                  <div>Pilih Penceramah</div>
+                  <div className="d-flex flex-column">
+                    {this.state.listPenceramah.slice(0, 4).map((data) => {
+                      return (
+                        <div
+                          onClick={() => {
+                            this.handleClickFilterPenceramah(data.id);
+                          }}
+                          key={data.id}
+                          className="d-flex align-items-center list-filter"
+                        >
+                          <div
+                            className={
+                              data.status === 1
+                                ? "filter-check-box filter-check-box-selected mr-2"
+                                : "filter-check-box mr-2"
+                            }
+                          ></div>
+                          <div>{data.nama}</div>
+                        </div>
+                      );
+                    })}
+                    <button
+                      onClick={this.handleOpenModal}
+                      className="form-control mt-2 filter-button-secondary"
+                    >
+                      PENCERAMAH LAINNYA
+                    </button>
+                  </div>
+                  <hr className="line-filter" />
+
+                  <div>Pilih Waktu</div>
+                  <div className="d-flex flex-column">
+                    <div
+                      onClick={() => {
+                        this.applyWaktu(0);
+                      }}
+                      className="d-flex align-items-center list-filter"
+                    >
+                      <div
+                        className={
+                          this.state.filterHariIni
+                            ? "filter-check-box filter-check-box-selected mr-2"
+                            : "filter-check-box  mr-2"
+                        }
+                      ></div>
+                      <div>Hari ini</div>
+                    </div>
+                    <div
+                      onClick={() => {
+                        this.applyWaktu(1);
+                      }}
+                      className="d-flex align-items-center list-filter"
+                    >
+                      <div
+                        className={
+                          this.state.filterBesok
+                            ? "filter-check-box filter-check-box-selected mr-2"
+                            : "filter-check-box  mr-2"
+                        }
+                      ></div>
+                      <div>Besok</div>
+                    </div>
+                    <div>atau pilih waktu</div>
+                    <input
+                      value={this.state.pilihanWaktu}
+                      onChange={this.onChangePilihanWaktu}
+                      type="date"
+                      className="filter-rounded-search"
+                    />
+                  </div>
+                  <hr className="line-filter" />
+
+                  <div>Pilih Lokasi</div>
+                  <div className="d-flex flex-column">
+                    {this.state.listKota.slice(0, 4).map((data) => {
+                      return (
+                        <div
+                          onClick={() => {
+                            this.handleClickFilterKota(data.id);
+                          }}
+                          key={data.id}
+                          className="d-flex align-items-center list-filter"
+                        >
+                          <div
+                            className={
+                              data.status === 1
+                                ? "filter-check-box filter-check-box-selected mr-2"
+                                : "filter-check-box mr-2"
+                            }
+                          ></div>
+                          <div>{data.nama}</div>
+                        </div>
+                      );
+                    })}
+                    <button
+                      onClick={this.handleOpenModalKota}
+                      className="form-control mt-2 filter-button-secondary"
+                    >
+                      LOKASI LAINNYA
+                    </button>
+                  </div>
+                  <hr className="line-filter" />
+                </div>
+              </div>
+              <div className="width-70">
+                <div className="d-flex justify-content-between">
+                  <div>
+                    {this.state.searchNotification ? (
+                      <div>
+                        <h3>Hasil Pencarian</h3>
+                        <p>
+                          Pencarian dengan kata kunci "
+                          {this.state.searchContent}"
+                        </p>{" "}
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                  <select
+                    name="urutkan"
+                    className="form-control-sm daftar-jawal-kajian-sort"
+                    id="urutkan"
+                    defaultValue="0"
+                    onChange={this.onChangeSort}
+                  >
+                    <option disabled value="0">
+                      Urutkan Berdasarkan
+                    </option>
+                    <option value="1">Terbaru</option>
+                    <option value="2">Terlama</option>
+                  </select>
+                </div>
+
+                {Object.keys(this.state.listJadwalKajian).map((key, index) => {
+                  const x = new Date(key);
+                  let y = `${x.getDate()} ${x.toLocaleString("default", {
+                    month: "long",
+                  })} ${x.getFullYear()}`;
+                  return (
+                    <div key={index}>
+                      <h3>{y}</h3>
+                      <hr className="semi-bold-hr" />
+                      <div className="d-flex flex-wrap">
+                        {Array.isArray(this.state.listJadwalKajian[key]) ? (
+                          this.state.listJadwalKajian[key].map((data) => {
+                            return (
+                              <div key={data.id} className="mb-4 mr-4">
+                                <CardKajian data={data}></CardKajian>
+                              </div>
+                            );
+                          })
+                        ) : (
+                          <div className="mb-4 mr-4">
+                            <CardKajian
+                              data={this.state.listJadwalKajian[key]}
+                            ></CardKajian>
+                          </div>
+                        )}
+                        {}
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {Object.keys(this.state.listJadwalKajian).length === 0 &&
+                (this.state.listJadwalKajian.constructor === Object) ===
+                  true ? (
+                  <h3 className="text-center mt-3">
+                    Mohon maaf, jadwal tidak ditemukan
+                  </h3>
+                ) : (
+                  <div className="daftar-jadwal-kajian-paging mb-5">
+                    <div className="row justify-content-center">
+                      <div className="col-4 text-center d-flex justify-content-around align-items-center">
+                        <FontAwesomeIcon
+                          icon="chevron-left"
+                          onClick={() => {
+                            if (this.state.halaman !== 1) {
+                              this.handleFetchPaging(this.state.halaman - 1);
+                            }
+                          }}
+                          className={
+                            this.state.halaman !== 1 ? "paging-number" : ""
+                          }
+                        ></FontAwesomeIcon>
+                        {this.state.totalPage.map((data) => {
+                          return (
+                            <div
+                              onClick={() => {
+                                this.handleFetchPaging(data.no);
+                              }}
+                              key={data.no}
+                              className={
+                                data.no === this.state.halaman
+                                  ? "paging-number paging-number-selected"
+                                  : "paging-number"
+                              }
+                            >
+                              {data.no}
+                            </div>
+                          );
+                        })}
+                        <FontAwesomeIcon
+                          icon="chevron-right"
+                          onClick={() => {
+                            if (
+                              this.state.halaman !== this.state.totalPage.length
+                            ) {
+                              this.handleFetchPaging(this.state.halaman + 1);
+                            }
+                          }}
+                          className={
+                            this.state.halaman !== this.state.totalPage.length
+                              ? "paging-number"
+                              : ""
+                          }
+                        ></FontAwesomeIcon>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          {/* Mobile */}
+
+          <div className="d-block d-lg-none">
+            <ReactModal
+              isOpen={this.state.modalMobileFilter}
+              className="kelas-modal-mobile"
+              overlayClassName="kelas-modal-overlay-mobile"
+            >
               <div className="daftar-jadwal-kajian-filter text-white">
+                <div className="row">
+                  <div className="title-filter ">
+                    <FontAwesomeIcon
+                      onClick={this.toggleMobileModalFilter}
+                      icon="times"
+                      className="ml-4"
+                    ></FontAwesomeIcon>
+                    <span className="title-margin-left">FILTER</span>
+                  </div>
+                </div>
+                <hr />
                 <button
                   onClick={this.clearFilter}
                   className="filter-button-primary"
@@ -917,7 +1222,10 @@ export default class DaftarJadwalKajian extends Component {
                     );
                   })}
                   <button
-                    onClick={this.handleOpenModal}
+                    onClick={() => {
+                      this.toggleMobileModalFilter();
+                      this.handleOpenModal();
+                    }}
                     className="form-control mt-2 filter-button-secondary"
                   >
                     PENCERAMAH LAINNYA
@@ -990,133 +1298,136 @@ export default class DaftarJadwalKajian extends Component {
                     );
                   })}
                   <button
-                    onClick={this.handleOpenModalKota}
+                    onClick={() => {
+                      this.toggleMobileModalFilter();
+                      this.handleOpenModalKota();
+                    }}
                     className="form-control mt-2 filter-button-secondary"
                   >
                     LOKASI LAINNYA
                   </button>
                 </div>
                 <hr className="line-filter" />
-              </div>
-            </div>
-            <div className="width-70">
-              <div className="d-flex justify-content-between">
-                <div>
-                  {this.state.searchNotification ? (
-                    <div>
-                      <h3>Hasil Pencarian</h3>
-                      <p>
-                        Pencarian dengan kata kunci "{this.state.searchContent}"
-                      </p>{" "}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <select
-                  name="urutkan"
-                  className="form-control-sm daftar-jawal-kajian-sort"
-                  id="urutkan"
-                  defaultValue="0"
-                  onChange={this.onChangeSort}
+                <button
+                  onClick={this.toggleMobileModalFilter}
+                  className="btn btn-warning text-white w-100"
                 >
-                  <option disabled value="0">
-                    Urutkan Berdasarkan
-                  </option>
-                  <option value="1">Terbaru</option>
-                  <option value="2">Terlama</option>
-                </select>
+                  TUTUP
+                </button>
               </div>
+            </ReactModal>
 
-              {Object.keys(this.state.listJadwalKajian).map((key, index) => {
-                const x = new Date(key);
-                let y = `${x.getDate()} ${x.toLocaleString("default", {
-                  month: "long",
-                })} ${x.getFullYear()}`;
-                return (
-                  <div key={index}>
-                    <h3>{y}</h3>
-                    <hr className="semi-bold-hr" />
-                    <div className="d-flex flex-wrap">
-                      {Array.isArray(this.state.listJadwalKajian[key]) ? (
-                        this.state.listJadwalKajian[key].map((data) => {
-                          return (
-                            <div key={data.id} className="mb-4 mr-4">
-                              <CardKajian data={data}></CardKajian>
-                            </div>
-                          );
-                        })
-                      ) : (
-                        <div className="mb-4 mr-4">
-                          <CardKajian
-                            data={this.state.listJadwalKajian[key]}
-                          ></CardKajian>
-                        </div>
-                      )}
-                      {}
-                    </div>
-                  </div>
-                );
-              })}
-
-              {Object.keys(this.state.listJadwalKajian).length === 0 &&
-              (this.state.listJadwalKajian.constructor === Object) === true ? (
-                <h3 className="text-center mt-3">
-                  Mohon maaf, jadwal tidak ditemukan
-                </h3>
-              ) : (
-                <div className="daftar-jadwal-kajian-paging mb-5">
-                  <div className="row justify-content-center">
-                    <div className="col-4 text-center d-flex justify-content-around align-items-center">
-                      <FontAwesomeIcon
-                        icon="chevron-left"
-                        onClick={() => {
-                          if (this.state.halaman !== 1) {
-                            this.handleFetchPaging(this.state.halaman - 1);
-                          }
-                        }}
-                        className={
-                          this.state.halaman !== 1 ? "paging-number" : ""
-                        }
-                      ></FontAwesomeIcon>
-                      {this.state.totalPage.map((data) => {
+            <div className="d-flex justify-content-between">
+              <button
+                onClick={this.toggleMobileModalFilter}
+                className="custom-button-outline custom-button-outline-primary"
+              >
+                FILTER
+                <FontAwesomeIcon
+                  icon="filter"
+                  className="ml-2"
+                ></FontAwesomeIcon>
+              </button>
+              <select
+                name="urutkan"
+                className="form-control-sm custom-button-outline custom-button-outline-primary-mobile"
+                id="urutkan"
+                defaultValue="0"
+                onChange={this.onChangeSort}
+              >
+                <option disabled value="0">
+                  Urutkan Berdasarkan
+                </option>
+                <option value="1">Terbaru</option>
+                <option value="2">Terlama</option>
+              </select>
+            </div>
+            {Object.keys(this.state.listJadwalKajian).map((key, index) => {
+              const x = new Date(key);
+              let y = `${x.getDate()} ${x.toLocaleString("default", {
+                month: "long",
+              })} ${x.getFullYear()}`;
+              return (
+                <div key={index}>
+                  <h3 className="mt-3">{y}</h3>
+                  <hr className="semi-bold-hr mb-1" />
+                  <div className="d-flex flex-wrap justify-content-between">
+                    {Array.isArray(this.state.listJadwalKajian[key]) ? (
+                      this.state.listJadwalKajian[key].map((data) => {
                         return (
-                          <div
-                            onClick={() => {
-                              this.handleFetchPaging(data.no);
-                            }}
-                            key={data.no}
-                            className={
-                              data.no === this.state.halaman
-                                ? "paging-number paging-number-selected"
-                                : "paging-number"
-                            }
-                          >
-                            {data.no}
+                          <div key={data.id}>
+                            <CardKajian data={data}></CardKajian>
                           </div>
                         );
-                      })}
-                      <FontAwesomeIcon
-                        icon="chevron-right"
-                        onClick={() => {
-                          if (
-                            this.state.halaman !== this.state.totalPage.length
-                          ) {
-                            this.handleFetchPaging(this.state.halaman + 1);
-                          }
-                        }}
-                        className={
-                          this.state.halaman !== this.state.totalPage.length
-                            ? "paging-number"
-                            : ""
-                        }
-                      ></FontAwesomeIcon>
-                    </div>
+                      })
+                    ) : (
+                      <div>
+                        <CardKajian
+                          data={this.state.listJadwalKajian[key]}
+                        ></CardKajian>
+                      </div>
+                    )}
+                    {}
                   </div>
                 </div>
-              )}
-            </div>
+              );
+            })}
           </div>
+
+          <br />
+
+          {Object.keys(this.state.listJadwalKajian).length === 0 &&
+          (this.state.listJadwalKajian.constructor === Object) === true ? (
+            <h3 className="text-center mt-3">
+              Mohon maaf, jadwal tidak ditemukan
+            </h3>
+          ) : (
+            <div className="daftar-jadwal-kajian-paging mb-5">
+              <div className="row justify-content-center">
+                <div className="col-4 text-center d-flex justify-content-around align-items-center">
+                  <FontAwesomeIcon
+                    icon="chevron-left"
+                    onClick={() => {
+                      if (this.state.halaman !== 1) {
+                        this.handleFetchPaging(this.state.halaman - 1);
+                      }
+                    }}
+                    className={this.state.halaman !== 1 ? "paging-number" : ""}
+                  ></FontAwesomeIcon>
+                  {this.state.totalPage.map((data) => {
+                    return (
+                      <div
+                        onClick={() => {
+                          this.handleFetchPaging(data.no);
+                        }}
+                        key={data.no}
+                        className={
+                          data.no === this.state.halaman
+                            ? "paging-number paging-number-selected"
+                            : "paging-number"
+                        }
+                      >
+                        {data.no}
+                      </div>
+                    );
+                  })}
+                  <FontAwesomeIcon
+                    icon="chevron-right"
+                    onClick={() => {
+                      if (this.state.halaman !== this.state.totalPage.length) {
+                        this.handleFetchPaging(this.state.halaman + 1);
+                      }
+                    }}
+                    className={
+                      this.state.halaman !== this.state.totalPage.length
+                        ? "paging-number"
+                        : ""
+                    }
+                  ></FontAwesomeIcon>
+                </div>
+              </div>
+            </div>
+          )}
         </Container>
         <Footer></Footer>
       </div>

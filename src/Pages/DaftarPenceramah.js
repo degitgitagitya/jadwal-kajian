@@ -108,7 +108,10 @@ export default class DaftarPenceramah extends Component {
     let arrayX = [];
 
     x.forEach((data) => {
-      if (data.nama.toLowerCase().includes(event.target.value) === true) {
+      if (
+        data.nama.toLowerCase().includes(event.target.value.toLowerCase()) ===
+        true
+      ) {
         arrayX.push(data);
       }
     });

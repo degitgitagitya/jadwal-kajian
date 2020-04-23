@@ -85,7 +85,10 @@ class Berlangganan extends Component {
     let newX = [];
 
     x.forEach((data) => {
-      if (data.nama.toLowerCase().includes(event.target.value) === true) {
+      if (
+        data.nama.toLowerCase().includes(event.target.value.toLowerCase()) ===
+        true
+      ) {
         newX.push(data);
       }
     });
@@ -119,7 +122,10 @@ class Berlangganan extends Component {
     let newX = [];
 
     x.forEach((data) => {
-      if (data.nama.toLowerCase().includes(event.target.value) === true) {
+      if (
+        data.nama.toLowerCase().includes(event.target.value.toLowerCase()) ===
+        true
+      ) {
         newX.push(data);
       }
     });

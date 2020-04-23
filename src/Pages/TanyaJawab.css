@@ -1,4 +1,13 @@
-.tanya-jawab-card-container {
-  width: 49%;
-  margin-bottom: 0.5rem;
+@media only screen and (max-width: 768px) {
+  .tanya-jawab-card-container {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .tanya-jawab-card-container {
+    width: 49%;
+    margin-bottom: 0.5rem;
+  }
 }

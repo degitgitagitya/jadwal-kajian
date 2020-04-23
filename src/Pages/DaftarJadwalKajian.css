@@ -6,12 +6,41 @@
   padding-left: 1rem;
 }
 
-.daftar-jadwal-kajian-filter {
-  background-color: var(--dark-green);
-  font-family: "Roboto", sans-serif;
-  height: 640px;
+@media only screen and (max-width: 768px) {
+  .daftar-jadwal-kajian-filter {
+    background-color: var(--dark-green);
+    font-family: "Roboto", sans-serif;
+    height: 780px;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .daftar-jadwal-kajian-filter {
+    background-color: var(--dark-green);
+    font-family: "Roboto", sans-serif;
+    height: 640px;
+    width: 100%;
+    margin-top: 80px;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.title-filter {
   width: 100%;
-  margin-top: 80px;
-  padding: 0.5rem;
-  margin-bottom: 2rem;
+  color: var(--dark-green);
+  background-color: white;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
+    0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
+    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+}
+
+.title-margin-left {
+  margin-left: 32vw;
 }

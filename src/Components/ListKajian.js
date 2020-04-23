@@ -8,10 +8,10 @@ import CardKajian from "../Components/CardKajian";
 class ListKajian extends Component {
   render() {
     return (
-      <Container>
-        <div>
-          {/* Desktop */}
-          <div className="d-none d-lg-block">
+      <div>
+        {/* Desktop */}
+        <div className="d-none d-lg-block">
+          <Container>
             <div className="d-flex justify-content-between align-items-center">
               <h3>{this.props.title}</h3>
               <div
@@ -32,36 +32,36 @@ class ListKajian extends Component {
                 data={this.props.data}
               ></ItemSlide>
             </div>
-          </div>
+          </Container>
+        </div>
 
-          {/* Mobile */}
-          <div className="d-block d-lg-none">
-            <div className="d-flex justify-content-between align-items-center">
-              <h3>{this.props.title}</h3>
-              <div
-                onClick={() => {
-                  this.props.history.push(this.props.lainnya);
-                }}
-                className="span-clickable"
-              >
-                Lainnya
-              </div>
+        {/* Mobile */}
+        <div className="d-block d-lg-none">
+          <div className="d-flex justify-content-between align-items-center">
+            <h3>{this.props.title}</h3>
+            <div
+              onClick={() => {
+                this.props.history.push(this.props.lainnya);
+              }}
+              className="span-clickable"
+            >
+              Lainnya
             </div>
-            <hr className="semi-bold-hr" />
-            <div className="d-flex justify-content-between flex-wrap">
-              {this.props.data.slice(0, 4).map((data) => {
-                return (
-                  <CardKajian
-                    fetchContent={this.props.fetchContent}
-                    key={data.id}
-                    data={data}
-                  ></CardKajian>
-                );
-              })}
-            </div>
+          </div>
+          <hr className="semi-bold-hr" />
+          <div className="d-flex justify-content-between flex-wrap">
+            {this.props.data.slice(0, 4).map((data) => {
+              return (
+                <CardKajian
+                  fetchContent={this.props.fetchContent}
+                  key={data.id}
+                  data={data}
+                ></CardKajian>
+              );
+            })}
           </div>
         </div>
-      </Container>
+      </div>
     );
   }
 }

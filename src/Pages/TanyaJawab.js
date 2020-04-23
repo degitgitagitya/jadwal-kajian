@@ -103,7 +103,11 @@ export default class TanyaJawab extends Component {
     let arrayX = [];
 
     x.forEach((data) => {
-      if (data.pertanyaan.toLowerCase().includes(event.target.value) === true) {
+      if (
+        data.pertanyaan
+          .toLowerCase()
+          .includes(event.target.value.toLowerCase()) === true
+      ) {
         arrayX.push(data);
       }
     });
@@ -128,8 +132,9 @@ export default class TanyaJawab extends Component {
 
     x.forEach((data) => {
       if (
-        data.pertanyaan.toLowerCase().includes(this.state.inputPertanyaan) ===
-        true
+        data.pertanyaan
+          .toLowerCase()
+          .includes(this.state.inputPertanyaan.toLowerCase()) === true
       ) {
         arrayX.push(data);
       }
@@ -151,7 +156,7 @@ export default class TanyaJawab extends Component {
   render() {
     return (
       <div>
-        <Navigation></Navigation>
+        <Navigation title="TANYA JAWAB"></Navigation>
         <BreadCumb
           content={[
             {
@@ -169,22 +174,84 @@ export default class TanyaJawab extends Component {
           ]}
         ></BreadCumb>
 
-        <br />
+        {/* Desktop */}
 
-        <Container>
-          <div className="d-flex justify-content-between">
+        <div className="d-none d-lg-block">
+          <br />
+
+          <Container>
+            <div className="d-flex justify-content-between">
+              <button
+                onClick={() => {
+                  this.props.history.push("/ajukan-pertanyaan");
+                }}
+                className="custom-button custom-button-primary"
+              >
+                AJUKAN PERTANYAAN
+              </button>
+              <div className="d-flex justify-content-end">
+                <select
+                  name="urutkan"
+                  className="form-control-sm daftar-jawal-kajian-sort mr-3"
+                  id="urutkan"
+                  defaultValue="0"
+                  onChange={this.onChangeSort}
+                >
+                  <option disabled value="0">
+                    Urutkan Berdasarkan
+                  </option>
+                  <option value="1">Terbaru</option>
+                  <option value="2">Terlama</option>
+                </select>
+
+                <input
+                  type="text"
+                  className="daftar-penceramah-search px-3"
+                  placeholder="Cari Pertanyaan.."
+                  onChange={this.cariPertanyaan}
+                  value={this.state.inputPertanyaan}
+                />
+              </div>
+            </div>
+          </Container>
+          <br />
+        </div>
+
+        {/* Mobile */}
+
+        <div className="d-block d-lg-none">
+          <Container>
+            <div className="input-group mb-2">
+              <div className="input-group-prepend">
+                <div
+                  className="input-group-text"
+                  style={{ backgroundColor: "white", borderRight: "none" }}
+                >
+                  <FontAwesomeIcon icon="search"></FontAwesomeIcon>
+                </div>
+              </div>
+              <input
+                type="text"
+                style={{ borderLeft: "none" }}
+                className="form-control"
+                placeholder="Cari pertanyaan di sini..."
+                onChange={this.cariPertanyaan}
+              />
+            </div>
+
             <button
               onClick={() => {
                 this.props.history.push("/ajukan-pertanyaan");
               }}
-              className="custom-button custom-button-primary"
+              className="custom-button custom-button-primary w-100 mb-2"
             >
               AJUKAN PERTANYAAN
             </button>
+
             <div className="d-flex justify-content-end">
               <select
                 name="urutkan"
-                className="form-control-sm daftar-jawal-kajian-sort mr-3"
+                className="form-control-sm custom-button-outline custom-button-outline-primary-mobile"
                 id="urutkan"
                 defaultValue="0"
                 onChange={this.onChangeSort}
@@ -195,18 +262,10 @@ export default class TanyaJawab extends Component {
                 <option value="1">Terbaru</option>
                 <option value="2">Terlama</option>
               </select>
-
-              <input
-                type="text"
-                className="daftar-penceramah-search px-3"
-                placeholder="Cari Pertanyaan.."
-                onChange={this.cariPertanyaan}
-                value={this.state.inputPertanyaan}
-              />
             </div>
-          </div>
-        </Container>
-        <br />
+          </Container>
+        </div>
+
         <Container>
           <div className="d-flex justify-content-between flex-wrap">
             {Array.isArray(this.state.listTanyaJawab) ? (
@@ -234,7 +293,7 @@ export default class TanyaJawab extends Component {
           ) : (
             <div className="daftar-jadwal-kajian-paging mb-5">
               <div className="row justify-content-center">
-                <div className="col-4 text-center d-flex justify-content-around align-items-center">
+                <div className="col-4 text-center  d-flex justify-content-around align-items-center">
                   <FontAwesomeIcon
                     icon="chevron-left"
                     onClick={() => {
