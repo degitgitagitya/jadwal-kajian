@@ -1,12 +1,16 @@
-import kajian1 from "../Assets/kajian.jpg";
-import kajian2 from "../Assets/kajian2.jpg";
-import kajian3 from "../Assets/kajian3.jpeg";
-import penceramah1 from "../Assets/penceramah1.jpg";
-import penceramah2 from "../Assets/penceramah2.jpg";
-import penceramah3 from "../Assets/penceramah3.jpg";
-import penceramah4 from "../Assets/penceramah4.jpeg";
-import tanya1 from "../Assets/tanya1.jpg";
-import tanya2 from "../Assets/tanya2.jpg";
+const kajian1 = "https://ik.imagekit.io/4cly7cecrazuh/kajian2_tvpYtLCnQ.jpg";
+const kajian2 = "https://ik.imagekit.io/4cly7cecrazuh/kajian_XIKjJ8mTKV.jpg";
+const kajian3 = "https://ik.imagekit.io/4cly7cecrazuh/kajian3_PGOGLC7jL4.jpeg";
+const penceramah1 =
+  "https://ik.imagekit.io/4cly7cecrazuh/penceramah1_qOLnHWySTT.jpg";
+const penceramah2 =
+  "https://ik.imagekit.io/4cly7cecrazuh/penceramah2_misZrreHE.jpg";
+const penceramah3 =
+  "https://ik.imagekit.io/4cly7cecrazuh/penceramah3_z2uB1Ma4Qq.jpg";
+const penceramah4 =
+  "https://ik.imagekit.io/4cly7cecrazuh/penceramah4_nNRRl2tzSp.jpeg";
+const tanya1 = "https://ik.imagekit.io/4cly7cecrazuh/tanya1_C2tzRmJQO.jpg";
+const tanya2 = "https://ik.imagekit.io/4cly7cecrazuh/tanya2_3rIVlQMjF.jpg";
 
 const x = [
   {
