@@ -8,7 +8,7 @@ export default class Authentication extends Component {
   state = {
     isAuth: false,
     data: [],
-    modalWarning: true,
+    modalWarning: false,
   };
 
   changeModalWarningToFalse = () => {

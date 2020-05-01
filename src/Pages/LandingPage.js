@@ -12,7 +12,6 @@ import Footer from "../Components/Footer";
 import JadwalSaran from "../Components/JadwalSaran";
 import ItemSlide from "../Components/ItemSlide";
 
-import kajian from "../Assets/kajian.jpg";
 import KAJIAN from "../Data/Kajian";
 
 import "./LandingPage.css";
