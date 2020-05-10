@@ -6,11 +6,11 @@ import { withRouter } from "react-router-dom";
 import ReactModal from "react-modal";
 import { Spring } from "react-spring/renderprops";
 
-import Logo from "../Assets/logo.png";
-
 import "./Navigation.css";
 
 ReactModal.setAppElement("#root");
+
+const Logo = "https://ik.imagekit.io/4cly7cecrazuh/logo_YRr65QV6E.png";
 
 const NAVBAR_CONTENT = [
   {
