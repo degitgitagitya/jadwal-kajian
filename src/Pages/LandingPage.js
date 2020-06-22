@@ -39,10 +39,10 @@ class LandingPage extends Component {
       "-" +
       tomorrow.getDate();
 
-    const expresson = jsonata(`kajian[tanggal="${today}"]`);
+    const expresson = jsonata(`kajian`);
     const result = expresson.evaluate(KAJIAN);
 
-    const x = jsonata(`kajian[tanggal="${tomorrow}"]`);
+    const x = jsonata(`kajian`);
     const res = x.evaluate(KAJIAN);
 
     let tanyaJawab = jsonata(`tanya^(>waktu)`);
